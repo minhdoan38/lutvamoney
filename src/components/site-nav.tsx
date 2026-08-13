@@ -1,0 +1,100 @@
+"use client";
+
+import { useState } from "react";
+
+const links = [
+  { label: "Dịch vụ", href: "#services" },
+  { label: "Dự án", href: "#work" },
+  { label: "Năng lực", href: "#capabilities" },
+  { label: "Góc nhìn", href: "#insights" },
+];
+
+export function SiteNav() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="fixed left-0 right-0 top-0 z-20 px-4 pt-4 sm:px-6 sm:pt-6">
+      <nav className="site-nav mx-auto flex max-w-[1400px] items-center justify-between rounded-full border border-white/15 bg-[#090909]/75 px-4 py-3 backdrop-blur-xl sm:px-5">
+        <a
+          href="#top"
+          data-cursor-link
+          className="relative z-10 text-[11px] font-semibold uppercase tracking-[-0.02em] text-foreground sm:text-xs"
+        >
+          Nét Nút <span className="text-accent">Studio</span>
+        </a>
+
+        <div className="hidden items-center gap-7 lg:flex">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              data-cursor-link
+              className="text-xs text-white/60 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <a
+          href="#contact"
+          data-cursor-link
+          className="hidden rounded-full bg-accent px-4 py-2 text-xs font-semibold text-[#090909] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 active:scale-[0.98] lg:block"
+        >
+          Gửi website
+        </a>
+
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-label={open ? "Đóng menu" : "Mở menu"}
+          onClick={() => setOpen((value) => !value)}
+          className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 lg:hidden"
+        >
+          <span className="relative block h-3.5 w-3.5">
+            <span
+              className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "rotate-45" : "-translate-y-1"}`}
+            />
+            <span
+              className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "-rotate-45" : "translate-y-1"}`}
+            />
+          </span>
+        </button>
+      </nav>
+
+      <div
+        aria-hidden={!open}
+        inert={!open}
+        className={`mx-auto mt-2 grid max-w-[1400px] overflow-hidden rounded-[1.5rem] border border-white/15 bg-[#111111]/95 backdrop-blur-xl transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${open ? "grid-rows-[1fr] opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"}`}
+      >
+        <div className="min-h-0">
+          <div className="flex flex-col gap-1 p-3">
+            {links.map((link, index) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`flex translate-y-3 items-center justify-between border-b border-white/10 px-3 py-4 text-lg opacity-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] last:border-0 ${open ? "translate-y-0 opacity-100" : ""}`}
+                style={{ transitionDelay: open ? `${index * 55}ms` : "0ms" }}
+              >
+                {link.label}
+                <span className="relative h-3 w-3 text-accent" aria-hidden="true">
+                  <span className="absolute left-0 top-1/2 h-px w-full bg-current" />
+                  <span className="absolute left-1/2 top-0 h-full w-px bg-current" />
+                </span>
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className={`mt-2 rounded-xl bg-accent px-4 py-3 text-center text-sm font-semibold text-[#090909] transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "opacity-100" : "opacity-0"}`}
+              style={{ transitionDelay: open ? "220ms" : "0ms" }}
+            >
+              Gửi website
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}

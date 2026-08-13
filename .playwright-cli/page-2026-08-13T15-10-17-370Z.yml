@@ -1,0 +1,129 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e4]:
+      - link "Nét Nút Studio" [ref=e5]:
+        - /url: "#top"
+      - generic [ref=e6]:
+        - link "Dịch vụ" [ref=e7]:
+          - /url: "#services"
+        - link "Dự án" [ref=e8]:
+          - /url: "#work"
+        - link "Capabilities" [ref=e9]:
+          - /url: "#capabilities"
+        - link "Insights" [ref=e10]:
+          - /url: "#insights"
+      - link "Gửi website" [ref=e11]:
+        - /url: "#contact"
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: Nét Nút Studio
+      - heading "Web cũ. Làm lại cho đáng." [level=1] [ref=e16]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: Web
+          - generic [ref=e20]: cũ.
+          - generic [ref=e21]: Làm
+          - generic [ref=e22]: lại
+        - generic [ref=e24]:
+          - generic [ref=e25]: cho
+          - generic [ref=e26]: đáng.
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: Doanh nghiệp của bạn đã đi xa hơn chính website hiện tại. Nét Nút loại bỏ những thứ cồng kềnh, giữ lại cốt lõi, và thiết kế một trải nghiệm xứng tầm.
+        - generic [ref=e29]:
+          - link "Gửi website của bạn +" [ref=e30]:
+            - /url: "#contact"
+            - text: Gửi website của bạn
+            - generic [ref=e31]: +
+          - link "Xem dự án" [ref=e32]:
+            - /url: "#work"
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - heading "Chúng tôi làm gì" [level=2] [ref=e36]
+        - paragraph [ref=e37]: Xây lại đúng phần đang giữ doanh nghiệp của bạn ở phía sau.
+      - generic [ref=e38]:
+        - article [ref=e39]:
+          - button "Website Redesign Website cũ không có nghĩa là doanh nghiệp cũ. Chúng tôi giữ lại giá trị thương hiệu bạn đã xây, loại bỏ giao diện lỗi thời, và dựng lại một trải nghiệm sắc bén hơn." [expanded] [ref=e40]:
+            - generic [ref=e41]: Website Redesign
+            - generic [ref=e42]: Website cũ không có nghĩa là doanh nghiệp cũ. Chúng tôi giữ lại giá trị thương hiệu bạn đã xây, loại bỏ giao diện lỗi thời, và dựng lại một trải nghiệm sắc bén hơn.
+        - article [ref=e44]:
+          - button "Corporate Website Rõ ràng. Đáng tin. Dễ hiểu. Chúng tôi xây dựng website doanh nghiệp chuẩn chỉnh từ kiến trúc thông tin, giao diện người dùng đến tối ưu hiệu suất." [ref=e45]:
+            - generic [ref=e46]: Corporate Website
+            - generic [ref=e47]: Rõ ràng. Đáng tin. Dễ hiểu. Chúng tôi xây dựng website doanh nghiệp chuẩn chỉnh từ kiến trúc thông tin, giao diện người dùng đến tối ưu hiệu suất.
+        - article [ref=e48]:
+          - button "Landing & Campaign Một sản phẩm. Một chiến dịch. Một mục tiêu. Landing page được thiết kế với sự tập trung tuyệt đối vào thông điệp và tỷ lệ chuyển đổi." [ref=e49]:
+            - generic [ref=e50]: Landing & Campaign
+            - generic [ref=e51]: Một sản phẩm. Một chiến dịch. Một mục tiêu. Landing page được thiết kế với sự tập trung tuyệt đối vào thông điệp và tỷ lệ chuyển đổi.
+        - article [ref=e52]:
+          - button "Motion & Interaction Website không cần đứng yên. Chuyển động và tương tác được tính toán bằng vật lý để dẫn dắt hành vi người dùng, không phải để trang trí." [ref=e53]:
+            - generic [ref=e54]: Motion & Interaction
+            - generic [ref=e55]: Website không cần đứng yên. Chuyển động và tương tác được tính toán bằng vật lý để dẫn dắt hành vi người dùng, không phải để trang trí.
+    - generic [ref=e57]:
+      - heading "Dấu ấn của Nét Nút" [level=2] [ref=e58]
+      - generic [ref=e59]:
+        - paragraph [ref=e65]: Web cũ
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: Tái cấu trúc thương hiệu
+            - generic [ref=e70]: Nét Nút Studio
+          - generic [ref=e71]: Rõ hơn. Nhanh hơn.
+          - generic [ref=e73]: Một website theo kịp doanh nghiệp.
+          - paragraph [ref=e74]: Web mới
+        - generic: Concept minh họa
+      - link "Xem tất cả dự án" [ref=e76]:
+        - /url: "#contact"
+    - generic [ref=e79]:
+      - heading "Từ nét đến nút." [level=2] [ref=e80]
+      - generic [ref=e81]:
+        - button "Strategy & Audit" [ref=e82]
+        - button "Information Architecture" [ref=e83]
+        - button "UI / UX Design" [ref=e84]
+        - button "Creative Direction" [ref=e85]
+        - button "Motion Design" [ref=e86]
+        - button "GSAP Animation" [ref=e87]
+        - button "Next.js Development" [ref=e88]
+        - button "Deployment & Hosting" [ref=e89]
+    - generic [ref=e91]:
+      - article [ref=e92]:
+        - heading "Bắt đầu từ website đang có." [level=2] [ref=e93]
+        - paragraph [ref=e94]:
+          - generic [ref=e95]: Gửi Nét Nút website hiện tại. Chúng tôi sẽ soi xét, tìm cơ
+          - generic [ref=e97]: hội và đề xuất định hướng. Với bài toán phù hợp, Nét Nút
+          - generic [ref=e99]: sẽ demo một concept cốt lõi trước khi bắt tay vào toàn bộ
+          - generic [ref=e101]: dự án.
+      - article [ref=e103]:
+        - heading "Tinh gọn để đi thẳng vào việc." [level=2] [ref=e104]
+        - paragraph [ref=e105]:
+          - generic [ref=e106]: Nét tạo cảm giác. Nút tạo hành động. Nét Nút là một
+          - generic [ref=e108]: studio tinh gọn tại Việt Nam, tập trung chuyên sâu vào
+          - generic [ref=e110]: redesign website doanh nghiệp. Không cồng kềnh. Làm
+          - generic [ref=e112]: trực tiếp. Ra quyết định nhanh.
+    - generic [ref=e115]:
+      - heading "Đập web ra xem" [level=2] [ref=e116]
+      - generic [ref=e117]:
+        - link "Redesign website các trường đại học Việt Nam Đọc phân tích" [ref=e118]:
+          - /url: "#contact"
+          - heading "Redesign website các trường đại học Việt Nam" [level=3] [ref=e119]
+          - generic [ref=e120]: Đọc phân tích
+        - link "Website doanh nghiệp 15 năm tuổi đang sai ở đâu Đọc phân tích" [ref=e121]:
+          - /url: "#contact"
+          - heading "Website doanh nghiệp 15 năm tuổi đang sai ở đâu" [level=3] [ref=e122]
+          - generic [ref=e123]: Đọc phân tích
+        - link "Một homepage tốt thực sự cần gì Đọc phân tích" [ref=e124]:
+          - /url: "#contact"
+          - heading "Một homepage tốt thực sự cần gì" [level=3] [ref=e125]
+          - generic [ref=e126]: Đọc phân tích
+    - generic [ref=e127]:
+      - generic [ref=e129]:
+        - generic [ref=e130]:
+          - heading "Website của bạn đã cũ chưa?" [level=2] [ref=e131]
+          - paragraph [ref=e132]: Để lại link website của bạn. Chúng tôi sẽ cho bạn biết chính xác những gì cần thay đổi.
+        - generic [ref=e133]:
+          - generic [ref=e134]: Link website hiện tại
+          - textbox "Link website hiện tại" [ref=e135]:
+            - /placeholder: https://websitecuaban.vn
+          - paragraph [ref=e136]: Bản MVP chỉ mô phỏng giao diện. Chưa gửi dữ liệu ra ngoài.
+          - button "Phân tích ngay" [ref=e137]
+          - paragraph [ref=e138]
+      - generic [ref=e139]:
+        - paragraph [ref=e140]: Nét Nút Studio
+        - paragraph [ref=e141]: Redesign website doanh nghiệp tại Việt Nam
+  - button "Open Next.js Dev Tools" [ref=e147] [cursor=pointer]
+  - alert [ref=e151]

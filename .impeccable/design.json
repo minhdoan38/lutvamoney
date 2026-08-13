@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-13T15:34:57Z",
+  "title": "Design System: Nét Nút Studio",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Worktable Black",
+        "canonical": "oklch(13.98% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Editorial Paper",
+        "canonical": "oklch(94.61% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Copy",
+        "canonical": "oklch(63.01% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Editorial Hairline",
+        "canonical": "rgba(237, 237, 237, 0.16)",
+        "tonalRamp": [
+          "rgba(237, 237, 237, 0.08)",
+          "rgba(237, 237, 237, 0.12)",
+          "rgba(237, 237, 237, 0.16)",
+          "rgba(237, 237, 237, 0.24)",
+          "rgba(237, 237, 237, 0.36)",
+          "rgba(237, 237, 237, 0.52)",
+          "rgba(237, 237, 237, 0.72)",
+          "rgba(237, 237, 237, 0.95)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Signal Vermilion",
+        "canonical": "oklch(64.63% 0.2409 32.62)",
+        "tonalRamp": [
+          "oklch(15% 0.07 32.62)",
+          "oklch(26% 0.12 32.62)",
+          "oklch(38% 0.17 32.62)",
+          "oklch(50% 0.21 32.62)",
+          "oklch(64.63% 0.2409 32.62)",
+          "oklch(74% 0.19 32.62)",
+          "oklch(86% 0.11 32.62)",
+          "oklch(95% 0.04 32.62)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Signal Wash",
+        "canonical": "rgba(255, 51, 0, 0.12)",
+        "tonalRamp": [
+          "rgba(255, 51, 0, 0.05)",
+          "rgba(255, 51, 0, 0.08)",
+          "rgba(255, 51, 0, 0.12)",
+          "rgba(255, 51, 0, 0.18)",
+          "rgba(255, 51, 0, 0.28)",
+          "rgba(255, 51, 0, 0.42)",
+          "rgba(255, 51, 0, 0.64)",
+          "rgba(255, 51, 0, 0.9)"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Black",
+        "canonical": "oklch(17.76% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "surface-work": {
+        "role": "neutral",
+        "displayName": "Work Surface",
+        "canonical": "oklch(19.57% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statement that nearly fills the first viewport."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Oversized section declarations with tightly cropped measures."
+      },
+      "title": {
+        "displayName": "Interactive Title",
+        "purpose": "Service rows, insight entries, and major interactive labels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Explanations, process copy, and supporting product truth."
+      },
+      "mono-label": {
+        "displayName": "Mono Label",
+        "purpose": "Evidence labels, illustrative metadata, and simulated analysis feedback."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-editorial",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Default transitions for controls, disclosure, masks, and navigation."
+      },
+      {
+        "name": "reveal-expo",
+        "value": "expo.out",
+        "purpose": "GSAP entrances for headline words, rows, and frames."
+      },
+      {
+        "name": "return-elastic",
+        "value": "elastic.out(1, 0.45)",
+        "purpose": "Return capability chips to rest after pointer magnetism."
+      },
+      {
+        "name": "cursor-follow",
+        "value": "0.45s power3.out",
+        "purpose": "Lagged outer cursor response on fine pointers."
+      },
+      {
+        "name": "smooth-scroll",
+        "value": "Lenis lerp 0.08; duration 1.2s",
+        "purpose": "Wheel smoothing when reduced motion is not requested."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms; clip-path none; Lenis disabled",
+        "purpose": "Preserve all essential information without animated dependence."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero Primary Button",
+      "kind": "button",
+      "refersTo": "hero-primary",
+      "description": "Main URL-submission route: a paper pill with one vermilion action mark.",
+      "html": "<a class=\"ds-hero-primary\" href=\"#contact\"><span>Gửi website của bạn</span><span class=\"ds-hero-primary-mark\" aria-hidden=\"true\"><i></i><b></b></span></a>",
+      "css": ".ds-hero-primary { min-height: 48px; display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; padding: 8px 8px 8px 20px; border-radius: 9999px; background: var(--foreground, #EDEDED); color: var(--background, #090909); text-decoration: none; font: 600 14px/1 var(--font-geist-sans, system-ui, sans-serif); transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-hero-primary:hover { transform: translateY(-4px); } .ds-hero-primary:active { transform: scale(0.98); } .ds-hero-primary:focus-visible { outline: 2px solid var(--accent, #FF3300); outline-offset: 5px; } .ds-hero-primary-mark { position: relative; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9999px; background: var(--accent, #FF3300); transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-hero-primary:hover .ds-hero-primary-mark { transform: translateX(2px); } .ds-hero-primary-mark i, .ds-hero-primary-mark b { position: absolute; display: block; background: var(--background, #090909); } .ds-hero-primary-mark i { width: 12px; height: 1px; } .ds-hero-primary-mark b { width: 1px; height: 12px; }"
+    },
+    {
+      "name": "Hero Secondary Button",
+      "kind": "button",
+      "refersTo": "hero-secondary",
+      "description": "Secondary work route with a quiet outline and vermilion hover border.",
+      "html": "<a class=\"ds-hero-secondary\" href=\"#work\">Xem dự án</a>",
+      "css": ".ds-hero-secondary { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 20px; border: 1px solid rgba(237, 237, 237, 0.25); border-radius: 9999px; background: transparent; color: var(--foreground, #EDEDED); text-decoration: none; font: 500 14px/1 var(--font-geist-sans, system-ui, sans-serif); transition: border-color 300ms cubic-bezier(0.32, 0.72, 0, 1), transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-hero-secondary:hover { border-color: var(--accent, #FF3300); transform: translateY(-4px); } .ds-hero-secondary:active { transform: scale(0.98); } .ds-hero-secondary:focus-visible { outline: 2px solid var(--accent, #FF3300); outline-offset: 5px; }"
+    },
+    {
+      "name": "URL Field",
+      "kind": "input",
+      "refersTo": "url-input",
+      "description": "Square URL input placed directly on the vermilion conversion tile.",
+      "html": "<label class=\"ds-url-label\" for=\"ds-url\">Link website hiện tại</label><input class=\"ds-url-input\" id=\"ds-url\" type=\"url\" required placeholder=\"https://websitecuaban.vn\">",
+      "css": ".ds-url-label { display: block; margin-bottom: 12px; color: var(--background, #090909); font: 600 14px/1.2 var(--font-geist-sans, system-ui, sans-serif); } .ds-url-input { width: 100%; min-height: 56px; padding: 0 16px; border: 1px solid rgba(9, 9, 9, 0.7); border-radius: 0; background: transparent; color: var(--background, #090909); font: 400 16px/1.4 var(--font-geist-sans, system-ui, sans-serif); outline: none; } .ds-url-input::placeholder { color: rgba(9, 9, 9, 0.8); } .ds-url-input:hover, .ds-url-input:focus { border-color: var(--background, #090909); } .ds-url-input:focus-visible { outline: 2px solid var(--background, #090909); outline-offset: 4px; } .ds-url-input:disabled { opacity: 0.6; }"
+    },
+    {
+      "name": "Form Submit Button",
+      "kind": "button",
+      "refersTo": "form-submit",
+      "description": "Black rectangular submit control whose mono label becomes analysis feedback.",
+      "html": "<button class=\"ds-form-submit\" type=\"submit\">Phân tích ngay</button>",
+      "css": ".ds-form-submit { width: 100%; min-height: 56px; padding: 0 20px; border: 0; border-radius: 0; background: var(--background, #090909); color: var(--foreground, #EDEDED); font: 400 14px/1.4 var(--font-geist-mono, monospace); transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-form-submit:hover { transform: translateY(-4px); } .ds-form-submit:active { transform: scale(0.98); } .ds-form-submit:focus-visible { outline: 2px solid var(--foreground, #EDEDED); outline-offset: 5px; } .ds-form-submit:disabled { cursor: wait; opacity: 0.7; transform: none; }"
+    },
+    {
+      "name": "Capability Chip",
+      "kind": "chip",
+      "refersTo": "chip-default",
+      "description": "Quiet capability tag; selected positions invert to the sole accent.",
+      "html": "<div class=\"ds-chip-row\"><span class=\"ds-chip\">Thiết kế UI / UX</span><span class=\"ds-chip ds-chip-accent\">Định hướng sáng tạo</span></div>",
+      "css": ".ds-chip-row { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { display: inline-flex; align-items: center; padding: 10px 16px; border: 1px solid rgba(237, 237, 237, 0.22); border-radius: 9999px; background: transparent; color: rgba(237, 237, 237, 0.72); font: 400 14px/1.2 var(--font-geist-sans, system-ui, sans-serif); transition: color 300ms cubic-bezier(0.32, 0.72, 0, 1), border-color 300ms cubic-bezier(0.32, 0.72, 0, 1), transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-chip:hover { border-color: var(--accent, #FF3300); color: var(--foreground, #EDEDED); transform: translateY(-2px); } .ds-chip-accent { border-color: var(--accent, #FF3300); background: var(--accent, #FF3300); color: var(--background, #090909); }"
+    },
+    {
+      "name": "Site Navigation",
+      "kind": "nav",
+      "refersTo": "site-nav",
+      "description": "Fixed translucent pill with compact links and one vermilion action.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#top\">Nét Nút <span>Studio</span></a><div class=\"ds-nav-links\"><a href=\"#services\">Dịch vụ</a><a href=\"#work\">Dự án</a><a href=\"#capabilities\">Năng lực</a></div><a class=\"ds-nav-cta\" href=\"#contact\">Gửi website</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 12px 16px; border: 1px solid rgba(237, 237, 237, 0.15); border-radius: 9999px; background: rgba(9, 9, 9, 0.75); color: var(--foreground, #EDEDED); backdrop-filter: blur(24px); font-family: var(--font-geist-sans, system-ui, sans-serif); } .ds-nav a { color: inherit; text-decoration: none; } .ds-nav-brand { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: -0.02em; } .ds-nav-brand span { color: var(--accent, #FF3300); } .ds-nav-links { display: flex; gap: 28px; } .ds-nav-links a { color: rgba(237, 237, 237, 0.6); font-size: 12px; transition: color 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-nav-links a:hover { color: var(--foreground, #EDEDED); } .ds-nav-cta { padding: 8px 16px; border-radius: 9999px; background: var(--accent, #FF3300); color: var(--background, #090909) !important; font-size: 12px; font-weight: 600; transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-nav-cta:hover { transform: translateY(-2px); } .ds-nav a:focus-visible { outline: 2px solid var(--accent, #FF3300); outline-offset: 5px; } @media (prefers-reduced-transparency: reduce) { .ds-nav { background: var(--surface-raised, #111111); backdrop-filter: none; } }"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "Hairline-separated editorial disclosure with oversized title and active vermilion baseline.",
+      "html": "<button class=\"ds-service-row\" type=\"button\" aria-expanded=\"true\"><span class=\"ds-service-title\">Thiết kế lại website</span><span class=\"ds-service-copy\">Giữ giá trị thương hiệu, loại bỏ giao diện lỗi thời, dựng lại trải nghiệm sắc bén hơn.</span></button>",
+      "css": ".ds-service-row { position: relative; width: 100%; display: grid; grid-template-columns: 7fr 4fr; justify-content: space-between; gap: 8.333%; padding: 36px 0; border: 0; border-top: 1px solid var(--line, rgba(237, 237, 237, 0.16)); border-bottom: 1px solid var(--line, rgba(237, 237, 237, 0.16)); border-radius: 0; background: transparent; color: var(--foreground, #EDEDED); text-align: left; } .ds-service-row::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: -1px; height: 4px; background: var(--accent, #FF3300); transform: scaleX(1); transform-origin: left; } .ds-service-title { font: 500 clamp(30px, 4.2vw, 75px)/1 var(--font-geist-sans, system-ui, sans-serif); letter-spacing: -0.035em; transition: color 500ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-service-copy { align-self: center; color: rgba(237, 237, 237, 0.6); font: 400 16px/1.6 var(--font-geist-sans, system-ui, sans-serif); } .ds-service-row:hover .ds-service-title { color: var(--accent, #FF3300); } .ds-service-row:focus-visible { outline: 2px solid var(--accent, #FF3300); outline-offset: 5px; }"
+    },
+    {
+      "name": "Final CTA Tile",
+      "kind": "card",
+      "refersTo": "final-cta-tile",
+      "description": "Hard-edged vermilion conversion plane combining oversized question and URL action.",
+      "html": "<section class=\"ds-final-tile\"><h2>Website của bạn đã cũ chưa?</h2><p>Để lại link website của bạn. Chúng tôi sẽ cho bạn biết chính xác những gì cần thay đổi.</p><div class=\"ds-final-form\"><input type=\"url\" required placeholder=\"https://websitecuaban.vn\"><button type=\"button\">Phân tích ngay</button></div></section>",
+      "css": ".ds-final-tile { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; padding: 64px 48px; border-radius: 0; background: var(--accent, #FF3300); color: var(--background, #090909); font-family: var(--font-geist-sans, system-ui, sans-serif); } .ds-final-tile h2 { max-width: 12ch; margin: 0; font-size: clamp(51px, 8.6vw, 128px); font-weight: 600; line-height: 0.82; letter-spacing: -0.04em; } .ds-final-tile p { max-width: 42rem; margin: 32px 0 0; font-size: 18px; line-height: 1.6; } .ds-final-form { align-self: end; } .ds-final-form input, .ds-final-form button { width: 100%; min-height: 56px; border-radius: 0; font-size: 16px; } .ds-final-form input { padding: 0 16px; border: 1px solid rgba(9, 9, 9, 0.7); background: transparent; color: var(--background, #090909); } .ds-final-form button { margin-top: 20px; padding: 0 20px; border: 0; background: var(--background, #090909); color: var(--foreground, #EDEDED); font-family: var(--font-geist-mono, monospace); font-size: 14px; transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-final-form button:hover { transform: translateY(-4px); } .ds-final-form input:focus-visible, .ds-final-form button:focus-visible { outline: 2px solid var(--background, #090909); outline-offset: 5px; }"
+    },
+    {
+      "name": "Illustrative Reconstruction",
+      "kind": "custom",
+      "description": "Explicitly illustrative old/new comparison; never substitutes for approved client evidence.",
+      "html": "<figure class=\"ds-reconstruction\"><div class=\"ds-reconstruction-old\"><span>Web cũ</span></div><div class=\"ds-reconstruction-new\"><small>Tái cấu trúc thương hiệu</small><strong>Rõ hơn.<br>Nhanh hơn.</strong><i></i><span>Web mới</span></div><figcaption>Concept minh họa</figcaption></figure>",
+      "css": ".ds-reconstruction { position: relative; min-height: 520px; margin: 0; overflow: hidden; background: var(--surface-work, #151515); color: var(--foreground, #EDEDED); font-family: var(--font-geist-sans, system-ui, sans-serif); } .ds-reconstruction-old, .ds-reconstruction-new { position: absolute; inset: 0; } .ds-reconstruction-old { background: linear-gradient(100deg, #111 0%, #222 55%, #111 100%); filter: grayscale(1); } .ds-reconstruction-old::before { content: \"\"; position: absolute; left: 7%; top: 12%; width: 62%; height: 18%; border: 1px solid rgba(237, 237, 237, 0.15); background: rgba(237, 237, 237, 0.025); } .ds-reconstruction-old span, .ds-reconstruction-new span { position: absolute; left: 24px; bottom: 24px; font: 400 12px/1.4 var(--font-geist-mono, monospace); letter-spacing: 0.12em; text-transform: uppercase; } .ds-reconstruction-new { background: var(--foreground, #EDEDED); color: var(--background, #090909); clip-path: circle(150px at 68% 52%); transition: clip-path 500ms cubic-bezier(0.32, 0.72, 0, 1); } .ds-reconstruction:hover .ds-reconstruction-new { clip-path: circle(42% at 68% 52%); } .ds-reconstruction-new small { position: absolute; left: 6%; top: 8%; right: 6%; padding-bottom: 16px; border-bottom: 1px solid rgba(9, 9, 9, 0.2); font: 400 10px/1.4 var(--font-geist-mono, monospace); letter-spacing: 0.1em; text-transform: uppercase; } .ds-reconstruction-new strong { position: absolute; left: 6%; top: 20%; font-size: clamp(54px, 9vw, 144px); font-weight: 600; line-height: 0.79; letter-spacing: -0.04em; } .ds-reconstruction-new i { position: absolute; right: 0; bottom: 0; width: 50%; height: 42%; background: var(--accent, #FF3300); } .ds-reconstruction figcaption { position: absolute; z-index: 2; right: 20px; top: 20px; color: #fff; mix-blend-mode: difference; font: 400 10px/1.4 var(--font-geist-mono, monospace); letter-spacing: 0.12em; text-transform: uppercase; } @media (prefers-reduced-motion: reduce) { .ds-reconstruction-new { clip-path: inset(0 0 0 50%); transition: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Moving Reconstruction Table",
+    "overview": "Nét Nút looks like an outdated corporate website pulled apart on a black worktable, then rebuilt in public. Oversized cropped Geist headlines, offset blocks, hairline-separated rows, and flat typographic tiles keep the system editorial and technical rather than polished agency-generic. Motion reveals structure—lines assemble, fields expand, and an old/new concept can be inspected—instead of adding decoration.\n\nThe world is intentionally asymmetrical and high-contrast. Vermilion acts as a singular intervention while off-white, muted gray, and near-black support reading. Selected-work media is explicitly illustrative; synthetic compositions must never be presented as client proof.",
+    "keyCharacteristics": [
+      "Near-black worktable with one vermilion intervention.",
+      "Oversized, tightly tracked technical sans type, often close to the crop.",
+      "Asymmetric twelve-column editorial compositions instead of balanced agency layouts.",
+      "Flat Metro-like tiles, pills, and hairlines with no ornamental depth.",
+      "Motion that exposes hierarchy, transformation, and feedback.",
+      "Vietnamese-first copy with direct, specialist language."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Vermilion is the only chromatic voice; use it for intervention, state, and conversion, never as ambient decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Worktable Rule",
+        "body": "Black and paper carry the reading experience; neutral opacity may create hierarchy, but it must not become a second palette.",
+        "section": "colors"
+      },
+      {
+        "name": "The Crop Before Ornament Rule",
+        "body": "Create energy with scale, line breaks, and edge proximity before adding any decorative object.",
+        "section": "typography"
+      },
+      {
+        "name": "The Refused Balance Rule",
+        "body": "Do not center the hero or distribute equal cards; preserve visible tension through offset starts, uneven spans, and intentional empty space.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Reconstruction Rule",
+        "body": "Surfaces stay shadowless; communicate hierarchy with scale, hairlines, overlap, clipping, and tonal contrast.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Geometry Split Rule",
+        "body": "Use hard rectangles for content and conversion planes; use pills only for controls, tags, and transient navigation.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Feedback Must Explain Rule",
+        "body": "Every animation must reveal hierarchy, comparison, progress, or control state; decorative motion alone does not belong.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do let one oversized headline establish each section before supporting copy.",
+      "Do use vermilion as a structural cut, active state, or conversion surface—not as ambient decoration.",
+      "Do keep synthetic selected-work visuals labeled “Concept minh họa” until approved project media exists.",
+      "Do preserve visible focus, touch targets, semantic labels, and reduced-motion fallbacks.",
+      "Do collapse asymmetric desktop grids into a direct single-column mobile reading order below 768px."
+    ],
+    "donts": [
+      "Don't balance the hero into a centered agency template or equal feature-card grid.",
+      "Don't introduce extra hues, purple or mesh gradients, ornamental shadows, or rounded cards.",
+      "Don't invent client logos, testimonials, metrics, project photography, or business outcomes.",
+      "Don't add motion that hides essential content or depends on raw scroll listeners.",
+      "Don't use decorative numbering, decorative dashes, scroll-cue text, or filler UI."
+    ]
+  }
+}
