@@ -98,7 +98,7 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-[1600px]">
         <h1
           ref={headline}
-          className="max-w-[15ch] text-[clamp(3.7rem,11.5vw,10.8rem)] font-semibold leading-[0.82] tracking-[-0.04em] text-foreground"
+          className="max-w-[15ch] text-[clamp(3.7rem,11.5vw,10.8rem)] font-semibold leading-[0.96] tracking-[-0.04em] text-foreground"
         >
           Web cũ. Làm lại cho đáng.
         </h1>

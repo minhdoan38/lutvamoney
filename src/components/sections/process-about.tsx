@@ -100,7 +100,7 @@ export function ProcessAbout() {
             />
             <div className="grid gap-12 px-6 py-12 md:grid-cols-8 md:gap-8 md:px-12 md:py-16">
               <ScrollText mode="words" className="md:col-span-5">
-                <h2 className="max-w-[8ch] text-[clamp(3.5rem,7.2vw,6rem)] font-semibold leading-[0.82] tracking-[-0.04em]">
+                <h2 className="max-w-[8ch] text-[clamp(3.5rem,7.2vw,6rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
                   {blocks[0].title}
                 </h2>
               </ScrollText>
@@ -119,7 +119,7 @@ export function ProcessAbout() {
                 {blocks[1].copy}
               </p>
               <ScrollText mode="words" className="md:col-span-5 md:col-start-4">
-                <h2 className="max-w-[9ch] text-[clamp(3.2rem,6.4vw,5.5rem)] font-semibold leading-[0.84] tracking-[-0.04em]">
+                <h2 className="max-w-[9ch] text-[clamp(3.2rem,6.4vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
                   {blocks[1].title}
                 </h2>
               </ScrollText>

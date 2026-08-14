@@ -55,7 +55,7 @@ export function FinalCTA() {
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-8">
             <ScrollText mode="words">
-              <h2 className="max-w-[12ch] text-[clamp(3.2rem,8.6vw,8rem)] font-semibold leading-[0.82] tracking-[-0.04em]">
+              <h2 className="max-w-[12ch] text-[clamp(3.2rem,8.6vw,8rem)] font-semibold leading-[0.96] tracking-[-0.04em]">
                 Website của bạn đã cũ chưa?
               </h2>
             </ScrollText>

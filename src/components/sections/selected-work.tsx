@@ -17,7 +17,7 @@ function ProjectVisual({ newVersion = false }: { newVersion?: boolean }) {
           <span>Tái cấu trúc thương hiệu</span>
           <span>Nét Nút Studio</span>
         </div>
-        <div className="absolute left-[6%] top-[20%] max-w-[9ch] text-[clamp(3.4rem,9vw,9rem)] font-semibold leading-[0.79] tracking-[-0.04em]">
+        <div className="absolute left-[6%] top-[20%] max-w-[9ch] text-[clamp(3.4rem,9vw,9rem)] font-semibold leading-[0.92] tracking-[-0.04em]">
           Rõ hơn. Nhanh hơn.
         </div>
         <div className="absolute bottom-0 right-0 h-[42%] w-[50%] bg-accent" />
@@ -109,7 +109,7 @@ export function SelectedWork() {
     <section id="work" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
       <div className="mx-auto max-w-[1500px]">
         <ScrollText mode="words">
-          <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.86] tracking-[-0.04em] md:mb-20">
+          <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:mb-20">
             Cách chúng tôi soi
           </h2>
         </ScrollText>
