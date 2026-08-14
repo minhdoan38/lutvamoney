@@ -6,6 +6,7 @@ const links = [
   { label: "Dịch vụ", href: "#services" },
   { label: "Dự án", href: "#work" },
   { label: "Năng lực", href: "#capabilities" },
+  { label: "Cách làm", href: "#process" },
   { label: "Góc nhìn", href: "#insights" },
 ];
 
@@ -14,11 +15,11 @@ export function SiteNav() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-20 px-4 pt-4 sm:px-6 sm:pt-6">
-      <nav className="site-nav mx-auto flex max-w-[1400px] items-center justify-between rounded-full border border-white/15 bg-[#090909]/75 px-4 py-3 backdrop-blur-xl sm:px-5">
+      <nav className="site-nav mx-auto flex max-w-[1400px] items-center justify-between rounded-full border border-white/15 bg-background/75 px-4 py-3 backdrop-blur-xl sm:px-5">
         <a
           href="#top"
           data-cursor-link
-          className="relative z-10 text-[11px] font-semibold uppercase tracking-[-0.02em] text-foreground sm:text-xs"
+          className="relative z-10 text-xs font-semibold uppercase tracking-[-0.02em] text-foreground"
         >
           Nét Nút <span className="text-accent">Studio</span>
         </a>
@@ -39,33 +40,44 @@ export function SiteNav() {
         <a
           href="#contact"
           data-cursor-link
-          className="hidden rounded-full bg-accent px-4 py-2 text-xs font-semibold text-[#090909] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 active:scale-[0.98] lg:block"
+          className="hidden rounded-full bg-accent px-4 py-2 text-xs font-semibold text-background transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 active:scale-[0.98] lg:block"
         >
           Gửi website
         </a>
 
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-label={open ? "Đóng menu" : "Mở menu"}
-          onClick={() => setOpen((value) => !value)}
-          className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 lg:hidden"
-        >
-          <span className="relative block h-3.5 w-3.5">
-            <span
-              className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "rotate-45" : "-translate-y-1"}`}
-            />
-            <span
-              className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "-rotate-45" : "translate-y-1"}`}
-            />
-          </span>
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="#contact"
+            data-cursor-link
+            className="rounded-full bg-accent px-3 py-2 text-xs font-semibold text-background transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+          >
+            Gửi website
+          </a>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Đóng menu" : "Mở menu"}
+            onClick={() => setOpen((value) => !value)}
+            className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15"
+          >
+            <span className="relative block h-3.5 w-3.5">
+              <span
+                className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "rotate-45" : "-translate-y-1"}`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 h-px w-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "-rotate-45" : "translate-y-1"}`}
+              />
+            </span>
+          </button>
+        </div>
       </nav>
 
       <div
+        id="mobile-menu"
         aria-hidden={!open}
         inert={!open}
-        className={`mx-auto mt-2 grid max-w-[1400px] overflow-hidden rounded-[1.5rem] border border-white/15 bg-[#111111]/95 backdrop-blur-xl transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${open ? "grid-rows-[1fr] opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"}`}
+        className={`mx-auto mt-2 grid max-w-[1400px] overflow-hidden rounded-[1.5rem] border border-white/15 bg-surface-raised/95 backdrop-blur-xl transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${open ? "grid-rows-[1fr] opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"}`}
       >
         <div className="min-h-0">
           <div className="flex flex-col gap-1 p-3">
@@ -74,7 +86,7 @@ export function SiteNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`flex translate-y-3 items-center justify-between border-b border-white/10 px-3 py-4 text-lg opacity-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] last:border-0 ${open ? "translate-y-0 opacity-100" : ""}`}
+                className={`flex min-h-11 translate-y-3 items-center justify-between border-b border-white/10 px-3 py-4 text-lg opacity-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] last:border-0 ${open ? "translate-y-0 opacity-100" : ""}`}
                 style={{ transitionDelay: open ? `${index * 55}ms` : "0ms" }}
               >
                 {link.label}
@@ -87,7 +99,7 @@ export function SiteNav() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className={`mt-2 rounded-xl bg-accent px-4 py-3 text-center text-sm font-semibold text-[#090909] transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "opacity-100" : "opacity-0"}`}
+              className={`mt-2 min-h-11 rounded-xl bg-accent px-4 py-3 text-center text-sm font-semibold text-background transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "opacity-100" : "opacity-0"}`}
               style={{ transitionDelay: open ? "220ms" : "0ms" }}
             >
               Gửi website

@@ -17,6 +17,7 @@ export function Hero() {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (!headline.current || reduce) return;
 
+      const select = gsap.utils.selector(scope);
       const split = SplitText.create(headline.current, {
         type: "lines,words",
         linesClass: "hero-line",
@@ -29,8 +30,8 @@ export function Hero() {
         rotate: (index) => (index % 2 ? 2 : -3),
         transformOrigin: "left bottom",
       });
-      gsap.set("[data-hero-copy]", { y: 28, opacity: 0 });
-      gsap.set("[data-hero-mark]", { scaleX: 0.55, xPercent: 18, transformOrigin: "left center" });
+      gsap.set(select("[data-hero-copy]"), { y: 28, opacity: 0 });
+      gsap.set(select("[data-hero-mark]"), { scaleX: 0.55, xPercent: 18, transformOrigin: "left center" });
 
       const intro = gsap.timeline({ defaults: { ease: "expo.out" } });
       intro
@@ -41,11 +42,11 @@ export function Hero() {
           stagger: 0.055,
         })
         .to(
-          "[data-hero-mark]",
-          { scaleX: 1, xPercent: 0, duration: 1.05, ease: "elastic.out(1,0.65)" },
+          select("[data-hero-mark]"),
+          { scaleX: 1, xPercent: 0, duration: 1.05, ease: "expo.out" },
           0.18,
         )
-        .to("[data-hero-copy]", { y: 0, opacity: 1, duration: 0.9, stagger: 0.08 }, 0.45);
+        .to(select("[data-hero-copy]"), { y: 0, opacity: 1, duration: 0.9, stagger: 0.08 }, 0.45);
 
       const skew = gsap.quickTo(headline.current, "skewY", {
         duration: 0.65,
@@ -65,12 +66,6 @@ export function Hero() {
         trigger: scope.current,
         start: "top top",
         end: "bottom top",
-        snap: {
-          snapTo: (progress) => (progress < 0.18 ? 0 : 1),
-          duration: { min: 0.18, max: 0.48 },
-          delay: 0.08,
-          ease: "power3.out",
-        },
         onUpdate: (self) => {
           const velocity = gsap.utils.clamp(-4, 4, self.getVelocity() / -700);
           skew(velocity);
@@ -92,7 +87,7 @@ export function Hero() {
     <section
       id="top"
       ref={scope}
-      className="relative flex min-h-[100dvh] items-end overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 lg:px-10 lg:pb-16 lg:pt-32"
+      className="relative flex min-h-dvh items-end overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 lg:px-10 lg:pb-16 lg:pt-32"
     >
       <div
         data-hero-mark
@@ -111,7 +106,7 @@ export function Hero() {
         <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
           <p
             data-hero-copy
-            className="max-w-[49rem] text-base leading-[1.45] text-white/65 md:col-span-7 md:col-start-5 md:text-xl lg:col-span-6 lg:col-start-6"
+            className="max-w-196 text-base leading-[1.45] text-white/65 md:col-span-7 md:col-start-5 md:text-xl lg:col-span-6 lg:col-start-6"
           >
             Doanh nghiệp của bạn đã đi xa hơn chính website hiện tại. Nét Nút loại bỏ những thứ cồng kềnh, giữ lại cốt lõi, và thiết kế một trải nghiệm xứng tầm.
           </p>

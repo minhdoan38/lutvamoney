@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { ScrollText } from "@/components/scroll-text";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
@@ -40,11 +41,44 @@ export function ProcessAbout() {
           scrollTrigger: {
             trigger: split.lines[0],
             start: "top 78%",
-            once: true,
+            toggleActions: "play reverse play reverse",
           },
           delay: index * 0.06,
         });
       });
+
+      const slabs = gsap.utils.toArray<HTMLElement>("[data-manifesto-slab]");
+      slabs.forEach((slab, index) => {
+        gsap.from(slab, {
+          yPercent: index === 0 ? 4 : 8,
+          opacity: 0,
+          duration: 1.05,
+          delay: index * 0.08,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: slab,
+            start: "top 82%",
+            end: "bottom 18%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+      });
+
+      const rule = scope.current?.querySelector<HTMLElement>("[data-process-rule]");
+      if (rule) {
+        gsap.from(rule, {
+          scaleX: 0,
+          opacity: 0,
+          duration: 0.8,
+          ease: "expo.out",
+          transformOrigin: "left center",
+          scrollTrigger: {
+            trigger: rule,
+            start: "top 82%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+      }
 
       return () => splits.forEach((split) => split.revert());
     },
@@ -52,21 +86,46 @@ export function ProcessAbout() {
   );
 
   return (
-    <section ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
-      <div className="mx-auto grid max-w-[1500px] gap-16 border-y editorial-rule py-16 md:grid-cols-12 md:gap-8 md:py-24">
-        {blocks.map((block, index) => (
+    <section id="process" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
+      <div className="mx-auto max-w-375">
+        <div className="grid gap-y-8 md:grid-cols-12 md:gap-y-12">
           <article
-            key={block.title}
-            className={index === 0 ? "md:col-span-5" : "md:col-span-5 md:col-start-8 md:pt-40"}
+            data-manifesto-slab
+            className="relative z-10 bg-foreground text-background md:col-span-10 md:col-start-1"
           >
-            <h2 className="mb-8 max-w-[13ch] text-[clamp(2.4rem,4.8vw,5rem)] font-semibold leading-[0.9] tracking-[-0.04em]">
-              {block.title}
-            </h2>
-            <p data-split-copy className="max-w-[34rem] text-base leading-[1.65] text-white/60 md:text-lg">
-              {block.copy}
-            </p>
+            <div
+              className="absolute inset-x-0 top-0 h-2 origin-left bg-accent"
+              data-process-rule
+              aria-hidden="true"
+            />
+            <div className="grid gap-12 px-6 py-12 md:grid-cols-8 md:gap-8 md:px-12 md:py-16">
+              <ScrollText mode="words" className="md:col-span-5">
+                <h2 className="max-w-[8ch] text-[clamp(3.5rem,7.2vw,6rem)] font-semibold leading-[0.82] tracking-[-0.04em]">
+                  {blocks[0].title}
+                </h2>
+              </ScrollText>
+              <p data-split-copy className="max-w-136 self-end text-base leading-[1.6] text-background/65 md:col-span-2 md:col-start-7 md:text-lg">
+                {blocks[0].copy}
+              </p>
+            </div>
           </article>
-        ))}
+
+          <article
+            data-manifesto-slab
+            className="relative bg-accent text-background md:col-span-9 md:col-start-4"
+          >
+            <div className="grid gap-12 px-6 py-12 md:grid-cols-8 md:gap-8 md:px-12 md:py-16">
+              <p data-split-copy className="max-w-136 text-base leading-[1.6] text-background/75 md:col-span-3 md:col-start-1 md:pt-4 md:text-lg">
+                {blocks[1].copy}
+              </p>
+              <ScrollText mode="words" className="md:col-span-5 md:col-start-4">
+                <h2 className="max-w-[9ch] text-[clamp(3.2rem,6.4vw,5.5rem)] font-semibold leading-[0.84] tracking-[-0.04em]">
+                  {blocks[1].title}
+                </h2>
+              </ScrollText>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   );

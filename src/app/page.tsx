@@ -18,7 +18,13 @@ export default function Home() {
         FIRST VIEWPORT: Chữ chiếm gần toàn khung, khối vermilion cắt lệch bên phải, CTA nằm dưới phần giải thích.
         FORM: Metro typographic tiles fused with editorial redesign, seed f7b4dd0d. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
       */}
-      <main className="w-full max-w-full overflow-x-hidden bg-background text-foreground">
+      <a
+        href="#content"
+        className="fixed left-4 top-4 z-30 -translate-y-20 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-background opacity-0 transition-[transform,opacity] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] focus:translate-y-0 focus:opacity-100"
+      >
+        Bỏ qua đến nội dung
+      </a>
+      <main id="content" className="w-full max-w-full overflow-x-hidden bg-background text-foreground">
         <SiteNav />
         <CursorFollower />
         <Hero />

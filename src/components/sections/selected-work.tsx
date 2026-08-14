@@ -1,9 +1,11 @@
 "use client";
 
+import type { KeyboardEvent } from "react";
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollText } from "@/components/scroll-text";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -47,7 +49,7 @@ export function SelectedWork() {
   const frame = useRef<HTMLDivElement>(null);
   const reveal = useRef<HTMLDivElement>(null);
   const lens = useRef<HTMLDivElement>(null);
-  const [mobileView, setMobileView] = useState<"old" | "new">("old");
+  const [comparisonView, setComparisonView] = useState<"old" | "new">("old");
 
   useGSAP(
     () => {
@@ -60,7 +62,7 @@ export function SelectedWork() {
         scrollTrigger: {
           trigger: frame.current,
           start: "top 72%",
-          once: true,
+          toggleActions: "play reverse play reverse",
         },
       });
     },
@@ -68,7 +70,11 @@ export function SelectedWork() {
   );
 
   const updateMask = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      comparisonView === "new" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - bounds.left;
     const y = event.clientY - bounds.top;
@@ -79,32 +85,57 @@ export function SelectedWork() {
   };
 
   const hideMask = () => {
+    if (comparisonView === "new") return;
     reveal.current?.style.setProperty("--mask-size", "0px");
     gsap.to(lens.current, { opacity: 0, duration: 0.2, ease: "power2.out" });
+  };
+
+  const chooseComparison = (view: "old" | "new") => {
+    setComparisonView(view);
+    if (view === "old") {
+      reveal.current?.style.setProperty("--mask-size", "0px");
+      gsap.to(lens.current, { opacity: 0, duration: 0.2, ease: "power2.out" });
+    }
+  };
+
+  const handleComparisonKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      chooseComparison(event.key === "ArrowRight" ? "new" : "old");
+    }
   };
 
   return (
     <section id="work" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
       <div className="mx-auto max-w-[1500px]">
-        <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.86] tracking-[-0.04em] md:mb-20">
-          Dấu ấn của Nét Nút
-        </h2>
+        <ScrollText mode="words">
+          <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.86] tracking-[-0.04em] md:mb-20">
+            Cách chúng tôi soi
+          </h2>
+        </ScrollText>
 
         <div
           ref={frame}
           onPointerMove={updateMask}
           onPointerLeave={hideMask}
-          className="relative isolate min-h-[72vh] overflow-hidden bg-[#151515] md:min-h-[82vh]"
+          onKeyDown={handleComparisonKeyDown}
+          tabIndex={0}
+          aria-label="So sánh concept website cũ và website mới bằng phím mũi tên"
+          className="relative isolate min-h-[72vh] overflow-hidden bg-surface-work outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background md:min-h-[82vh]"
         >
           <ProjectVisual />
 
-          <div ref={reveal} className="masked-media absolute inset-0 hidden bg-accent md:block" aria-hidden="true">
+          <div
+            ref={reveal}
+            className={`masked-media absolute inset-0 hidden bg-accent md:block ${comparisonView === "new" ? "comparison-full" : ""}`}
+            aria-hidden="true"
+          >
             <ProjectVisual newVersion />
           </div>
 
           <div
-            className={`absolute inset-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${mobileView === "new" ? "opacity-100" : "pointer-events-none opacity-0"}`}
-            aria-hidden={mobileView !== "new"}
+            className={`absolute inset-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${comparisonView === "new" ? "opacity-100" : "pointer-events-none opacity-0"}`}
+            aria-hidden={comparisonView !== "new"}
           >
             <ProjectVisual newVersion />
           </div>
@@ -115,34 +146,39 @@ export function SelectedWork() {
             className="pointer-events-none absolute left-0 top-0 z-10 hidden h-[clamp(110px,18vw,240px)] w-[clamp(110px,18vw,240px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 opacity-0 md:block"
           />
 
-          <p className="pointer-events-none absolute right-5 top-5 z-10 font-mono text-[10px] uppercase tracking-[0.12em] text-white mix-blend-difference">
-            Concept minh họa
+          <p className="pointer-events-none absolute right-5 top-5 z-10 max-w-[15ch] text-right text-xs leading-relaxed text-white mix-blend-difference">
+            Khung minh họa để xem cách soi trước và sau.
           </p>
 
-          <div className="absolute bottom-5 right-5 z-10 flex rounded-full border border-white/30 bg-[#090909]/90 p-1 md:hidden">
+          <div className="absolute bottom-5 right-5 z-10 flex rounded-full border border-white/30 bg-background/90 p-1">
             <button
               type="button"
-              aria-pressed={mobileView === "old"}
-              onClick={() => setMobileView("old")}
-              className={`rounded-full px-4 py-2 text-xs ${mobileView === "old" ? "bg-foreground text-[#090909]" : "text-foreground"}`}
+              aria-pressed={comparisonView === "old"}
+              onClick={() => chooseComparison("old")}
+              className={`min-h-11 rounded-full px-4 py-2 text-xs ${comparisonView === "old" ? "bg-foreground text-background" : "text-foreground"}`}
             >
               Web cũ
             </button>
             <button
               type="button"
-              aria-pressed={mobileView === "new"}
-              onClick={() => setMobileView("new")}
-              className={`rounded-full px-4 py-2 text-xs ${mobileView === "new" ? "bg-accent text-[#090909]" : "text-foreground"}`}
+              aria-pressed={comparisonView === "new"}
+              onClick={() => chooseComparison("new")}
+              className={`min-h-11 rounded-full px-4 py-2 text-xs ${comparisonView === "new" ? "bg-accent text-background" : "text-foreground"}`}
             >
               Web mới
             </button>
           </div>
         </div>
 
-        <div className="mt-8 flex justify-end">
-          <span className="border-b border-accent pb-1 text-sm font-medium text-white/55">
-            Dự án đầy đủ sắp ra mắt
-          </span>
+        <div className="mt-8 flex flex-col gap-2 border-t editorial-rule pt-5 sm:flex-row sm:items-baseline sm:justify-between">
+          <ScrollText mode="words">
+            <p className="text-sm font-medium text-foreground">Phương pháp minh họa</p>
+          </ScrollText>
+          <ScrollText>
+            <p className="max-w-[34rem] text-sm leading-relaxed text-muted">
+              Soi cấu trúc cũ, giữ lại giá trị, rồi dựng lại đường đi rõ hơn.
+            </p>
+          </ScrollText>
         </div>
       </div>
     </section>

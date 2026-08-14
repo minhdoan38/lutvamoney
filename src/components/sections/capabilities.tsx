@@ -1,21 +1,46 @@
 "use client";
 
 import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollText } from "@/components/scroll-text";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const capabilities = [
-  "Chiến lược và đánh giá",
-  "Kiến trúc thông tin",
-  "Thiết kế UI / UX",
-  "Định hướng sáng tạo",
-  "Thiết kế chuyển động",
-  "Hoạt ảnh GSAP",
-  "Phát triển Next.js",
-  "Triển khai và lưu trữ",
+  "Soi đúng vấn đề",
+  "Sắp xếp thông tin dễ hiểu",
+  "Thiết kế giao diện có lý do",
+  "Giữ thương hiệu, đổi cảm giác",
+  "Dẫn mắt bằng chuyển động",
+  "Tạo tương tác có mục đích",
+  "Xây nền tảng nhanh và bền",
+  "Đưa website lên đường",
 ];
 
 export function Capabilities() {
   const scope = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      gsap.from("[data-capability]", {
+        y: 24,
+        opacity: 0,
+        stagger: 0.055,
+        duration: 0.7,
+        ease: "expo.out",
+        scrollTrigger: {
+          trigger: scope.current,
+          start: "top 78%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+    },
+    { scope },
+  );
 
   const magnetize = (event: React.PointerEvent<HTMLSpanElement>) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -37,8 +62,8 @@ export function Capabilities() {
       x: 0,
       y: 0,
       rotation: 0,
-      duration: 0.75,
-      ease: "elastic.out(1,0.45)",
+      duration: 0.4,
+      ease: "expo.out",
       overwrite: true,
     });
   };
@@ -47,13 +72,16 @@ export function Capabilities() {
     <section id="capabilities" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
       <div className="mx-auto max-w-[1500px]">
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
-          <h2 className="max-w-[8ch] text-[clamp(3.6rem,9vw,8.8rem)] font-semibold leading-[0.83] tracking-[-0.04em] md:col-span-7">
-            Từ nét đến nút.
-          </h2>
+          <ScrollText mode="words">
+            <h2 className="max-w-[8ch] text-[clamp(3.2rem,7vw,6.2rem)] font-semibold leading-[0.86] tracking-[-0.04em] md:col-span-7">
+              Từ nét đến nút.
+            </h2>
+          </ScrollText>
           <div className="flex flex-wrap content-start gap-2 md:col-span-5 md:pt-8">
             {capabilities.map((capability, index) => (
               <span
                 key={capability}
+                data-capability
                 onPointerMove={magnetize}
                 onPointerLeave={release}
                 className={`rounded-full border px-4 py-2.5 text-sm transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] sm:px-5 sm:py-3 ${

@@ -18,19 +18,28 @@ export function CursorFollower() {
     const dot = cursorDotRef.current;
     if (!cursor || !dot) return;
 
+    const moveCursor = gsap.quickTo(cursor, "x", {
+      duration: 0.45,
+      ease: "power3.out",
+    });
+    const moveCursorY = gsap.quickTo(cursor, "y", {
+      duration: 0.45,
+      ease: "power3.out",
+    });
+    const moveDot = gsap.quickTo(dot, "x", {
+      duration: 0.12,
+      ease: "power2.out",
+    });
+    const moveDotY = gsap.quickTo(dot, "y", {
+      duration: 0.12,
+      ease: "power2.out",
+    });
+
     const move = (event: PointerEvent) => {
-      gsap.to(cursor, {
-        x: event.clientX,
-        y: event.clientY,
-        duration: 0.45,
-        ease: "power3.out",
-      });
-      gsap.to(dot, {
-        x: event.clientX,
-        y: event.clientY,
-        duration: 0.12,
-        ease: "power2.out",
-      });
+      moveCursor(event.clientX);
+      moveCursorY(event.clientY);
+      moveDot(event.clientX);
+      moveDotY(event.clientY);
     };
 
     const activate = () => cursor.classList.add("scale-[2.8]");
@@ -43,6 +52,8 @@ export function CursorFollower() {
     });
 
     return () => {
+      gsap.killTweensOf(cursor);
+      gsap.killTweensOf(dot);
       window.removeEventListener("pointermove", move);
       document.querySelectorAll<HTMLElement>("[data-cursor-link]").forEach((element) => {
         element.removeEventListener("mouseenter", activate);
