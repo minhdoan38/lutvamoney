@@ -99,8 +99,8 @@ export function ProcessAbout() {
               aria-hidden="true"
             />
             <div className="grid gap-12 px-6 py-12 md:grid-cols-8 md:gap-8 md:px-12 md:py-16">
-              <ScrollText mode="words" className="md:col-span-5">
-                <h2 className="max-w-[8ch] text-[clamp(3.5rem,7.2vw,6rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
+              <ScrollText mode="words" className="md:col-span-6">
+                <h2 className="max-w-none text-[clamp(3.5rem,7.2vw,6rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
                   {blocks[0].title}
                 </h2>
               </ScrollText>
@@ -115,11 +115,11 @@ export function ProcessAbout() {
             className="relative bg-accent text-background md:col-span-9 md:col-start-4"
           >
             <div className="grid gap-12 px-6 py-12 md:grid-cols-8 md:gap-8 md:px-12 md:py-16">
-              <p data-split-copy className="max-w-136 text-base leading-[1.6] text-background/75 md:col-span-3 md:col-start-1 md:pt-4 md:text-lg">
+              <p data-split-copy className="max-w-136 text-base leading-[1.6] text-background/75 md:col-span-2 md:col-start-1 md:pt-4 md:text-lg">
                 {blocks[1].copy}
               </p>
-              <ScrollText mode="words" className="md:col-span-5 md:col-start-4">
-                <h2 className="max-w-[9ch] text-[clamp(3.2rem,6.4vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
+              <ScrollText mode="words" className="md:col-span-6 md:col-start-3">
+                <h2 className="max-w-none text-[clamp(3.2rem,6.4vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
                   {blocks[1].title}
                 </h2>
               </ScrollText>
