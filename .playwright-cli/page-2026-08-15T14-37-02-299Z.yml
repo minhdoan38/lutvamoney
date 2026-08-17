@@ -1,0 +1,63 @@
+- generic [active] [ref=e1]:
+  - link "Bỏ qua đến nội dung" [ref=e2] [cursor=pointer]:
+    - /url: "#about-content"
+  - main [ref=e3]:
+    - navigation [ref=e5]:
+      - link "Nét Nút Studio" [ref=e6]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "Trang chủ" [ref=e8]:
+          - /url: /
+        - link "Dịch vụ" [ref=e9]:
+          - /url: /#services
+        - link "Dự án" [ref=e10]:
+          - /url: /#work
+        - link "Cách làm" [ref=e11]:
+          - /url: /#process
+      - link "Gửi website" [ref=e12]:
+        - /url: /#contact
+    - generic [ref=e14]:
+      - heading "Một khoảng cách cần được sửa" [level=1] [ref=e15]
+      - paragraph [ref=e17]: Có những doanh nghiệp đã tồn tại 10, 20, 30 năm. Sản phẩm tốt hơn. Đội ngũ lớn hơn. Khách hàng nhiều hơn. Nhưng website vẫn đại diện cho phiên bản của họ từ nhiều năm trước. Nét Nút Studio được tạo ra để sửa khoảng cách đó. Chúng tôi tập trung vào những doanh nghiệp đã phát triển vượt xa hình ảnh số hiện tại của mình...
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: NÉT
+        - paragraph [ref=e22]: NÚT
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - heading "Vì sao là Nét Nút" [level=2] [ref=e25]
+          - paragraph [ref=e26]: "Nét là cách thương hiệu được nhìn thấy và cảm nhận: bố cục, chữ, hình ảnh, màu sắc, nhịp điệu và cá tính."
+        - paragraph [ref=e28]: "Nút là phần đưa người dùng tới hành động: cách họ tìm thông tin, hiểu sản phẩm, xây dựng niềm tin và đưa ra quyết định."
+        - paragraph [ref=e29]: Chúng tôi tin một website tốt không nên buộc phải chọn giữa đẹp và hiệu quả. Nó cần cả hai.
+    - region [ref=e30]:
+      - generic [ref=e31]:
+        - heading "Điều chúng tôi tin" [level=2] [ref=e32]
+        - generic [ref=e33]:
+          - paragraph [ref=e34]: Website không phải một tấm brochure nằm trên internet.
+          - paragraph [ref=e35]: Nó thường là nơi đầu tiên một khách hàng mới dùng để đánh giá doanh nghiệp.
+          - paragraph [ref=e36]: Nếu doanh nghiệp đã thay đổi nhưng website chưa thay đổi, khoảng cách đó trực tiếp ảnh hưởng tới cách thị trường nhìn nhận thương hiệu.
+          - paragraph [ref=e37]: Vì vậy, redesign đối với chúng tôi không đơn giản là thay màu, đổi font hay thêm animation.
+          - paragraph [ref=e38]: Đó là việc xem lại toàn bộ cách doanh nghiệp đang được kể trên môi trường số.
+    - region [ref=e39]:
+      - generic [ref=e40]:
+        - heading "Cách nhìn một website cũ" [level=2] [ref=e41]
+        - paragraph [ref=e43]: "Chúng tôi không mặc định rằng mọi thứ cũ đều phải bỏ. Một doanh nghiệp lâu năm luôn có những thứ đáng giữ lại: lịch sử, uy tín, sản phẩm, kiến thức ngành, cách khách hàng nhận diện thương hiệu. Việc của chúng tôi là tìm ra đâu là giá trị cần giữ, đâu là phần đang cản trở chúng, rồi xây lại một hệ thống rõ ràng hơn xung quanh những giá trị đó."
+        - list [ref=e44]:
+          - listitem [ref=e45]:
+            - generic [ref=e46]: Không chạy theo trend chỉ để trông mới.
+          - listitem [ref=e47]:
+            - generic [ref=e48]: Không biến mọi doanh nghiệp thành cùng một template.
+          - listitem [ref=e49]:
+            - generic [ref=e50]: Không thêm thứ gì nếu nó không có lý do tồn tại.
+    - generic [ref=e52]:
+      - heading "Một studio nhỏ, làm trực tiếp" [level=2] [ref=e53]
+      - paragraph [ref=e54]: Nét Nút hiện được vận hành bởi một team nhỏ. Điều đó có nghĩa người nghiên cứu bài toán, người đưa ra direction và người thực hiện sản phẩm luôn làm việc gần nhau. Ít tầng trung gian. Ít thông tin bị mất. Quyết định nhanh hơn. Trách nhiệm rõ hơn. Chúng tôi thích đưa ý tưởng thành thứ có thể nhìn thấy càng sớm càng tốt. Một concept tốt thường nói được nhiều hơn một bản proposal dài.
+    - region [ref=e55]:
+      - generic [ref=e57]:
+        - heading "Chúng tôi không muốn làm mọi thứ" [level=2] [ref=e58]
+        - paragraph [ref=e59]: "Chúng tôi không muốn làm mọi thứ. Nét Nút không cố trở thành một agency có mọi dịch vụ. Chúng tôi muốn làm thật tốt một bài toán cụ thể:"
+        - paragraph [ref=e60]: Giúp những doanh nghiệp tốt không còn bị đại diện bởi những website không đủ tốt.
+        - paragraph [ref=e61]: Doanh nghiệp đã đi xa. Đừng để website tiếp tục kể câu chuyện cũ.
+        - link "Gửi website của bạn" [ref=e63]:
+          - /url: /#contact
+  - button "Open Next.js Dev Tools" [ref=e72] [cursor=pointer]

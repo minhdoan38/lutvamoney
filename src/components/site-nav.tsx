@@ -1,58 +1,77 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
-const links = [
+type NavLink = {
+  label: string;
+  href: string;
+};
+
+const defaultLinks: NavLink[] = [
   { label: "Dịch vụ", href: "#services" },
   { label: "Dự án", href: "#work" },
   { label: "Năng lực", href: "#capabilities" },
   { label: "Cách làm", href: "#process" },
   { label: "Góc nhìn", href: "#insights" },
+  { label: "Về chúng tôi", href: "/about" },
 ];
 
-export function SiteNav() {
+type SiteNavProps = {
+  links?: NavLink[];
+  brandHref?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+};
+
+export function SiteNav({
+  links = defaultLinks,
+  brandHref = "#top",
+  ctaHref = "#contact",
+  ctaLabel = "Gửi website",
+}: SiteNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="fixed left-0 right-0 top-0 z-20 px-4 pt-4 sm:px-6 sm:pt-6">
       <nav className="site-nav mx-auto flex max-w-[1400px] items-center justify-between rounded-full border border-white/15 bg-background/75 px-4 py-3 backdrop-blur-xl sm:px-5">
-        <a
-          href="#top"
+        <Link
+          href={brandHref}
           data-cursor-link
           className="relative z-10 text-xs font-semibold uppercase tracking-[-0.02em] text-foreground"
         >
           Nét Nút <span className="text-accent">Studio</span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               data-cursor-link
               className="text-xs text-white/60 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
-        <a
-          href="#contact"
+        <Link
+          href={ctaHref}
           data-cursor-link
           className="hidden rounded-full bg-accent px-4 py-2 text-xs font-semibold text-background transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 active:scale-[0.98] lg:block"
         >
-          Gửi website
-        </a>
+          {ctaLabel}
+        </Link>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href="#contact"
+          <Link
+            href={ctaHref}
             data-cursor-link
             className="rounded-full bg-accent px-3 py-2 text-xs font-semibold text-background transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
           >
-            Gửi website
-          </a>
+            {ctaLabel}
+          </Link>
           <button
             type="button"
             aria-expanded={open}
@@ -82,7 +101,7 @@ export function SiteNav() {
         <div className="min-h-0">
           <div className="flex flex-col gap-1 p-3">
             {links.map((link, index) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
@@ -94,16 +113,16 @@ export function SiteNav() {
                   <span className="absolute left-0 top-1/2 h-px w-full bg-current" />
                   <span className="absolute left-1/2 top-0 h-full w-px bg-current" />
                 </span>
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href={ctaHref}
               onClick={() => setOpen(false)}
               className={`mt-2 min-h-11 rounded-xl bg-accent px-4 py-3 text-center text-sm font-semibold text-background transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${open ? "opacity-100" : "opacity-0"}`}
               style={{ transitionDelay: open ? "220ms" : "0ms" }}
             >
-              Gửi website
-            </a>
+              {ctaLabel}
+            </Link>
           </div>
         </div>
       </div>

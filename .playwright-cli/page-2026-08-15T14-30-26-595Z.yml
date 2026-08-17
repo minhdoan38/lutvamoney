@@ -1,0 +1,97 @@
+- generic [active] [ref=e1]:
+  - link "Bỏ qua đến nội dung" [ref=e2] [cursor=pointer]:
+    - /url: "#about-content"
+  - main [ref=e3]:
+    - navigation [ref=e5]:
+      - link "Nét Nút Studio" [ref=e6]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "Trang chủ" [ref=e8]:
+          - /url: /
+        - link "Dịch vụ" [ref=e9]:
+          - /url: /#services
+        - link "Dự án" [ref=e10]:
+          - /url: /#work
+        - link "Cách làm" [ref=e11]:
+          - /url: /#process
+      - link "Gửi website" [ref=e12]:
+        - /url: /#contact
+    - generic [ref=e14]:
+      - heading [level=1] [ref=e15]:
+        - generic [ref=e16]: Một khoảng
+        - generic [ref=e18]: cách cần được
+        - generic [ref=e20]: sửa
+      - paragraph [ref=e23]: Có những doanh nghiệp đã tồn tại 10, 20, 30 năm. Sản phẩm tốt hơn. Đội ngũ lớn hơn. Khách hàng nhiều hơn. Nhưng website vẫn đại diện cho phiên bản của họ từ nhiều năm trước. Nét Nút Studio được tạo ra để sửa khoảng cách đó. Chúng tôi tập trung vào những doanh nghiệp đã phát triển vượt xa hình ảnh số hiện tại của mình...
+    - generic [ref=e25]:
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: NÉT
+        - paragraph [ref=e29]: NÚT
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - heading "Vì sao là Nét Nút" [level=2] [ref=e32]
+          - paragraph [ref=e33]: "Nét là cách thương hiệu được nhìn thấy và cảm nhận: bố cục, chữ, hình ảnh, màu sắc, nhịp điệu và cá tính."
+        - paragraph [ref=e35]: "Nút là phần đưa người dùng tới hành động: cách họ tìm thông tin, hiểu sản phẩm, xây dựng niềm tin và đưa ra quyết định."
+        - paragraph [ref=e36]: Chúng tôi tin một website tốt không nên buộc phải chọn giữa đẹp và hiệu quả. Nó cần cả hai.
+    - region [ref=e37]:
+      - generic [ref=e38]:
+        - heading "Điều chúng tôi tin" [level=2] [ref=e39]
+        - generic [ref=e40]:
+          - paragraph [ref=e41]:
+            - generic [ref=e42]: Website không phải một tấm brochure nằm
+            - generic [ref=e44]: trên internet.
+          - paragraph [ref=e46]:
+            - generic [ref=e47]: Nó thường là nơi đầu tiên một khách hàng
+            - generic [ref=e49]: mới dùng để đánh giá doanh nghiệp.
+          - paragraph [ref=e51]:
+            - generic [ref=e52]: Nếu doanh nghiệp đã thay đổi nhưng website
+            - generic [ref=e54]: chưa thay đổi, khoảng cách đó trực tiếp ảnh
+            - generic [ref=e56]: hưởng tới cách thị trường nhìn nhận thương
+            - generic [ref=e58]: hiệu.
+          - paragraph [ref=e60]:
+            - generic [ref=e61]: Vì vậy, redesign đối với chúng tôi không đơn
+            - generic [ref=e63]: giản là thay màu, đổi font hay thêm
+            - generic [ref=e65]: animation.
+          - paragraph [ref=e67]:
+            - generic [ref=e68]: Đó là việc xem lại toàn bộ cách doanh nghiệp
+            - generic [ref=e70]: đang được kể trên môi trường số.
+    - region [ref=e72]:
+      - generic [ref=e73]:
+        - heading "Cách nhìn một website cũ" [level=2] [ref=e74]
+        - paragraph [ref=e76]: "Chúng tôi không mặc định rằng mọi thứ cũ đều phải bỏ. Một doanh nghiệp lâu năm luôn có những thứ đáng giữ lại: lịch sử, uy tín, sản phẩm, kiến thức ngành, cách khách hàng nhận diện thương hiệu. Việc của chúng tôi là tìm ra đâu là giá trị cần giữ, đâu là phần đang cản trở chúng, rồi xây lại một hệ thống rõ ràng hơn xung quanh những giá trị đó."
+        - list [ref=e77]:
+          - listitem [ref=e78]:
+            - generic [ref=e79]: Không chạy theo trend chỉ để trông mới.
+          - listitem [ref=e80]:
+            - generic [ref=e81]: Không biến mọi doanh nghiệp thành cùng một template.
+          - listitem [ref=e82]:
+            - generic [ref=e83]: Không thêm thứ gì nếu nó không có lý do tồn tại.
+    - generic [ref=e85]:
+      - heading [level=2] [ref=e86]:
+        - generic [ref=e87]: Một studio
+        - generic [ref=e89]: nhỏ, làm trực
+        - generic [ref=e91]: tiếp
+      - paragraph [ref=e93]:
+        - generic [ref=e94]: Nét Nút hiện được vận hành bởi một team
+        - generic [ref=e96]: nhỏ. Điều đó có nghĩa người nghiên cứu bài
+        - generic [ref=e98]: toán, người đưa ra direction và người thực
+        - generic [ref=e100]: hiện sản phẩm luôn làm việc gần nhau. Ít
+        - generic [ref=e102]: tầng trung gian. Ít thông tin bị mất. Quyết
+        - generic [ref=e104]: định nhanh hơn. Trách nhiệm rõ hơn.
+        - generic [ref=e106]: Chúng tôi thích đưa ý tưởng thành thứ có
+        - generic [ref=e108]: thể nhìn thấy càng sớm càng tốt. Một
+        - generic [ref=e110]: concept tốt thường nói được nhiều hơn
+        - generic [ref=e112]: một bản proposal dài.
+    - region [ref=e114]:
+      - generic [ref=e116]:
+        - heading "Chúng tôi không muốn làm mọi thứ" [level=2] [ref=e117]
+        - paragraph [ref=e118]: "Chúng tôi không muốn làm mọi thứ. Nét Nút không cố trở thành một agency có mọi dịch vụ. Chúng tôi muốn làm thật tốt một bài toán cụ thể:"
+        - paragraph [ref=e119]:
+          - generic [ref=e120]: Giúp những doanh
+          - generic [ref=e122]: nghiệp tốt không còn bị
+          - generic [ref=e124]: đại diện bởi những
+          - generic [ref=e126]: website không đủ tốt.
+        - paragraph [ref=e128]: Doanh nghiệp đã đi xa. Đừng để website tiếp tục kể câu chuyện cũ.
+        - link "Gửi website của bạn" [ref=e130]:
+          - /url: /#contact
+  - button "Open Next.js Dev Tools" [ref=e139] [cursor=pointer]
+  - alert [ref=e143]
