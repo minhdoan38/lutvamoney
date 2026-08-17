@@ -53,10 +53,10 @@ export function Services() {
 
   return (
     <section id="services" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-375">
         <div className="mb-16 grid gap-7 md:mb-24 md:grid-cols-12">
           <ScrollText mode="words">
-            <h2 className="max-w-[10ch] text-[clamp(3rem,6.8vw,6.4rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:col-span-9">
+            <h2 className="max-w-none text-[clamp(3rem,6.8vw,6.4rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:col-span-9">
               Chúng tôi làm gì
             </h2>
           </ScrollText>

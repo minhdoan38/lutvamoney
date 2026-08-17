@@ -48,9 +48,9 @@ export function Insights() {
 
   return (
     <section id="insights" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-375">
         <ScrollText mode="words">
-          <h2 className="mb-14 max-w-[10ch] text-[clamp(3rem,6.4vw,5.8rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:mb-20">
+          <h2 className="mb-14 max-w-none text-[clamp(3rem,6.4vw,5.8rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:mb-20">
             Đập web ra xem
           </h2>
         </ScrollText>

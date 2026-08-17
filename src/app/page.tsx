@@ -11,6 +11,15 @@ import { SiteNav } from "@/components/site-nav";
 export default function Home() {
   return (
     <>
+      <div className="page-loader" aria-hidden="true">
+        <div className="page-loader__tile page-loader__tile--left" />
+        <div className="page-loader__tile page-loader__tile--top" />
+        <div className="page-loader__tile page-loader__tile--core" />
+        <div className="page-loader__tile page-loader__tile--east" />
+        <div className="page-loader__tile page-loader__tile--south" />
+        <div className="page-loader__accent hero-mark-geometry" />
+      </div>
+
       {/*
         THESIS: Website cũ được bóc tách và tái cấu trúc thành chuyển động rõ ràng, không dùng hero agency cân đối quen thuộc.
         OWN-WORLD: Nền đen, chữ off white, vermilion duy nhất, tile phẳng, hairline và typography khổng lồ bị crop.

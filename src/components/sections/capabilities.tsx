@@ -70,10 +70,10 @@ export function Capabilities() {
 
   return (
     <section id="capabilities" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-375">
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
           <ScrollText mode="words">
-            <h2 className="max-w-[8ch] text-[clamp(3.2rem,7vw,6.2rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:col-span-7">
+            <h2 className="max-w-none text-[clamp(3.2rem,7vw,6.2rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:col-span-7">
               Từ nét đến nút.
             </h2>
           </ScrollText>

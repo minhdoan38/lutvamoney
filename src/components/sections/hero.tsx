@@ -31,9 +31,8 @@ export function Hero() {
         transformOrigin: "left bottom",
       });
       gsap.set(select("[data-hero-copy]"), { y: 28, opacity: 0 });
-      gsap.set(select("[data-hero-mark]"), { scaleX: 0.55, xPercent: 18, transformOrigin: "left center" });
 
-      const intro = gsap.timeline({ defaults: { ease: "expo.out" } });
+      const intro = gsap.timeline({ delay: 0.62, defaults: { ease: "expo.out" } });
       intro
         .to(split.words, {
           yPercent: 0,
@@ -41,11 +40,6 @@ export function Hero() {
           duration: 1.25,
           stagger: 0.055,
         })
-        .to(
-          select("[data-hero-mark]"),
-          { scaleX: 1, xPercent: 0, duration: 1.05, ease: "expo.out" },
-          0.18,
-        )
         .to(select("[data-hero-copy]"), { y: 0, opacity: 1, duration: 0.9, stagger: 0.08 }, 0.45);
 
       const skew = gsap.quickTo(headline.current, "skewY", {
@@ -92,7 +86,7 @@ export function Hero() {
       <div
         data-hero-mark
         aria-hidden="true"
-        className="absolute right-[-12vw] top-[22%] h-[30vh] w-[54vw] bg-accent sm:top-[20%] lg:right-[-4vw] lg:h-[40vh] lg:w-[38vw]"
+        className="hero-mark-geometry bg-accent"
       />
 
       <div className="relative mx-auto w-full max-w-[1600px]">
