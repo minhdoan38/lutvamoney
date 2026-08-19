@@ -109,6 +109,8 @@ export function Hero() {
             <a
               href="#contact"
               data-cursor-link
+              data-cursor="magnetic"
+              data-magnetic-strength="0.12"
               className="group inline-flex min-h-12 items-center justify-between gap-7 rounded-full bg-foreground py-2 pl-5 pr-2 text-sm font-semibold text-[#090909] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98]"
             >
               Gửi website của bạn

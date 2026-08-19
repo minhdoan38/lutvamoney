@@ -45,8 +45,8 @@ export function MagneticPrinciple({ children }: MagneticPrincipleProps) {
         gsap.to(el, {
           x: 0,
           y: 0,
-          duration: 0.7,
-          ease: "elastic.out(1, 0.45)",
+          duration: 0.25,
+          ease: "expo.out",
         });
       };
 
@@ -65,7 +65,7 @@ export function MagneticPrinciple({ children }: MagneticPrincipleProps) {
   return (
     <span
       ref={scope}
-      className="inline-block max-w-full rounded-full border border-[rgba(237,237,237,0.16)] px-5 py-3 text-left text-sm leading-snug text-foreground/72 md:text-base"
+      className="inline-block max-w-full rounded-full border border-[rgba(237,237,237,0.16)] px-5 py-3 text-left text-sm leading-[1.45] text-foreground/72 md:text-base"
     >
       {children}
     </span>

@@ -120,6 +120,7 @@ export function SelectedWork() {
           onPointerLeave={hideMask}
           onKeyDown={handleComparisonKeyDown}
           tabIndex={0}
+          data-cursor-text="INSPECT"
           aria-label="So sánh concept website cũ và website mới bằng phím mũi tên"
           className="relative isolate min-h-[72vh] overflow-hidden bg-surface-work outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background md:min-h-[82vh]"
         >

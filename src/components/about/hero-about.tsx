@@ -43,7 +43,7 @@ export function HeroAbout() {
           opacity: 1,
           duration: 1.15,
           stagger: 0.1,
-          ease: "elastic.out(1, 0.62)",
+          ease: "expo.out",
         })
         .to(
           select("[data-about-hero-copy]"),
@@ -57,6 +57,7 @@ export function HeroAbout() {
         );
 
       return () => {
+        intro.kill();
         split.revert();
       };
     },
@@ -67,22 +68,22 @@ export function HeroAbout() {
     <section
       id="about-hero"
       ref={scope}
-      className="relative flex min-h-[100dvh] items-end overflow-hidden px-4 pb-12 pt-28 sm:px-6 sm:pb-16 lg:px-10 lg:pb-20 lg:pt-32"
+      className="relative flex min-h-dvh items-end overflow-hidden px-4 pb-12 pt-28 sm:px-6 sm:pb-16 lg:px-10 lg:pb-20 lg:pt-32"
     >
       <div className="relative mx-auto w-full max-w-[1600px]">
         <h1
           ref={headline}
-          className="w-[80%] max-w-none text-[clamp(2.8rem,10vw,9.5rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-foreground sm:leading-[0.9] md:leading-[0.86] lg:leading-[0.82]"
+          className="w-[80%] max-w-none text-[clamp(2.8rem,10vw,9.5rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-foreground sm:leading-[0.98] md:leading-[0.94] lg:leading-[0.9]"
         >
-          Một khoảng cách cần được sửa
+          About Nét Nút
         </h1>
 
         <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-12">
           <p
             data-about-hero-copy
-            className="max-w-[42rem] text-base leading-[1.65] text-foreground/68 md:col-span-5 md:col-start-8 md:justify-self-end md:text-lg lg:col-span-4 lg:col-start-9"
+            className="max-w-2xl text-base leading-[1.72] text-foreground/68 md:col-span-5 md:col-start-8 md:justify-self-end md:text-lg lg:col-span-4 lg:col-start-9"
           >
-            Có những doanh nghiệp đã tồn tại 10, 20, 30 năm. Sản phẩm tốt hơn. Đội ngũ lớn hơn. Khách hàng nhiều hơn. Nhưng website vẫn đại diện cho phiên bản của họ từ nhiều năm trước. Nét Nút Studio được tạo ra để sửa khoảng cách đó. Chúng tôi tập trung vào những doanh nghiệp đã phát triển vượt xa hình ảnh số hiện tại của mình...
+            Khi doanh nghiệp đã đi xa hơn website của mình. Sau khoảng thời gian dài phát triển, một doanh nghiệp có thể đã rất khác so với ngày đầu. Sản phẩm tốt hơn. Đội ngũ lớn hơn. Khách hàng nhiều hơn. Giá trị tích lũy qua từng năm cũng ngày một rõ ràng hơn. Nhưng website đại diện cho họ đôi khi vẫn dừng lại ở một phiên bản từ nhiều năm trước. Nét Nút Studio ra đời để thu hẹp khoảng cách đó.
           </p>
         </div>
       </div>

@@ -15,6 +15,7 @@ type ScrollTextProps = {
   mode?: "lines" | "words";
   start?: string;
   as?: "div" | "span";
+  replay?: boolean;
 };
 
 export function ScrollText({
@@ -23,6 +24,7 @@ export function ScrollText({
   mode = "lines",
   start = "top 84%",
   as = "div",
+  replay = true,
 }: ScrollTextProps) {
   const scope = useRef<HTMLElement>(null);
   const setScope = (node: HTMLElement | null) => {
@@ -54,14 +56,14 @@ export function ScrollText({
         scrollTrigger: {
           trigger,
           start,
-          toggleActions: "play reverse play reverse",
-          invalidateOnRefresh: true,
+          toggleActions: replay ? "play reverse play reverse" : "play none none none",
+          once: !replay,
         },
       });
 
       return () => split.revert();
     },
-    { scope, dependencies: [mode, start] },
+    { scope },
   );
 
   const childClassName = children.props.className;

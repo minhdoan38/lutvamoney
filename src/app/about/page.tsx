@@ -5,21 +5,13 @@ import { HeroAbout } from "@/components/about/hero-about";
 import { ManifestoSection } from "@/components/about/manifesto-section";
 import { OutroStatement } from "@/components/about/outro-statement";
 import { VisionSection } from "@/components/about/vision-section";
-import { CursorFollower } from "@/components/cursor-follower";
 import { SiteNav } from "@/components/site-nav";
 
 export const metadata: Metadata = {
-  title: "Về chúng tôi | Nét Nút Studio",
+  title: "About Nét Nút | Nét Nút Studio",
   description:
-    "Nét Nút Studio sửa khoảng cách giữa doanh nghiệp đã phát triển và website còn kể câu chuyện cũ.",
+    "Nét Nút Studio thu hẹp khoảng cách giữa doanh nghiệp đã phát triển và website còn dừng lại ở một phiên bản cũ.",
 };
-
-const aboutLinks = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Dịch vụ", href: "/#services" },
-  { label: "Dự án", href: "/#work" },
-  { label: "Cách làm", href: "/#process" },
-];
 
 export default function AboutPage() {
   return (
@@ -41,13 +33,7 @@ export default function AboutPage() {
         id="about-content"
         className="w-full max-w-full overflow-x-hidden bg-background text-foreground"
       >
-        <SiteNav
-          links={aboutLinks}
-          brandHref="/"
-          ctaHref="/#contact"
-          ctaLabel="Gửi website"
-        />
-        <CursorFollower />
+        <SiteNav brandHref="/" ctaHref="/#contact" ctaLabel="Gửi website" />
         <HeroAbout />
         <DictionarySection />
         <ManifestoSection />
