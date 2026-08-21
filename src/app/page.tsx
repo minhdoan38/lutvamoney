@@ -1,11 +1,11 @@
 import { HomeExperienceProvider } from "@/components/home-experience-provider";
 import { Capabilities } from "@/components/sections/capabilities";
+import { Diagnosis } from "@/components/sections/diagnosis";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { Hero } from "@/components/sections/hero";
 import { Insights } from "@/components/sections/insights";
 import { ProcessAbout } from "@/components/sections/process-about";
 import { SelectedWork } from "@/components/sections/selected-work";
-import { Services } from "@/components/sections/services";
 import { SiteNav } from "@/components/site-nav";
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
       <main id="content" className="w-full max-w-full overflow-x-hidden bg-background text-foreground">
         <SiteNav />
         <Hero />
-        <Services />
+        <Diagnosis />
         <SelectedWork />
         <Capabilities />
         <ProcessAbout />
