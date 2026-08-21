@@ -4,7 +4,7 @@ import { Diagnosis } from "@/components/sections/diagnosis";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { Hero } from "@/components/sections/hero";
 import { Insights } from "@/components/sections/insights";
-import { ProcessAbout } from "@/components/sections/process-about";
+import { StudioProcess } from "@/components/sections/studio-process";
 import { ReconstructionStage } from "@/components/sections/reconstruction-stage";
 import { SiteNav } from "@/components/site-nav";
 
@@ -23,7 +23,7 @@ export default function Home() {
         <Diagnosis />
         <ReconstructionStage />
         <Capabilities />
-        <ProcessAbout />
+        <StudioProcess />
         <Insights />
         <FinalCTA />
       </main>

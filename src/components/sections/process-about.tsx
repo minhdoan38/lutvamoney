@@ -78,7 +78,7 @@ export function ProcessAbout() {
   );
 
   return (
-    <section id="process" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
+    <section id="process" ref={scope} className="px-4 py-20 sm:px-6 md:py-28 lg:px-10">
       <div className="mx-auto max-w-375">
         <div className="grid gap-y-8 md:grid-cols-12 md:gap-y-12">
           <article
