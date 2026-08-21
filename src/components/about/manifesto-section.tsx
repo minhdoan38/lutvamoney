@@ -9,11 +9,9 @@ import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const lines = [
-  "Website không phải một tấm áp phích được đặt lên internet.",
-  "Với nhiều khách hàng mới, đó là một trong những nơi đầu tiên họ tìm đến để hình thành đánh giá về doanh nghiệp.",
-  "Vì vậy, khi doanh nghiệp đã thay đổi nhưng website vẫn đứng yên, khoảng cách giữa hai hình ảnh ấy sẽ ảnh hưởng trực tiếp đến cách thị trường nhìn nhận thương hiệu.",
-  "Redesign, vì thế, không đơn giản là thay màu, đổi font hay thêm animation.",
-  "Đó là dịp để nhìn lại cách doanh nghiệp đang được kể trên môi trường số, điều gì cần được giữ lại, điều gì cần được làm rõ và điều gì đã không còn phù hợp.",
+  "Giữ cái đáng giữ.",
+  "Gỡ cái đang cản.",
+  "Dựng cái cần chạy.",
 ];
 
 export function ManifestoSection() {
@@ -21,153 +19,57 @@ export function ManifestoSection() {
 
   useGSAP(
     () => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const entries = Array.from(
-        scope.current?.querySelectorAll<HTMLElement>("[data-manifesto-entry]") ?? [],
-      );
-      const markers = Array.from(
-        scope.current?.querySelectorAll<HTMLElement>("[data-manifesto-marker]") ?? [],
-      );
-      const pinTarget = scope.current?.querySelector<HTMLElement>("[data-manifesto-pin]");
-      const readingRail = scope.current?.querySelector<HTMLElement>("[data-manifesto-reading]");
-
-      if (entries.length === 0 || !pinTarget || !readingRail) return;
-
-      const activate = (index: number) => {
-        entries.forEach((entry, entryIndex) => {
-          entry.classList.toggle("is-active", entryIndex === index);
-        });
-        markers.forEach((marker, markerIndex) => {
-          marker.classList.toggle("is-active", markerIndex === index);
-        });
-      };
-
-      activate(0);
-      if (reduce) return;
-
-      const mm = gsap.matchMedia();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const entries = Array.from(scope.current?.querySelectorAll<HTMLElement>("[data-manifesto-entry]") ?? []);
       const splits = entries.map((entry) => {
         const line = entry.querySelector<HTMLElement>("[data-manifesto-line]");
-        return line
-          ? SplitText.create(line, {
-              type: "lines",
-              linesClass: "manifesto-split-line",
-              mask: "lines",
-              aria: "hidden",
-            })
-          : null;
+        return line ? SplitText.create(line, { type: "lines", linesClass: "manifesto-split-line", mask: "lines", aria: "hidden" }) : null;
       });
 
       entries.forEach((entry, index) => {
-        const lineSplit = splits[index];
-        if (lineSplit) {
-          gsap.set(lineSplit.lines, { yPercent: 110, opacity: 0.15 });
-          gsap.to(lineSplit.lines, {
+        const split = splits[index];
+        if (!split) return;
+        gsap.fromTo(
+          split.lines,
+          { yPercent: 110, opacity: 0.2 },
+          {
             yPercent: 0,
             opacity: 1,
-            duration: 0.85,
-            stagger: 0.055,
+            duration: 0.8,
+            stagger: 0.06,
+            delay: index * 0.05,
             ease: "expo.out",
-            scrollTrigger: {
-              trigger: entry,
-              start: "top 84%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-          });
-        }
-
-        ScrollTrigger.create({
-          trigger: entry,
-          start: "top 56%",
-          end: "bottom 56%",
-          onEnter: () => activate(index),
-          onEnterBack: () => activate(index),
-          invalidateOnRefresh: true,
-        });
+            scrollTrigger: { trigger: entry, start: "top 82%", toggleActions: "play none none none", once: true },
+          },
+        );
       });
 
-      mm.add("(min-width: 768px)", () => {
-        const pin = ScrollTrigger.create({
-          trigger: scope.current,
-          start: "top top",
-          end: () => `+=${Math.max(readingRail.offsetHeight - pinTarget.offsetHeight, 240)}`,
-          pin: pinTarget,
-          pinSpacing: false,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        });
-
-        return () => pin.kill();
-      });
-
-      return () => {
-        splits.forEach((split) => split?.revert());
-        mm.revert();
-      };
+      return () => splits.forEach((split) => split?.revert());
     },
     { scope },
   );
 
   return (
-    <section
-      id="manifesto"
-      ref={scope}
-      className="border-t border-[rgba(237,237,237,0.16)] px-4 py-32 sm:px-6 md:py-48 lg:px-10"
-      aria-labelledby="manifesto-heading"
-    >
-      <div className="mx-auto grid max-w-375 grid-cols-1 gap-16 md:grid-cols-12 md:gap-8">
-        <div
-          data-manifesto-pin
-          className="flex min-h-88 self-start flex-col justify-between md:col-span-4 md:min-h-[calc(100dvh-8rem)] md:pt-3"
-        >
-          <div>
-            <h2
-              id="manifesto-heading"
-              className="max-w-[12ch] font-mono text-[0.625rem] font-normal leading-normal tracking-[0.12em] text-muted"
-            >
-              Website, qua góc nhìn của chúng tôi
-            </h2>
-            <p className="mt-12 text-[clamp(4.7rem,12vw,11rem)] font-semibold leading-[0.82] tracking-[-0.055em] text-accent">
-              nhìn
-            </p>
-            <p className="text-[clamp(4.7rem,12vw,11rem)] font-semibold leading-[0.82] tracking-[-0.055em] text-foreground">
-              lại.
-            </p>
-          </div>
-
-          <div className="mt-12 flex max-w-52 gap-1.5" aria-hidden="true">
-            {lines.map((line) => (
-              <span
-                key={line}
-                data-manifesto-marker
-                className="manifesto-marker h-1 flex-1 bg-[rgba(237,237,237,0.22)]"
-              />
-            ))}
-          </div>
+    <section id="manifesto" ref={scope} className="border-t border-[rgba(237,237,237,0.16)] px-4 py-24 sm:px-6 md:py-36 lg:px-10" aria-labelledby="manifesto-heading">
+      <div className="mx-auto grid max-w-375 gap-12 md:grid-cols-12 md:gap-8">
+        <div className="md:col-span-4">
+          <h2 id="manifesto-heading" className="font-mono text-[0.625rem] font-normal tracking-[0.12em] text-muted">
+            Ba quan điểm làm việc
+          </h2>
+          <p className="display-release mt-10 max-w-[7ch] text-[clamp(4.5rem,11vw,10rem)] font-semibold leading-[0.8] tracking-[-0.055em] text-accent">
+            làm
+            <br />
+            lại.
+          </p>
         </div>
 
-        <div
-          data-manifesto-reading
-          className="flex flex-col md:col-span-7 md:col-start-6"
-        >
-          {lines.map((line) => (
-            <article
-              key={line}
-              data-manifesto-entry
-              className="manifesto-entry border-t border-[rgba(237,237,237,0.16)] py-10 md:py-14"
-            >
-              <p
-                data-manifesto-line
-                className="max-w-[15ch] text-[clamp(1.7rem,4.1vw,3.45rem)] font-medium leading-[1.14] tracking-[-0.035em] text-foreground/68 transition-colors duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] sm:max-w-[18ch] md:max-w-[17ch]"
-              >
+        <div className="md:col-span-7 md:col-start-6">
+          {lines.map((line, index) => (
+            <article key={line} data-manifesto-entry className="border-t border-[rgba(237,237,237,0.16)] py-8 md:py-12">
+              <p className="font-mono text-[0.625rem] tracking-[0.12em] text-accent">0{index + 1}</p>
+              <p data-manifesto-line className="display-compression mt-5 max-w-[13ch] text-[clamp(2rem,4.7vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.045em] text-foreground">
                 {line}
               </p>
-              <span
-                data-manifesto-rule
-                className="mt-8 block h-1 w-full origin-left bg-accent"
-                aria-hidden="true"
-              />
             </article>
           ))}
         </div>
