@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto_Flex } from "next/font/google";
 import "./globals.css";
-import { AboutRouteTransition } from "@/components/about-route-transition";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
 const geistSans = Geist({
@@ -15,6 +14,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "vietnamese"],
 });
 
+const display = Roboto_Flex({
+  variable: "--font-display",
+  subsets: ["latin", "vietnamese"],
+  axes: ["wdth", "opsz", "GRAD"],
+});
+
 export const metadata: Metadata = {
   title: "Nét Nút Studio | Redesign website cho doanh nghiệp",
   description:
@@ -23,14 +28,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="vi" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="vi" className={`${geistSans.variable} ${geistMono.variable} ${display.variable}`}>
       <body>
         <div
           hidden
           aria-hidden="true"
-          data-design-contract="THESIS: Website cũ được bóc tách thành chuyển động rõ ràng, từ chối hero agency cân đối. OWN WORLD: Nền đen, chữ off white, vermilion, tile phẳng, hairline, typography khổng lồ. STORY: Khách nhận ra website đã tụt lại, hiểu cách Nét Nút làm, rồi gửi URL. FIRST VIEWPORT: Headline chiếm gần toàn khung, khối vermilion cắt lệch bên phải, CTA nằm dưới phần giải thích. FORM: Metro typographic tiles fused with editorial redesign, seed f7b4dd0d. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md"
+          data-design-contract="THESIS: Website cũ được bóc tách thành chuyển động rõ ràng, từ chối hero agency cân đối. OWN WORLD: Nền đen, chữ off white, vermilion, tile phẳng, hairline, typography khổng lồ. STORY: Khách nhận ra website đã tụt lại, hiểu cách Nét Nút làm, rồi gửi URL. FIRST VIEWPORT: Headline chiếm gần toàn khung, khối vermilion cắt lệch bên phải, CTA nằm dưới phần giải thích. FORM: Editorial fields fused with reconstruction, labeled synthetic visuals, and truthful browser-only conversion."
         />
-        <AboutRouteTransition />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
