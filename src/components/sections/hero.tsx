@@ -1,16 +1,28 @@
 "use client";
 
-import { useRef } from "react";
+import type { FormEvent } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { useHomeExperience } from "@/components/home-experience-provider";
+
+const errorCopy = {
+  empty: "Nhập một địa chỉ website để bắt đầu soi.",
+  invalid: "Địa chỉ này chưa đúng. Thử abc.vn hoặc https://abc.vn.",
+  "unsupported-protocol": "Chỉ hỗ trợ địa chỉ http hoặc https.",
+} as const;
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 export function Hero() {
   const scope = useRef<HTMLElement>(null);
   const headline = useRef<HTMLHeadingElement>(null);
+  const input = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState("");
+  const [error, setError] = useState<keyof typeof errorCopy | null>(null);
+  const { submitWebsite } = useHomeExperience();
 
   useGSAP(
     () => {
@@ -32,50 +44,33 @@ export function Hero() {
       });
       gsap.set(select("[data-hero-copy]"), { y: 28, opacity: 0 });
 
-      const intro = gsap.timeline({ delay: 0.62, defaults: { ease: "expo.out" } });
+      const intro = gsap.timeline({ delay: 0.28, defaults: { ease: "expo.out" } });
       intro
         .to(split.words, {
           yPercent: 0,
           rotate: 0,
-          duration: 1.25,
-          stagger: 0.055,
+          duration: 1.1,
+          stagger: 0.045,
         })
-        .to(select("[data-hero-copy]"), { y: 0, opacity: 1, duration: 0.9, stagger: 0.08 }, 0.45);
+        .to(select("[data-hero-copy]"), { y: 0, opacity: 1, duration: 0.75, stagger: 0.07 }, 0.35);
 
-      const skew = gsap.quickTo(headline.current, "skewY", {
-        duration: 0.65,
-        ease: "power3.out",
-      });
-      const stretch = gsap.quickTo(headline.current, "scaleX", {
-        duration: 0.65,
-        ease: "power3.out",
-      });
-
-      const settle = () => {
-        skew(0);
-        stretch(1);
-      };
-
-      const trigger = ScrollTrigger.create({
-        trigger: scope.current,
-        start: "top top",
-        end: "bottom top",
-        onUpdate: (self) => {
-          const velocity = gsap.utils.clamp(-4, 4, self.getVelocity() / -700);
-          skew(velocity);
-          stretch(1 + Math.abs(velocity) * 0.008);
-        },
-        onLeave: settle,
-        onLeaveBack: settle,
-      });
-
-      return () => {
-        trigger.kill();
-        split.revert();
-      };
+      return () => split.revert();
     },
     { scope },
   );
+
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const result = submitWebsite(value);
+    if (result) {
+      setError(result);
+      input.current?.focus();
+      return;
+    }
+
+    setError(null);
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section
@@ -83,50 +78,63 @@ export function Hero() {
       ref={scope}
       className="relative flex min-h-dvh items-end overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 lg:px-10 lg:pb-16 lg:pt-32"
     >
-      <div
-        data-hero-mark
-        aria-hidden="true"
-        className="hero-mark-geometry bg-accent"
-      />
+      <div data-hero-mark aria-hidden="true" className="hero-mark-geometry bg-accent" />
 
       <div className="relative mx-auto w-full max-w-[1600px]">
         <h1
           ref={headline}
-          className="max-w-[15ch] text-[clamp(3.7rem,11.5vw,10.8rem)] font-semibold leading-[0.96] tracking-[-0.04em] text-foreground"
+          className="display-expansion max-w-[12ch] text-[clamp(3.5rem,11.5vw,10.8rem)] font-semibold leading-[0.9] tracking-[-0.045em] text-foreground"
         >
-          Web cũ. Làm lại cho đáng.
+          Website cũ. Không có nghĩa là phải bỏ.
         </h1>
 
         <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
           <p
             data-hero-copy
-            className="max-w-196 text-base leading-[1.45] text-white/65 md:col-span-7 md:col-start-5 md:text-xl lg:col-span-6 lg:col-start-6"
+            className="max-w-196 text-base leading-[1.55] text-white/65 md:col-span-6 md:col-start-6 md:text-xl"
           >
-            Doanh nghiệp của bạn đã đi xa hơn chính website hiện tại. Nét Nút loại bỏ những thứ cồng kềnh, giữ lại cốt lõi, và thiết kế một trải nghiệm xứng tầm.
+            Ta giữ phần còn giá trị. Gỡ những gì đang làm doanh nghiệp chậm lại. Dựng lại một website rõ hơn, nhanh hơn, đúng với công ty hiện tại.
           </p>
 
-          <div data-hero-copy className="flex flex-col gap-3 sm:flex-row md:col-span-8 md:col-start-5 lg:col-span-7 lg:col-start-6">
-            <a
-              href="#contact"
-              data-cursor-link
-              data-cursor="magnetic"
-              data-magnetic-strength="0.12"
-              className="group inline-flex min-h-12 items-center justify-between gap-7 rounded-full bg-foreground py-2 pl-5 pr-2 text-sm font-semibold text-[#090909] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98]"
-            >
-              Gửi website của bạn
-              <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-accent transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5" aria-hidden="true">
-                <span className="absolute h-px w-3 bg-[#090909]" />
-                <span className="absolute h-3 w-px bg-[#090909]" />
-              </span>
-            </a>
-            <a
-              href="#work"
-              data-cursor-link
-              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-medium text-foreground transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:border-accent active:scale-[0.98]"
-            >
-              Xem dự án
-            </a>
-          </div>
+          <form
+            data-hero-copy
+            onSubmit={submit}
+            className="border-t border-foreground/30 pt-5 md:col-span-7 md:col-start-6"
+            noValidate
+          >
+            <label htmlFor="hero-website" className="font-mono text-xs uppercase tracking-[0.1em] text-foreground/75">
+              Website đang có vấn đề ở đâu?
+            </label>
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+              <input
+                ref={input}
+                id="hero-website"
+                name="website"
+                value={value}
+                onChange={(event) => {
+                  setValue(event.target.value);
+                  if (error) setError(null);
+                }}
+                autoComplete="url"
+                placeholder="abc.vn"
+                aria-invalid={Boolean(error)}
+                aria-describedby="hero-website-note hero-website-error"
+                className="min-h-12 min-w-0 flex-1 border-b border-foreground/40 bg-transparent px-0 text-base text-foreground outline-none placeholder:text-foreground/45 focus:border-accent"
+              />
+              <button
+                type="submit"
+                className="inline-flex min-h-12 shrink-0 items-center justify-center border border-foreground bg-foreground px-5 text-sm font-semibold text-background transition-[background-color,color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:bg-accent hover:text-background active:translate-y-0"
+              >
+                Bắt đầu soi ↗
+              </button>
+            </div>
+            <p id="hero-website-note" className="mt-3 text-xs leading-relaxed text-foreground/55">
+              Chỉ xử lý trên trình duyệt. Không gửi, không lưu.
+            </p>
+            <p id="hero-website-error" aria-live="polite" className="mt-2 min-h-5 text-xs text-accent">
+              {error ? errorCopy[error] : ""}
+            </p>
+          </form>
         </div>
       </div>
     </section>
