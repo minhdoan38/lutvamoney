@@ -48,7 +48,6 @@ export function SelectedWork() {
   const scope = useRef<HTMLElement>(null);
   const frame = useRef<HTMLDivElement>(null);
   const reveal = useRef<HTMLDivElement>(null);
-  const lens = useRef<HTMLDivElement>(null);
   const [comparisonView, setComparisonView] = useState<"old" | "new">("old");
 
   useGSAP(
@@ -81,20 +80,17 @@ export function SelectedWork() {
     reveal.current?.style.setProperty("--mask-x", `${x}px`);
     reveal.current?.style.setProperty("--mask-y", `${y}px`);
     reveal.current?.style.setProperty("--mask-size", "clamp(110px, 18vw, 240px)");
-    gsap.to(lens.current, { x, y, opacity: 1, duration: 0.25, ease: "power3.out" });
   };
 
   const hideMask = () => {
     if (comparisonView === "new") return;
     reveal.current?.style.setProperty("--mask-size", "0px");
-    gsap.to(lens.current, { opacity: 0, duration: 0.2, ease: "power2.out" });
   };
 
   const chooseComparison = (view: "old" | "new") => {
     setComparisonView(view);
     if (view === "old") {
       reveal.current?.style.setProperty("--mask-size", "0px");
-      gsap.to(lens.current, { opacity: 0, duration: 0.2, ease: "power2.out" });
     }
   };
 
@@ -106,7 +102,7 @@ export function SelectedWork() {
   };
 
   return (
-    <section id="work" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
+    <section id="work" ref={scope} className="px-4 py-20 sm:px-6 md:py-28 lg:px-10">
       <div className="mx-auto max-w-[1500px]">
         <ScrollText mode="words">
           <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:mb-20">
@@ -122,7 +118,7 @@ export function SelectedWork() {
           tabIndex={0}
           data-cursor-text="INSPECT"
           aria-label="So sánh concept website cũ và website mới bằng phím mũi tên"
-          className="relative isolate min-h-[72vh] overflow-hidden bg-surface-work outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background md:min-h-[82vh]"
+          className="relative isolate min-h-[64vh] overflow-hidden bg-surface-work outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background md:min-h-[72vh]"
         >
           <ProjectVisual />
 
@@ -141,11 +137,6 @@ export function SelectedWork() {
             <ProjectVisual newVersion />
           </div>
 
-          <div
-            ref={lens}
-            aria-hidden="true"
-            className="pointer-events-none absolute left-0 top-0 z-10 hidden h-[clamp(110px,18vw,240px)] w-[clamp(110px,18vw,240px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 opacity-0 md:block"
-          />
 
           <p className="pointer-events-none absolute right-5 top-5 z-10 max-w-[15ch] text-right text-xs leading-relaxed text-white mix-blend-difference">
             Khung minh họa để xem cách soi trước và sau.

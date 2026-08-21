@@ -5,7 +5,7 @@ import { FinalCTA } from "@/components/sections/final-cta";
 import { Hero } from "@/components/sections/hero";
 import { Insights } from "@/components/sections/insights";
 import { ProcessAbout } from "@/components/sections/process-about";
-import { SelectedWork } from "@/components/sections/selected-work";
+import { ReconstructionStage } from "@/components/sections/reconstruction-stage";
 import { SiteNav } from "@/components/site-nav";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
         <SiteNav />
         <Hero />
         <Diagnosis />
-        <SelectedWork />
+        <ReconstructionStage />
         <Capabilities />
         <ProcessAbout />
         <Insights />
