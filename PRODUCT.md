@@ -8,44 +8,54 @@ web
 
 ## Stack
 
-Next.js App Router, Tailwind CSS v4, TypeScript, GSAP, Lenis React integration, and Next.js 16. The originally requested `@studio-freight/react-lenis` package is deprecated and incompatible with React 19, so the maintained `lenis/react` export is used instead.
+Next.js App Router, Tailwind CSS v4, TypeScript, GSAP, Lenis React integration, and Next.js 16. The maintained `lenis/react` export is used for the existing React 19 setup.
 
 ## Users
 
-Primary users are Vietnamese business owners whose company has outgrown its current website. They need a clear assessment of what to change before committing to a redesign.
+Nét Nút is for Vietnamese small and mid-sized businesses, commonly teams of roughly 20–100 people, whose company has outgrown its current website. The primary reader is a founder, owner, marketing lead, or another decision maker evaluating whether a redesign is worth the attention and budget.
 
 ## Product Purpose
 
-Nét Nút Studio helps businesses redesign outdated corporate websites. This landing page should make the studio's point of view understandable within seconds and move qualified visitors toward submitting their current website link for analysis.
+This website is an interactive editorial instrument for starting a truthful redesign conversation. It helps a visitor recognize where an inherited website may be creating friction, see how Nét Nút thinks through reconstruction, and prepare a brief without pretending to run an audit.
+
+## Commercial Context
+
+Budgets vary from below 50 million to approximately 150 million VNĐ depending on scope, content, design system, implementation, and motion needs. The central tension is not “new versus old”: a mature company needs to preserve accumulated brand equity while removing the legacy friction that keeps its website behind the business.
+
+The experience supports three conversion levels:
+
+1. **Recognition** — understand that an old website can misrepresent a current business.
+2. **Inspection** — explore the illustrative diagnosis and reconstruction model.
+3. **Conversation** — share a website address locally in the browser as preparation for a future brief.
 
 ## Positioning
 
-Nét Nút focuses on direct, specialist website redesign work for Vietnamese businesses. It keeps the useful value in an existing brand while removing outdated structure, friction, and visual noise.
+Nét Nút is a small Vietnamese studio focused on direct website redesign work. It works close to the problem, keeps useful history, removes unnecessary friction, and makes a clearer system for the company that exists today.
 
 ## Operating Context
 
-Visitors arrive from business and professional contexts, often reviewing the page on a laptop or phone between work tasks. They scan quickly, need to understand the studio's process and capabilities, and should be able to submit a website URL without a backend in this first version.
+Visitors often arrive between work tasks and scan on a laptop or phone. Desktop is the art-direction target: the page may use density, ruled fields, variable display type, and a staged reconstruction sequence. Mobile must have no regression: the same meaning, controls, form flow, and anchors remain available in a direct vertical reading order at narrow widths.
 
 ## Capabilities and Constraints
 
-The landing page is a single scrolling surface with navigation, hero, services, selected work, capabilities, process and studio introduction, insights, and a final website analysis form. The form is a frontend-only simulation for now. Motion must support understanding, hierarchy, and feedback, honor reduced motion, and avoid raw scroll event listeners. Responsive behavior must work below 768px. No real case study assets are available yet, so synthetic visuals must be clearly replaceable and must not imply factual client results.
+The product is a browser-only landing experience with public routes `/` and `/about`, and compatible anchors `#services`, `#work`, `#capabilities`, `#process`, `#insights`, and `#contact`. URL parsing is local and pure. The URL is never fetched, transmitted, persisted, scored, analyzed, or sent to a backend. There is no analytics, fake loading, fake metric, testimonial, client proof, audit claim, or URL-specific diagnosis.
+
+Synthetic interface compositions and hypothetical examples are allowed only when explicitly labeled as illustrative. The semantic HTML must stand on its own before motion enhancement; GSAP and Lenis support hierarchy and comprehension without hiding essential content. Raw scroll listeners and React state that updates every frame are out of scope.
 
 ## Brand Commitments
 
-Nét Nút Studio is the product name. The provided Vietnamese copy is the source of truth for visible content. The requested visual direction is premium editorial with oversized technical sans typography, a near-black background `#090909`, off-white text `#EDEDED`, and one vermilion accent `#FF3300`. The page must avoid decorative dashes, meaningless numbering, scroll cue text, equal three-column cards, purple gradients, and mesh gradients.
-
-## Evidence on Hand
-
-The repository contains only the default Next.js starter surface. No real project images, case study media, customer logos, testimonials, or performance claims are available. Selected work visuals are illustrative placeholders and must be replaced with approved project assets before production launch.
+Nét Nút Studio is the product name. Visible copy is Vietnamese-first, direct, and specialist. The active palette is `#090909`, `#EDEDED`, and `#FF3300`; only alpha variations of those colors may create tonal depth. Vermilion is reserved for intervention, active state, and conversion. Navigation and CTA geometry are squared; pills are state-only controls or compact status indicators.
 
 ## Product Principles
 
 - Show useful truth before decoration.
-- Make the existing website the starting point for the conversation.
-- Keep the experience direct, focused, and easy to scan.
-- Use motion to reveal structure and reinforce action.
-- Never invent client proof or business results.
+- Start with the website the business already has.
+- Preserve equity while removing legacy friction.
+- Make the reconstruction method inspectable without claiming a result.
+- Use motion to reveal structure, hierarchy, comparison, or state.
+- Keep every essential message and action available without motion.
+- Never invent client proof, business outcomes, or analysis data.
 
 ## Accessibility & Inclusion
 
-Use semantic landmarks, visible keyboard focus, descriptive labels, sufficient contrast, touch-friendly targets, and reduced-motion fallbacks. Keep all essential information available without animation.
+Use semantic landmarks, visible keyboard focus, descriptive labels, live validation messages, touch targets of at least 44px, logical focus order, and reduced-motion fallbacks. Native cursor behavior remains unchanged outside the reconstruction stage. The stage-only contextual cursor is an enhancement for fine pointers and is never required to understand or operate the experience.

@@ -1,3 +1,5 @@
+> **Superseded:** This Obsidian + Champagne direction is historical. Use `docs/superpowers/plans/2026-08-21-interactive-editorial-reconstruction.md` as the active source plan.
+
 # Premium Visual Refresh Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.

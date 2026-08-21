@@ -1,3 +1,5 @@
+> **Superseded:** This Obsidian + Champagne direction is historical. Use `docs/superpowers/plans/2026-08-21-interactive-editorial-reconstruction.md` as the active source plan.
+
 # Nét Nút Studio Premium Visual Refresh
 
 ## Mục tiêu
