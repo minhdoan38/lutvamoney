@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { prefersReducedMotion } from "@/lib/motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,7 +38,7 @@ export function Diagnosis() {
 
   useGSAP(
     () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (prefersReducedMotion()) return;
 
       gsap.from("[data-diagnosis-row]", {
         y: 24,
@@ -83,11 +84,18 @@ export function Diagnosis() {
                 className="border-b editorial-rule"
                 onFocus={() => setActive(index)}
                 onMouseEnter={() => setActive(index)}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") {
+                    event.preventDefault();
+                    setActive(-1);
+                  }
+                }}
               >
                 <button
                   type="button"
                   aria-expanded={isActive}
                   aria-controls={`diagnosis-panel-${index}`}
+                  aria-describedby={`diagnosis-desktop-copy-${index}`}
                   onClick={() => setActive(isActive ? -1 : index)}
                   className="grid min-h-20 w-full gap-4 py-6 text-left md:grid-cols-12 md:items-center md:py-8"
                 >

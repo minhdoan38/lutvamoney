@@ -1,0 +1,4 @@
+interface:
+ display_name: "StateM Single Agent"
+ short_description: "Track durable phases without extra agents"
+ default_prompt: "Use the minimal StateM profile for a genuinely long single-agent task."

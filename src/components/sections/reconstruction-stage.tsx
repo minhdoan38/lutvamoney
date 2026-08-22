@@ -1,12 +1,12 @@
 "use client";
 
-import type { KeyboardEvent, PointerEvent } from "react";
+import Link from "next/link";
+import type { CSSProperties, KeyboardEvent, PointerEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
-import { ContextualCursor } from "@/components/reconstruction/contextual-cursor";
 import {
   getPhaseByIndex,
   getPhaseIndex,
@@ -15,6 +15,7 @@ import {
   type ReconstructionPhase,
 } from "@/components/reconstruction/reconstruction-model";
 import { useHomeExperience } from "@/components/home-experience-provider";
+import { clamp } from "@/lib/motion";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -35,53 +36,74 @@ function StageBlocks({ variant }: { variant: "old" | "new" }) {
   );
 }
 
+function NewStageArt() {
+  return (
+    <>
+      <StageBlocks variant="new" />
+      <div className="stage-new-hierarchy absolute left-[8%] top-[8%] max-w-[8ch] text-[clamp(2.8rem,7vw,7rem)] font-semibold leading-[0.86] tracking-[-0.05em] text-foreground">
+        Rõ hơn.
+      </div>
+      <div className="stage-new-cta absolute bottom-[9%] right-[8%] max-w-[10ch] bg-accent p-4 text-right text-lg font-semibold leading-none text-background">
+        Một bước tiếp theo rõ ràng.
+      </div>
+    </>
+  );
+}
+
 export function ReconstructionStage() {
   const scope = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
+  const pointerReveal = useRef<HTMLDivElement>(null);
+  const draggingPointerId = useRef<number | null>(null);
+  const compareProgressRef = useRef(0);
   const [activePhase, setActivePhase] = useState<ReconstructionPhase>("inspect");
   const [compareProgress, setCompareProgress] = useState(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const { subject } = useHomeExperience();
-  const reduceMotion = useRef(false);
+  const active = reconstructionPhases[getPhaseIndex(activePhase)];
 
   useEffect(() => {
-    reduceMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => {
-      reduceMotion.current = media.matches;
-      if (media.matches) setActivePhase("inspect");
-    };
+    const update = () => setReduceMotion(media.matches);
+    update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
 
   useGSAP(
     () => {
-      if (reduceMotion.current) return;
-      const sentinels = Array.from(scope.current?.querySelectorAll<HTMLElement>("[data-phase-sentinel]") ?? []);
-      const triggers = sentinels.map((sentinel, index) =>
-        ScrollTrigger.create({
-          trigger: sentinel,
-          start: "top 62%",
-          end: "bottom 38%",
-          onEnter: () => setActivePhase(getPhaseByIndex(index)),
-          onEnterBack: () => setActivePhase(getPhaseByIndex(index)),
-        }),
-      );
-      return () => triggers.forEach((trigger) => trigger.kill());
+      const media = gsap.matchMedia();
+      media.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+        const sentinels = Array.from(scope.current?.querySelectorAll<HTMLElement>("[data-phase-sentinel-desktop]") ?? []);
+        const triggers = sentinels.map((sentinel, index) =>
+          ScrollTrigger.create({
+            trigger: sentinel,
+            start: "top 62%",
+            end: "bottom 38%",
+            onEnter: () => setActivePhase(getPhaseByIndex(index)),
+            onEnterBack: () => setActivePhase(getPhaseByIndex(index)),
+          }),
+        );
+
+        return () => triggers.forEach((trigger) => trigger.kill());
+      });
+
+      return () => media.revert();
     },
-    { scope },
+    { scope, dependencies: [reduceMotion], revertOnUpdate: true },
   );
 
   useEffect(() => {
-    const element = stage.current;
-    if (!element) return;
-    element.style.setProperty("--compare-progress", `${compareProgress}`);
+    compareProgressRef.current = compareProgress;
+    stage.current?.style.setProperty("--compare-progress", `${compareProgress}`);
   }, [compareProgress]);
 
   const choosePhase = (phase: ReconstructionPhase) => {
     setActivePhase(phase);
-    const sentinel = scope.current?.querySelector<HTMLElement>(`[data-phase-sentinel="${phase}"]`);
-    sentinel?.scrollIntoView({ behavior: reduceMotion.current ? "auto" : "smooth", block: "center" });
+    const sentinel = scope.current?.querySelector<HTMLElement>(
+      `[data-phase-sentinel-desktop="${phase}"], [data-phase-sentinel-mobile="${phase}"]`,
+    );
+    sentinel?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
   };
 
   const stepPhase = (direction: -1 | 1) => {
@@ -103,19 +125,91 @@ export function ReconstructionStage() {
     }
   };
 
-  const handleDrag = (event: PointerEvent<HTMLDivElement>) => {
-    if (activePhase !== "rebuild" || reduceMotion.current) return;
+  const writeCompareProgress = (progress: number) => {
+    const nextProgress = clamp(progress, 0, 1);
+    compareProgressRef.current = nextProgress;
+    stage.current?.style.setProperty("--compare-progress", `${nextProgress}`);
+  };
+
+  const showPointerReveal = (event: PointerEvent<HTMLDivElement>) => {
+    if (
+      reduceMotion ||
+      draggingPointerId.current !== null ||
+      event.pointerType === "touch" ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
+      return;
+    }
+
     const bounds = event.currentTarget.getBoundingClientRect();
-    const progress = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
+    pointerReveal.current?.style.setProperty("--pointer-reveal-x", `${event.clientX - bounds.left}px`);
+    pointerReveal.current?.style.setProperty("--pointer-reveal-y", `${event.clientY - bounds.top}px`);
+    pointerReveal.current?.style.setProperty("--pointer-reveal-size", "clamp(110px, 18vw, 240px)");
+  };
+
+  const hidePointerReveal = () => {
+    pointerReveal.current?.style.setProperty("--pointer-reveal-size", "0px");
+  };
+
+  const progressFromPointer = (event: PointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    return clamp((event.clientX - bounds.left) / bounds.width, 0, 1);
+  };
+
+  const endDrag = (event?: PointerEvent<HTMLDivElement>) => {
+    const pointerId = draggingPointerId.current;
+    if (pointerId !== null && event?.currentTarget.hasPointerCapture(pointerId)) {
+      event.currentTarget.releasePointerCapture(pointerId);
+    }
+    draggingPointerId.current = null;
+  };
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (activePhase !== "rebuild" || reduceMotion || (event.pointerType === "mouse" && event.button !== 0)) return;
+    hidePointerReveal();
+    draggingPointerId.current = event.pointerId;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    const progress = progressFromPointer(event);
+    writeCompareProgress(progress);
     setCompareProgress(progress);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (draggingPointerId.current === event.pointerId) {
+      writeCompareProgress(progressFromPointer(event));
+      return;
+    }
+    showPointerReveal(event);
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (draggingPointerId.current !== event.pointerId) return;
+    const progress = progressFromPointer(event);
+    writeCompareProgress(progress);
+    setCompareProgress(progress);
+    endDrag(event);
+  };
+
+  const handlePointerCancel = (event: PointerEvent<HTMLDivElement>) => {
+    if (draggingPointerId.current !== event.pointerId) return;
+    writeCompareProgress(compareProgressRef.current);
+    endDrag(event);
   };
 
   const setCompare = (progress: number) => {
-    setActivePhase("rebuild");
-    setCompareProgress(progress);
+    choosePhase("rebuild");
+    const nextProgress = clamp(progress, 0, 1);
+    setCompareProgress(nextProgress);
+    writeCompareProgress(nextProgress);
   };
 
-  const active = reconstructionPhases[getPhaseIndex(activePhase)];
+  const stageStyle = {
+    "--compare-progress": compareProgress,
+    "--stage-density": active.density,
+    "--stage-hierarchy": active.hierarchy,
+    "--stage-cta-scale": active.ctaScale,
+    "--stage-column-flow": active.columnFlow,
+  } as CSSProperties;
 
   return (
     <section id="work" ref={scope} className="stage-shell px-4 py-20 sm:px-6 md:py-28 lg:px-10" data-reconstruction-stage>
@@ -137,7 +231,7 @@ export function ReconstructionStage() {
 
         <div className="grid gap-8 md:grid-cols-12 md:items-start md:gap-10">
           <div className="md:col-span-4">
-            <div className="stage-sticky flex flex-col justify-between gap-8">
+            <div className={`stage-sticky ${reduceMotion ? "" : "stage-sticky--enabled"} flex flex-col justify-between gap-8`}>
               <div className="stage-phase-copy">
                 <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted">
                   {active.annotation}
@@ -157,6 +251,7 @@ export function ReconstructionStage() {
                     type="button"
                     role="tab"
                     aria-selected={activePhase === phase.id}
+                    aria-controls={`phase-panel-${phase.id}`}
                     onClick={() => choosePhase(phase.id)}
                     className={`min-h-11 border px-3 py-2 text-left text-xs transition-[background-color,color,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${activePhase === phase.id ? "border-accent bg-accent text-background" : "border-white/25 text-foreground hover:border-accent"}`}
                   >
@@ -173,9 +268,16 @@ export function ReconstructionStage() {
               ref={stage}
               tabIndex={0}
               onKeyDown={handleKeyDown}
-              onPointerMove={handleDrag}
-              aria-label="Khung minh họa quá trình nhìn và dựng lại website. Dùng phím mũi tên để chuyển pha."
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerCancel}
+              onLostPointerCapture={handlePointerCancel}
+              onPointerLeave={hidePointerReveal}
+              aria-label="Khung minh họa quá trình nhìn và dựng lại website. Di chuyển trỏ chuột để soi web mới; dùng phím mũi tên để chuyển pha."
               className="stage-canvas outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              style={stageStyle}
+              aria-describedby="reconstruction-stage-help"
             >
               <div className="stage-old-art">
                 <StageBlocks variant="old" />
@@ -184,25 +286,28 @@ export function ReconstructionStage() {
                 </div>
               </div>
               <div className="stage-new-art">
-                <StageBlocks variant="new" />
-                <div className="absolute left-[8%] top-[8%] max-w-[8ch] text-[clamp(2.8rem,7vw,7rem)] font-semibold leading-[0.86] tracking-[-0.05em] text-foreground">
-                  Rõ hơn.
-                </div>
-                <div className="absolute bottom-[9%] right-[8%] max-w-[10ch] bg-accent p-4 text-right text-lg font-semibold leading-none text-background">
-                  Một bước tiếp theo rõ ràng.
-                </div>
+                <NewStageArt />
+              </div>
+              <div ref={pointerReveal} className="stage-pointer-reveal" aria-hidden="true">
+                <NewStageArt />
               </div>
               <div className="stage-bounds" aria-hidden="true" />
               <p className="absolute bottom-5 left-5 z-10 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-foreground/65">
                 {compareProgress >= 0.5 ? "After / concept minh họa" : "Before / concept minh họa"}
               </p>
-              <ContextualCursor label={activePhase === "rebuild" ? "GIỮ ĐỂ SOI" : "KÉO ĐỂ SO"} />
             </div>
 
             <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex gap-2">
+              <Link
+                href="/redesign/nha-moc-demo"
+                className="inline-flex min-h-11 items-center border-b border-accent pb-2 text-sm text-foreground transition-colors duration-200 hover:text-accent"
+              >
+                Xem case study demo →
+              </Link>
+              <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
+                  aria-pressed={compareProgress === 0}
                   onClick={() => setCompare(0)}
                   className="min-h-11 border border-white/25 px-4 py-2 text-xs text-foreground transition-colors duration-200 hover:border-accent"
                 >
@@ -210,14 +315,31 @@ export function ReconstructionStage() {
                 </button>
                 <button
                   type="button"
+                  aria-pressed={compareProgress === 1}
                   onClick={() => setCompare(1)}
                   className="min-h-11 border border-white/25 px-4 py-2 text-xs text-foreground transition-colors duration-200 hover:border-accent"
                 >
                   After
                 </button>
+                <label htmlFor="compare-range" className="sr-only">
+                  Mức độ tái cấu trúc
+                </label>
+                <input
+                  id="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value={Math.round(compareProgress * 100)}
+                  onChange={(event) => setCompare(Number(event.target.value) / 100)}
+                  aria-label="Mức độ tái cấu trúc từ Before đến After"
+                  className="min-h-11 w-40 accent-accent"
+                />
               </div>
-              <p className="text-xs leading-relaxed text-muted">
-                {activePhase === "rebuild" ? "Kéo trong khung để thay đổi mức độ so sánh." : "Dùng mũi tên trái/phải để đi qua năm pha."}
+              <p id="reconstruction-stage-help" className="text-xs leading-relaxed text-muted">
+                {activePhase === "rebuild" && !reduceMotion
+                  ? "Kéo trong khung hoặc dùng thanh điều khiển để thay đổi mức độ so sánh."
+                  : "Di chuyển trỏ chuột trong khung để soi website mới; dùng mũi tên trái/phải để đi qua năm pha."}
               </p>
             </div>
           </div>
@@ -225,13 +347,13 @@ export function ReconstructionStage() {
 
         <div className="mt-8 hidden md:block" aria-hidden="true">
           {reconstructionPhases.map((phase) => (
-            <div key={phase.id} data-phase-sentinel={phase.id} className="h-[42vh]" />
+            <div key={phase.id} data-phase-sentinel-desktop={phase.id} className="h-[42vh]" />
           ))}
         </div>
 
         <div className="mt-10 flex flex-col gap-5 border-t editorial-rule pt-5 md:hidden">
           {reconstructionPhases.map((phase) => (
-            <article key={phase.id} data-phase-sentinel={phase.id} className="border-b editorial-rule pb-5">
+            <article key={phase.id} id={`phase-panel-${phase.id}`} data-phase-sentinel-mobile={phase.id} className="border-b editorial-rule pb-5">
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-accent">{phase.annotation}</p>
               <h3 className="mt-3 text-2xl font-medium tracking-[-0.03em]">{phase.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">{phase.copy}</p>

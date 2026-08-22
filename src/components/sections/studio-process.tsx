@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { ScrollText } from "@/components/scroll-text";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
@@ -22,7 +23,7 @@ export function StudioProcess() {
 
   useGSAP(
     () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (prefersReducedMotion()) return;
       const copies = Array.from(scope.current?.querySelectorAll<HTMLElement>("[data-process-copy]") ?? []);
       const splits = copies.map((copy) => SplitText.create(copy, { type: "lines", linesClass: "process-line", mask: "lines" }));
       splits.forEach((split, index) => {

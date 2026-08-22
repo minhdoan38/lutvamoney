@@ -1,0 +1,4 @@
+interface:
+ display_name: "Anti Over-Engineering"
+ short_description: "Stop scope drift and low-value extra work"
+ default_prompt: "Freeze the done test, park detours, verify once, and stop."

@@ -19,7 +19,7 @@ export function OutroStatement() {
       const lead = scope.current.querySelector<HTMLElement>("[data-outro-lead]");
       const close = scope.current.querySelector<HTMLElement>("[data-outro-close]");
       if (!lead || !close) return;
-      const split = SplitText.create(display.current, { type: "lines", linesClass: "outro-display-line", mask: "lines", aria: "hidden" });
+      const split = SplitText.create(display.current, { type: "lines", linesClass: "outro-display-line", mask: "lines", aria: "auto" });
 
       gsap.fromTo(lead, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "expo.out", scrollTrigger: { trigger: lead, start: "top 82%", toggleActions: "play none none none", once: true } });
       gsap.fromTo(split.lines, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.07, ease: "expo.out", scrollTrigger: { trigger: display.current, start: "top 78%", toggleActions: "play none none none", once: true } });

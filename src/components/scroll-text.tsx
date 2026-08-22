@@ -42,7 +42,7 @@ export function ScrollText({
         linesClass: "scroll-text-line",
         wordsClass: "scroll-text-word",
         mask: "lines",
-        aria: "hidden",
+        aria: "auto",
       });
       const parts = mode === "words" ? split.words : split.lines;
 

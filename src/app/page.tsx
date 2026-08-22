@@ -1,11 +1,11 @@
 import { HomeExperienceProvider } from "@/components/home-experience-provider";
 import { Capabilities } from "@/components/sections/capabilities";
-import { Diagnosis } from "@/components/sections/diagnosis";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { Hero } from "@/components/sections/hero";
 import { Insights } from "@/components/sections/insights";
-import { StudioProcess } from "@/components/sections/studio-process";
+import { Diagnosis } from "@/components/sections/diagnosis";
 import { ReconstructionStage } from "@/components/sections/reconstruction-stage";
+import { StudioProcess } from "@/components/sections/studio-process";
 import { SiteNav } from "@/components/site-nav";
 
 export default function Home() {

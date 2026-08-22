@@ -23,7 +23,7 @@ export function ManifestoSection() {
       const entries = Array.from(scope.current?.querySelectorAll<HTMLElement>("[data-manifesto-entry]") ?? []);
       const splits = entries.map((entry) => {
         const line = entry.querySelector<HTMLElement>("[data-manifesto-line]");
-        return line ? SplitText.create(line, { type: "lines", linesClass: "manifesto-split-line", mask: "lines", aria: "hidden" }) : null;
+        return line ? SplitText.create(line, { type: "lines", linesClass: "manifesto-split-line", mask: "lines", aria: "auto" }) : null;
       });
 
       entries.forEach((entry, index) => {

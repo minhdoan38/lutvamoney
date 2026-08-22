@@ -1,0 +1,49 @@
+name: single-agent-minimal
+initial: scope
+
+nodes:
+ scope:
+ prompt: Record the objective, done test, non-goals, and material constraints. Inspect only enough to remove ambiguity.
+ before_transfer:
+ type: checklist
+ items:
+ - Objective and done test are explicit
+ - Non-goals and safety constraints are explicit
+ work:
+ prompt: Execute the smallest coherent work pass that can satisfy the done test. Park optional improvements.
+ before_transfer:
+ type: checklist
+ items:
+ - Work stayed within scope
+ - Evidence needed for verification exists or its absence is explicit
+ verify:
+ prompt: Run one proportional verification pass against the done test. Return to work only for a concrete failed check.
+ dynamic_before_transfer:
+ path: current_entry
+ required: false
+ min_items: 0
+ require_reason: true
+ require_basis: true
+ allow_types:
+ - predicate
+ - command
+ done:
+ prompt: Report outcome, evidence, residual uncertainty, and recovery path. Do not add optional work.
+
+edges:
+ - from: scope
+ to: work
+ condition: Scope is frozen.
+ max_attempts: 2
+ - from: work
+ to: verify
+ condition: The scoped work is complete.
+ max_attempts: 3
+ - from: verify
+ to: work
+ condition: A named verification check failed and requires a bounded repair.
+ max_attempts: 2
+ - from: verify
+ to: done
+ condition: The done test passed and remaining uncertainty is recorded.
+ max_attempts: 2

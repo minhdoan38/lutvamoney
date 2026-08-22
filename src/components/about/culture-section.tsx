@@ -17,8 +17,8 @@ export function CultureSection() {
       const title = scope.current?.querySelector<HTMLElement>("[data-culture-title]");
       const body = scope.current?.querySelector<HTMLElement>("[data-culture-body]");
       if (!title || !body) return;
-      const titleSplit = SplitText.create(title, { type: "lines", linesClass: "culture-title-line", mask: "lines", aria: "hidden" });
-      const bodySplit = SplitText.create(body, { type: "lines", linesClass: "culture-body-line", mask: "lines", aria: "hidden" });
+      const titleSplit = SplitText.create(title, { type: "lines", linesClass: "culture-title-line", mask: "lines", aria: "auto" });
+      const bodySplit = SplitText.create(body, { type: "lines", linesClass: "culture-body-line", mask: "lines", aria: "auto" });
 
       gsap.fromTo(titleSplit.lines, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.85, stagger: 0.07, ease: "expo.out", scrollTrigger: { trigger: title, start: "top 80%", toggleActions: "play none none none", once: true } });
       gsap.fromTo(bodySplit.lines, { yPercent: 105, opacity: 0.25 }, { yPercent: 0, opacity: 1, duration: 0.75, stagger: 0.05, ease: "expo.out", scrollTrigger: { trigger: body, start: "top 78%", toggleActions: "play none none none", once: true } });

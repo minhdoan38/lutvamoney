@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
-import { clamp } from "@/lib/motion";
 import { ReactLenis, useLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,13 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 function LenisGsapBridge() {
-  const lenis = useLenis((instance) => {
-    ScrollTrigger.update();
-    document.documentElement.style.setProperty(
-      "--lenis-velocity",
-      `${clamp(instance.velocity / 1000, -1, 1)}`,
-    );
-  });
+  const lenis = useLenis(() => ScrollTrigger.update());
 
   useEffect(() => {
     if (!lenis) return;
@@ -39,10 +32,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     const update = () => setReduceMotion(media.matches);
     update();
     media.addEventListener("change", update);
-    return () => {
-      media.removeEventListener("change", update);
-      document.documentElement.style.removeProperty("--lenis-velocity");
-    };
+    return () => media.removeEventListener("change", update);
   }, []);
 
   if (reduceMotion) return children;

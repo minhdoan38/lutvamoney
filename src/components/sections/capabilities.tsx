@@ -1,12 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollText } from "@/components/scroll-text";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import { prefersReducedMotion } from "@/lib/motion";
 
 const capabilities = [
   { name: "Information architecture", copy: "Sắp xếp nội dung thành những đường đi có thể hiểu được.", annotation: "STRUCTURE / FLOW" },
@@ -21,84 +17,85 @@ const capabilities = [
 
 export function Capabilities() {
   const scope = useRef<HTMLElement>(null);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
 
-  useGSAP(
-    () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const magnetize = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (prefersReducedMotion()) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - bounds.left - bounds.width / 2;
+    const y = event.clientY - bounds.top - bounds.height / 2;
+    gsap.to(event.currentTarget, {
+      x: x * 0.2,
+      y: y * 0.28,
+      rotation: x * 0.012,
+      duration: 0.55,
+      ease: "power3.out",
+      overwrite: true,
+    });
+  };
 
-      gsap.from("[data-capability]", {
-        y: 24,
-        opacity: 0,
-        stagger: 0.055,
-        duration: 0.7,
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: scope.current,
-          start: "top 78%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-    },
-    { scope },
-  );
+  const release = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (prefersReducedMotion()) return;
+    gsap.to(event.currentTarget, {
+      x: 0,
+      y: 0,
+      rotation: 0,
+      duration: 0.75,
+      ease: "elastic.out(1,0.45)",
+      overwrite: true,
+    });
+  };
 
   return (
     <section id="capabilities" ref={scope} className="px-4 py-20 sm:px-6 md:py-28 lg:px-10">
-      <div className="mx-auto max-w-375">
+      <div className="mx-auto max-w-[1500px]">
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
-          <ScrollText mode="words">
-            <h2 className="display-expansion max-w-[8ch] text-[clamp(3.2rem,7vw,6.2rem)] font-semibold leading-[0.88] tracking-[-0.045em] md:col-span-5">
-              Năng lực để dựng lại.
-            </h2>
-          </ScrollText>
-          <div className="md:col-span-7 md:col-start-6">
-            <p className="mb-4 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-accent">
-              Hệ thống làm việc / khung minh họa
-            </p>
-            <div className="border-t editorial-rule">
-              {capabilities.map((capability, index) => {
-                const isActive = active === index;
-                return (
-                  <article
-                    key={capability.name}
-                    data-capability
-                    data-active={isActive}
-                    className="capability-item border-b editorial-rule"
-                    onMouseEnter={() => setActive(index)}
-                    onFocus={() => setActive(index)}
+          <h2 className="display-expansion max-w-[8ch] text-[clamp(3.6rem,9vw,8.8rem)] font-semibold leading-[0.83] tracking-[-0.04em] md:col-span-7">
+            Từ nét đến nút.
+          </h2>
+          <div className="flex flex-wrap content-start gap-2 md:col-span-5 md:pt-8">
+            {capabilities.map((capability, index) => {
+              const isActive = active === index;
+              return (
+                <article
+                  key={capability.name}
+                  className="capability-item w-full border-b editorial-rule"
+                  data-active={isActive}
+                  onFocus={() => setActive(index)}
+                  onMouseEnter={() => setActive(index)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                      event.preventDefault();
+                      setActive(null);
+                    }
+                  }}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={isActive}
+                    aria-controls={`capability-copy-${index}`}
+                    onClick={() => setActive(isActive ? null : index)}
+                    onPointerMove={magnetize}
+                    onPointerLeave={release}
+                    className="grid min-h-16 w-full grid-cols-[2.5rem_1fr_auto] items-baseline gap-3 py-5 text-left md:grid-cols-[3rem_1fr_auto] md:gap-5"
                   >
-                    <button
-                      type="button"
-                      aria-expanded={isActive}
-                      aria-controls={`capability-copy-${index}`}
-                      onClick={() => setActive(isActive ? -1 : index)}
-                      className="grid min-h-16 w-full grid-cols-[2.5rem_1fr_auto] items-baseline gap-3 py-5 text-left md:grid-cols-[3rem_1fr_auto] md:gap-5"
-                    >
-                      <span className="capability-index font-mono text-[0.625rem] tracking-[0.1em] text-muted">
-                        0{index + 1}
-                      </span>
-                      <span className="capability-name display-compression text-[clamp(1.55rem,3.2vw,3.4rem)] font-medium leading-none tracking-[-0.04em] transition-[color,font-variation-settings] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
-                        {capability.name}
-                      </span>
-                      <span className="font-mono text-[0.55rem] tracking-[0.1em] text-muted">
-                        {capability.annotation}
-                      </span>
-                    </button>
-                    <div
-                      id={`capability-copy-${index}`}
-                      role="region"
-                      aria-hidden={!isActive}
-                      className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-                    >
-                      <p className="min-h-0 pb-5 pl-[3.5rem] text-sm leading-relaxed text-muted md:pl-16">
-                        {capability.copy}
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                    <span className="capability-index font-mono text-[0.625rem] tracking-[0.1em] text-muted">0{index + 1}</span>
+                    <span className="capability-name display-compression text-[clamp(1.55rem,3.2vw,3.4rem)] font-medium leading-none tracking-[-0.04em] transition-[color,font-variation-settings] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                      {capability.name}
+                    </span>
+                    <span className="font-mono text-[0.55rem] tracking-[0.1em] text-muted">{capability.annotation}</span>
+                  </button>
+                  <div
+                    id={`capability-copy-${index}`}
+                    role="region"
+                    aria-hidden={!isActive}
+                    className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <p className="min-h-0 pb-5 pl-[3.5rem] text-sm leading-relaxed text-muted md:pl-16">{capability.copy}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
