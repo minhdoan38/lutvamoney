@@ -1,112 +1,125 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
-import { useHomeExperience } from "@/components/home-experience-provider";
-import type { WebsiteParseError } from "@/lib/website-url";
+import type { FormEvent } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollText } from "@/components/scroll-text";
 
-const parseErrorCopy: Record<WebsiteParseError, string> = {
-  empty: "Nhập link website trước khi chuẩn bị brief.",
-  invalid: "Link website chưa đúng định dạng.",
-  "unsupported-protocol": "Chỉ nhận link bắt đầu bằng http:// hoặc https://.",
-};
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function FinalCTA() {
-  const { subject, submitWebsite, clearWebsite } = useHomeExperience();
-  const [draft, setDraft] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const lastSubjectUrl = useRef<string | null>(null);
+  const scope = useRef<HTMLElement>(null);
+  const [status, setStatus] = useState<"idle" | "done">("idle");
+  const [submittedUrl, setSubmittedUrl] = useState("");
 
-  useEffect(() => {
-    const subjectUrl = subject?.normalizedUrl ?? null;
-    if (subjectUrl === lastSubjectUrl.current) return;
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    setDraft(subjectUrl ?? "");
-    setError(null);
-    setSubmitted(false);
-    lastSubjectUrl.current = subjectUrl;
-  }, [subject?.normalizedUrl]);
+      gsap.from("[data-cta-field]", {
+        y: 28,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: "expo.out",
+        scrollTrigger: {
+          trigger: scope.current,
+          start: "top 78%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+    },
+    { scope },
+  );
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const parseError = submitWebsite(draft);
+    const website = new FormData(event.currentTarget).get("website");
+    if (typeof website !== "string") return;
 
-    if (parseError) {
-      setError(parseErrorCopy[parseError]);
-      setSubmitted(false);
-      return;
-    }
-
-    setError(null);
-    setSubmitted(true);
+    // TODO: Implement Supabase/n8n backend logic later
+    setSubmittedUrl(website);
+    setStatus("done");
   };
 
-  const clear = () => {
-    clearWebsite();
-    setDraft("");
-    setError(null);
-    setSubmitted(false);
+  const reset = () => {
+    setSubmittedUrl("");
+    setStatus("idle");
   };
 
   return (
-    <section id="contact" className="px-4 pb-8 pt-20 sm:px-6 md:pt-28 lg:px-10">
-      <div className="mx-auto max-w-[1500px] bg-accent px-5 py-12 text-[#090909] sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-20">
+    <section id="contact" ref={scope} className="px-4 pb-8 pt-32 sm:px-6 md:pt-48 lg:px-10">
+      <div className="mx-auto max-w-[1500px] bg-accent px-5 py-12 text-background sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-20">
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-8">
-            <h2 className="display-release max-w-[12ch] text-[clamp(3.2rem,8.6vw,8rem)] font-semibold leading-[0.82] tracking-[-0.04em]">
-              Gửi website hiện tại.
-            </h2>
-            <p className="mt-8 max-w-[42rem] text-base leading-relaxed text-black/90 md:text-lg">
-              Chúng tôi chuẩn bị một brief phía client ngay trong trình duyệt. Không gửi dữ liệu, không lưu website, không giả vờ đã phân tích.
-            </p>
-            {subject ? (
-              <p className="mt-5 font-mono text-xs uppercase tracking-[0.1em] text-black/75">
-                Ta đang nói về {subject.domain}.
+            <ScrollText mode="words">
+              <h2 className="max-w-[12ch] text-[clamp(3.2rem,8.6vw,8rem)] font-semibold leading-[0.96] tracking-[-0.04em]">
+                Website của bạn đã cũ chưa?
+              </h2>
+            </ScrollText>
+            <ScrollText>
+              <p className="mt-8 max-w-[42rem] text-base leading-relaxed text-black/90 md:text-lg">
+                Để lại link website của bạn. Chúng tôi sẽ cho bạn xem một mẫu phân tích ngay trên trình duyệt.
               </p>
-            ) : null}
+            </ScrollText>
           </div>
 
-          <form onSubmit={submit} className="self-end md:col-span-4">
-            <label htmlFor="website" className="mb-3 block text-sm font-semibold">
-              Link website hiện tại
-            </label>
-            <input
-              id="website"
-              name="website"
-              type="url"
-              value={draft}
-              onChange={(event) => {
-                setDraft(event.target.value);
-                setError(null);
-                setSubmitted(false);
-              }}
-              placeholder="https://websitecuaban.vn"
-              aria-invalid={Boolean(error)}
-              aria-describedby="website-help website-feedback"
-              className="min-h-14 w-full rounded-none border border-black/70 bg-transparent px-4 text-base text-[#090909] outline-none placeholder:text-black/80 focus:border-black"
-            />
-            <p id="website-help" className="mt-2 text-xs leading-relaxed text-black/85">
-              Chỉ xử lý trên trình duyệt. Không gửi, không lưu.
-            </p>
-            <button
-              type="submit"
-              className="mt-5 min-h-14 w-full bg-[#090909] px-5 font-mono text-sm text-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98]"
-            >
-              Chuẩn bị brief ↗
-            </button>
-            <p id="website-feedback" aria-live="polite" className="mt-3 text-sm text-black/80">
-              {error ?? (submitted ? "Brief phía client đã được chuẩn bị trong trình duyệt." : "")}
-            </p>
-            {subject ? (
+          <div data-cta-field className="self-end md:col-span-4">
+            <form onSubmit={submit}>
+              <label htmlFor="website" className="mb-3 block text-sm font-semibold">
+                Link website hiện tại
+              </label>
+              <input
+                id="website"
+                name="website"
+                type="url"
+                autoComplete="url"
+                required
+                placeholder="https://websitecuaban.vn"
+                aria-describedby="website-note"
+                className="min-h-14 w-full rounded-none border border-black/70 bg-transparent px-4 text-base text-background outline-none placeholder:text-black/80 focus:border-black"
+              />
+              <p id="website-note" className="mt-2 text-xs leading-relaxed text-black/85">
+                Đây là mẫu minh họa. Link chưa được gửi hoặc lưu ở đâu.
+              </p>
               <button
-                type="button"
-                onClick={clear}
-                className="mt-3 min-h-11 border-b border-black/60 text-left text-xs font-semibold text-black/80 transition-colors hover:border-black hover:text-black"
+                type="submit"
+                disabled={status === "done"}
+                className="mt-5 min-h-14 w-full bg-background px-5 font-mono text-sm text-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98] disabled:translate-y-0 disabled:cursor-default disabled:opacity-70"
               >
-                Xóa website đã nhập
+                {status === "idle" ? "Xem phân tích mẫu" : "Mẫu phân tích đã sẵn sàng"}
               </button>
+            </form>
+
+            {status === "done" ? (
+              <div
+                role="status"
+                aria-live="polite"
+                className="analysis-result mt-5 border-t border-black/40 pt-5"
+              >
+                <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-black/70">
+                  Mẫu phân tích cho {submittedUrl}
+                </p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-black/90">
+                  <li>Thông điệp chính cần xuất hiện sớm hơn.</li>
+                  <li>Đường vào dịch vụ cần ít bước hơn.</li>
+                  <li>Giao diện cần phản ánh quy mô hiện tại.</li>
+                </ul>
+                <p className="mt-4 text-xs leading-relaxed text-black/75">
+                  Kết quả trên chỉ là minh họa cho cách Nét Nút soi một website.
+                </p>
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="mt-5 border-b border-black/70 pb-1 text-sm font-semibold transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5"
+                >
+                  Thử link khác
+                </button>
+              </div>
             ) : null}
-          </form>
+          </div>
         </div>
       </div>
 
