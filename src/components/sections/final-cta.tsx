@@ -6,6 +6,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -51,7 +54,7 @@ export function FinalCTA() {
 
   return (
     <section id="contact" ref={scope} className="px-4 pb-8 pt-32 sm:px-6 md:pt-48 lg:px-10">
-      <div className="mx-auto max-w-[1500px] bg-accent px-5 py-12 text-background sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-20">
+      <div className="mx-auto max-w-375 bg-accent px-5 py-12 text-background sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-20">
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-8">
             <ScrollText mode="words">
@@ -60,7 +63,7 @@ export function FinalCTA() {
               </h2>
             </ScrollText>
             <ScrollText>
-              <p className="mt-8 max-w-[42rem] text-base leading-relaxed text-black/90 md:text-lg">
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-black/90 md:text-lg">
                 Để lại link website của bạn. Chúng tôi sẽ cho bạn xem một mẫu phân tích ngay trên trình duyệt.
               </p>
             </ScrollText>
@@ -68,10 +71,10 @@ export function FinalCTA() {
 
           <div data-cta-field className="self-end md:col-span-4">
             <form onSubmit={submit}>
-              <label htmlFor="website" className="mb-3 block text-sm font-semibold">
+              <Label htmlFor="website" className="mb-3 text-sm font-semibold text-background">
                 Link website hiện tại
-              </label>
-              <input
+              </Label>
+              <Input
                 id="website"
                 name="website"
                 type="url"
@@ -79,18 +82,20 @@ export function FinalCTA() {
                 required
                 placeholder="https://websitecuaban.vn"
                 aria-describedby="website-note"
-                className="min-h-14 w-full rounded-none border border-black/70 bg-transparent px-4 text-base text-background outline-none placeholder:text-black/80 focus:border-black"
+                className="border-black/70 text-background placeholder:text-black/80 focus-visible:border-black focus-visible:ring-black/30 focus-visible:ring-offset-accent"
               />
               <p id="website-note" className="mt-2 text-xs leading-relaxed text-black/85">
                 Đây là mẫu minh họa. Link chưa được gửi hoặc lưu ở đâu.
               </p>
-              <button
+              <Button
                 type="submit"
                 disabled={status === "done"}
-                className="mt-5 min-h-14 w-full bg-background px-5 font-mono text-sm text-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98] disabled:translate-y-0 disabled:cursor-default disabled:opacity-70"
+                variant="secondary"
+                size="lg"
+                className="mt-5 min-h-14 w-full bg-background px-5 font-mono text-sm text-foreground hover:bg-background/90 hover:text-foreground"
               >
                 {status === "idle" ? "Xem phân tích mẫu" : "Mẫu phân tích đã sẵn sàng"}
-              </button>
+              </Button>
             </form>
 
             {status === "done" ? (
@@ -110,20 +115,22 @@ export function FinalCTA() {
                 <p className="mt-4 text-xs leading-relaxed text-black/75">
                   Kết quả trên chỉ là minh họa cho cách Nét Nút soi một website.
                 </p>
-                <button
+                <Button
                   type="button"
                   onClick={reset}
-                  className="mt-5 border-b border-black/70 pb-1 text-sm font-semibold transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5"
+                  variant="link"
+                  size="sm"
+                  className="mt-5 h-auto min-h-0 border-b border-black/70 px-0 pb-1 text-sm font-semibold text-background hover:bg-transparent hover:text-background"
                 >
                   Thử link khác
-                </button>
+                </Button>
               </div>
             ) : null}
           </div>
         </div>
       </div>
 
-      <footer className="mx-auto flex max-w-[1500px] flex-col gap-4 border-t editorial-rule py-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="mx-auto flex max-w-375 flex-col gap-4 border-t editorial-rule py-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
         <p>Nét Nút Studio</p>
         <p>Redesign website doanh nghiệp tại Việt Nam</p>
       </footer>

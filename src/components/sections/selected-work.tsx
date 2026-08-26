@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -13,7 +14,7 @@ function ProjectVisual({ newVersion = false }: { newVersion?: boolean }) {
   if (newVersion) {
     return (
       <div className="absolute inset-0 bg-[#ededed] text-[#090909]">
-        <div className="absolute left-[6%] top-[8%] flex w-[88%] items-center justify-between border-b border-black/20 pb-4 font-mono text-[10px] uppercase tracking-[0.1em]">
+        <div className="absolute left-[6%] top-[8%] flex w-[88%] items-center justify-between border-b border-black/20 pb-4 font-mono text-[10px] uppercase tracking-widest">
           <span>Tái cấu trúc thương hiệu</span>
           <span>Nét Nút Studio</span>
         </div>
@@ -33,9 +34,9 @@ function ProjectVisual({ newVersion = false }: { newVersion?: boolean }) {
 
   return (
     <div className="absolute inset-0 bg-[linear-gradient(100deg,#111_0%,#222_55%,#111_100%)] grayscale">
-      <div className="absolute left-[7%] top-[12%] h-[18%] w-[62%] border border-white/15 bg-white/[0.025]" />
+      <div className="absolute left-[7%] top-[12%] h-[18%] w-[62%] border border-white/15 bg-white/2.5" />
       <div className="absolute left-[7%] top-[36%] h-[7%] w-[31%] bg-white/[0.07]" />
-      <div className="absolute left-[7%] top-[49%] h-[4%] w-[48%] bg-white/[0.045]" />
+      <div className="absolute left-[7%] top-[49%] h-[4%] w-[48%] bg-white/4.5" />
       <div className="absolute bottom-[8%] right-[6%] h-[38%] w-[40%] border border-white/10 bg-[#0e0e0e]" />
       <p className="absolute bottom-6 left-6 font-mono text-xs uppercase tracking-[0.12em] text-white/55">
         Web cũ
@@ -107,7 +108,7 @@ export function SelectedWork() {
 
   return (
     <section id="work" ref={scope} className="px-4 py-32 sm:px-6 md:py-48 lg:px-10">
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-375">
         <ScrollText mode="words">
           <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:mb-20">
             Cách chúng tôi soi
@@ -151,24 +152,23 @@ export function SelectedWork() {
             Khung minh họa để xem cách soi trước và sau.
           </p>
 
-          <div className="absolute bottom-5 right-5 z-10 flex rounded-full border border-white/30 bg-background/90 p-1">
-            <button
-              type="button"
-              aria-pressed={comparisonView === "old"}
-              onClick={() => chooseComparison("old")}
-              className={`min-h-11 rounded-full px-4 py-2 text-xs ${comparisonView === "old" ? "bg-foreground text-background" : "text-foreground"}`}
-            >
+          <ToggleGroup
+            value={[comparisonView]}
+            onValueChange={(value) => {
+              const nextView = value[0];
+              if (nextView === "old" || nextView === "new") chooseComparison(nextView);
+            }}
+            spacing={0}
+            aria-label="Chọn phiên bản website"
+            className="absolute bottom-5 right-5 z-10 border border-white/30 bg-background/90 p-1"
+          >
+            <ToggleGroupItem value="old" className="min-h-11 px-4 py-2 text-xs data-[state=on]:bg-foreground data-[state=on]:text-background">
               Web cũ
-            </button>
-            <button
-              type="button"
-              aria-pressed={comparisonView === "new"}
-              onClick={() => chooseComparison("new")}
-              className={`min-h-11 rounded-full px-4 py-2 text-xs ${comparisonView === "new" ? "bg-accent text-background" : "text-foreground"}`}
-            >
+            </ToggleGroupItem>
+            <ToggleGroupItem value="new" className="min-h-11 px-4 py-2 text-xs data-[state=on]:bg-accent data-[state=on]:text-background">
               Web mới
-            </button>
-          </div>
+            </ToggleGroupItem>
+          </ToggleGroup>
         </div>
 
         <div className="mt-8 flex flex-col gap-2 border-t editorial-rule pt-5 sm:flex-row sm:items-baseline sm:justify-between">
@@ -176,7 +176,7 @@ export function SelectedWork() {
             <p className="text-sm font-medium text-foreground">Phương pháp minh họa</p>
           </ScrollText>
           <ScrollText>
-            <p className="max-w-[34rem] text-sm leading-relaxed text-muted">
+            <p className="max-w-136 text-sm leading-relaxed text-muted">
               Soi cấu trúc cũ, giữ lại giá trị, rồi dựng lại đường đi rõ hơn.
             </p>
           </ScrollText>

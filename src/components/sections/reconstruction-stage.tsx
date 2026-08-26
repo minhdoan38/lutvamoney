@@ -16,6 +16,9 @@ import {
 } from "@/components/reconstruction/reconstruction-model";
 import { useHomeExperience } from "@/components/home-experience-provider";
 import { clamp } from "@/lib/motion";
+import { Slider } from "@/components/ui/slider";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -40,7 +43,7 @@ function NewStageArt() {
   return (
     <>
       <StageBlocks variant="new" />
-      <div className="stage-new-hierarchy absolute left-[8%] top-[8%] max-w-[8ch] text-[clamp(2.8rem,7vw,7rem)] font-semibold leading-[0.86] tracking-[-0.05em] text-foreground">
+      <div className="stage-new-hierarchy absolute left-[8%] top-[8%] max-w-[8ch] text-[clamp(2.8rem,7vw,7rem)] font-semibold leading-[0.86] tracking-tighter text-foreground">
         Rõ hơn.
       </div>
       <div className="stage-new-cta absolute bottom-[9%] right-[8%] max-w-[10ch] bg-accent p-4 text-right text-lg font-semibold leading-none text-background">
@@ -213,7 +216,7 @@ export function ReconstructionStage() {
 
   return (
     <section id="work" ref={scope} className="stage-shell px-4 py-20 sm:px-6 md:py-28 lg:px-10" data-reconstruction-stage>
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-375">
         <ScrollText mode="words">
           <h2 className="display-expansion mb-8 max-w-[10ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.045em] md:mb-12">
             Cách chúng tôi dựng lại.
@@ -244,22 +247,29 @@ export function ReconstructionStage() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-2" role="tablist" aria-label="Các pha tái cấu trúc">
-                {reconstructionPhases.map((phase, index) => (
-                  <button
-                    key={phase.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={activePhase === phase.id}
-                    aria-controls={`phase-panel-${phase.id}`}
-                    onClick={() => choosePhase(phase.id)}
-                    className={`min-h-11 border px-3 py-2 text-left text-xs transition-[background-color,color,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${activePhase === phase.id ? "border-accent bg-accent text-background" : "border-white/25 text-foreground hover:border-accent"}`}
-                  >
-                    <span className="font-mono text-[0.55rem]">0{index + 1}</span>
-                    <span className="ml-2">{phase.label}</span>
-                  </button>
+              <Tabs
+                value={activePhase}
+                onValueChange={(value) => {
+                  if (typeof value === "string") choosePhase(value as ReconstructionPhase);
+                }}
+                className="w-full"
+              >
+                <TabsList aria-label="Các pha tái cấu trúc" className="flex w-full flex-wrap justify-start gap-2 border-0 p-0">
+                  {reconstructionPhases.map((phase, index) => (
+                    <TabsTrigger
+                      key={phase.id}
+                      value={phase.id}
+                      className="min-h-11 flex-none border border-white/25 px-3 py-2 text-left text-xs data-active:border-accent data-active:bg-accent data-active:text-background"
+                    >
+                      <span className="font-mono text-[0.55rem]">0{index + 1}</span>
+                      <span className="ml-2">{phase.label}</span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                {reconstructionPhases.map((phase) => (
+                  <TabsContent key={phase.id} value={phase.id} className="hidden" />
                 ))}
-              </div>
+              </Tabs>
             </div>
           </div>
 
@@ -304,36 +314,38 @@ export function ReconstructionStage() {
               >
                 Xem case study demo →
               </Link>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  aria-pressed={compareProgress === 0}
-                  onClick={() => setCompare(0)}
-                  className="min-h-11 border border-white/25 px-4 py-2 text-xs text-foreground transition-colors duration-200 hover:border-accent"
+              <div className="flex flex-wrap items-center gap-2">
+                <ToggleGroup
+                  value={compareProgress === 0 ? ["before"] : compareProgress === 1 ? ["after"] : []}
+                  onValueChange={(value) => {
+                    if (value[0] === "before") setCompare(0);
+                    if (value[0] === "after") setCompare(1);
+                  }}
+                  spacing={0}
+                  aria-label="Chọn mức so sánh"
                 >
-                  Before
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={compareProgress === 1}
-                  onClick={() => setCompare(1)}
-                  className="min-h-11 border border-white/25 px-4 py-2 text-xs text-foreground transition-colors duration-200 hover:border-accent"
-                >
-                  After
-                </button>
+                  <ToggleGroupItem value="before" className="min-h-11 border border-white/25 px-4 py-2 text-xs data-[state=on]:border-accent data-[state=on]:bg-accent data-[state=on]:text-background">
+                    Before
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="after" className="min-h-11 border border-white/25 px-4 py-2 text-xs data-[state=on]:border-accent data-[state=on]:bg-accent data-[state=on]:text-background">
+                    After
+                  </ToggleGroupItem>
+                </ToggleGroup>
                 <label htmlFor="compare-range" className="sr-only">
                   Mức độ tái cấu trúc
                 </label>
-                <input
+                <Slider
                   id="compare-range"
-                  type="range"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value={Math.round(compareProgress * 100)}
-                  onChange={(event) => setCompare(Number(event.target.value) / 100)}
+                  min={0}
+                  max={100}
+                  step={1}
+                  value={[Math.round(compareProgress * 100)]}
+                  onValueChange={(value) => {
+                    const nextValue = Array.isArray(value) ? value[0] : value;
+                    setCompare(nextValue / 100);
+                  }}
                   aria-label="Mức độ tái cấu trúc từ Before đến After"
-                  className="min-h-11 w-40 accent-accent"
+                  className="w-40"
                 />
               </div>
               <p id="reconstruction-stage-help" className="text-xs leading-relaxed text-muted">

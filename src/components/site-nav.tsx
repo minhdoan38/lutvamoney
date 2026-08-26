@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { HoverRollText } from "@/components/ui/hover-roll-text";
 import { TextRotate, type TextRotateRef } from "@/components/ui/text-rotate";
 
 type NavLink = {
@@ -12,11 +13,8 @@ type NavLink = {
 };
 
 const defaultLinks: NavLink[] = [
-  { label: "Dịch vụ", href: "#services" },
-  { label: "Dự án", href: "#work" },
-  { label: "Năng lực", href: "#capabilities" },
-  { label: "Cách làm", href: "#process" },
-  { label: "Góc nhìn", href: "#insights" },
+  { label: "Trang chủ", href: "/" },
+  { label: "Dự án", href: "/redesign/nha-moc-demo" },
   { label: "Về chúng tôi", href: "/about" },
 ];
 
@@ -71,6 +69,10 @@ function RotatingLabel({ label }: { label: string }) {
   );
 }
 
+function PageLinkLabel({ label }: { label: string }) {
+  return <HoverRollText>{label}</HoverRollText>;
+}
+
 type SiteNavProps = {
   links?: NavLink[];
   brandHref?: string;
@@ -80,17 +82,13 @@ type SiteNavProps = {
 
 export function SiteNav({
   links = defaultLinks,
-  brandHref = "#top",
+  brandHref = "/",
   ctaHref = "#contact",
   ctaLabel = "Gửi website",
 }: SiteNavProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const navLinks = links;
-  const resolvedLinks = navLinks.map((link) => ({
-    ...link,
-    href: pathname !== "/" && link.href.startsWith("#") ? `/${link.href}` : link.href,
-  }));
+  const resolvedLinks = links;
 
   return (
     <header className="fixed left-0 right-0 top-0 z-20 px-4 pt-4 sm:px-6 sm:pt-6">
@@ -113,9 +111,9 @@ export function SiteNav({
                 href={link.href}
                 data-cursor-link
                 aria-current={current ? "page" : undefined}
-                className={`nav-link text-xs transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${current ? "text-foreground" : "text-white/60 hover:text-foreground"}`}
+                className={`group nav-link text-xs transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${current ? "text-foreground" : "text-white/60 hover:text-foreground"}`}
               >
-                <span>{link.label}</span>
+                <PageLinkLabel label={link.label} />
               </Link>
             );
           })}
@@ -170,10 +168,10 @@ export function SiteNav({
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`flex min-h-11 translate-y-3 items-center justify-between border-b border-white/10 px-3 py-4 text-lg opacity-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] last:border-0 ${open ? "translate-y-0 opacity-100" : ""}`}
+                className={`group flex min-h-11 translate-y-3 items-center justify-between border-b border-white/10 px-3 py-4 text-lg opacity-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] last:border-0 ${open ? "translate-y-0 opacity-100" : ""}`}
                 style={{ transitionDelay: open ? `${index * 55}ms` : "0ms" }}
               >
-                <span>{link.label}</span>
+                <PageLinkLabel label={link.label} />
                 <span className="relative h-3 w-3 text-accent" aria-hidden="true">
                   <span className="absolute left-0 top-1/2 h-px w-full bg-current" />
                   <span className="absolute left-1/2 top-0 h-full w-px bg-current" />

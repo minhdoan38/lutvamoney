@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -74,66 +75,47 @@ export function Diagnosis() {
           Khung chẩn đoán minh họa
         </p>
 
-        <div className="border-t editorial-rule">
-          {dimensions.map((dimension, index) => {
-            const isActive = active === index;
-            return (
-              <article
-                key={dimension.label}
-                data-diagnosis-row
-                className="border-b editorial-rule"
-                onFocus={() => setActive(index)}
-                onMouseEnter={() => setActive(index)}
-                onKeyDown={(event) => {
-                  if (event.key === "Escape") {
-                    event.preventDefault();
-                    setActive(-1);
-                  }
-                }}
-              >
-                <button
-                  type="button"
-                  aria-expanded={isActive}
-                  aria-controls={`diagnosis-panel-${index}`}
-                  aria-describedby={`diagnosis-desktop-copy-${index}`}
-                  onClick={() => setActive(isActive ? -1 : index)}
-                  className="grid min-h-20 w-full gap-4 py-6 text-left md:grid-cols-12 md:items-center md:py-8"
-                >
-                  <span className="font-mono text-[0.625rem] tracking-[0.12em] text-muted md:col-span-1">
-                    0{index + 1}
-                  </span>
-                  <span className={`display-compression text-[clamp(2rem,4.5vw,4.8rem)] font-medium leading-none tracking-[-0.045em] transition-colors duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] md:col-span-5 ${isActive ? "text-accent" : "text-foreground"}`}>
-                    {dimension.label}
-                  </span>
-                  <span className="hidden text-sm leading-relaxed text-muted md:col-span-5 md:col-start-8 md:block">
-                    {dimension.question}
-                  </span>
-                  <span aria-hidden="true" className={`relative ml-auto h-4 w-4 text-accent transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] md:col-span-1 ${isActive ? "rotate-45" : ""}`}>
-                    <span className="absolute left-0 top-1/2 h-px w-full bg-current" />
-                    <span className="absolute left-1/2 top-0 h-full w-px bg-current" />
-                  </span>
-                </button>
-                <div
-                  id={`diagnosis-panel-${index}`}
-                  role="region"
-                  aria-hidden={!isActive}
-                  className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] md:hidden ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-                >
-                  <div className="min-h-0 pb-6 pl-[calc(1.25rem+1ch)] pr-8 text-sm leading-relaxed text-muted">
-                    <p className="text-foreground/80">{dimension.question}</p>
-                    <p className="mt-2">{dimension.copy}</p>
-                  </div>
+        <Accordion
+          multiple={false}
+          value={active < 0 ? [] : [String(active)]}
+          onValueChange={(value) => setActive(value.length === 0 ? -1 : Number(value[0]))}
+          className="border-t editorial-rule"
+        >
+          {dimensions.map((dimension, index) => (
+            <AccordionItem
+              key={dimension.label}
+              value={String(index)}
+              data-diagnosis-row
+              className="border-b editorial-rule"
+              onFocus={() => setActive(index)}
+              onMouseEnter={() => setActive(index)}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  event.preventDefault();
+                  setActive(-1);
+                }
+              }}
+            >
+              <AccordionTrigger className="grid min-h-20 w-full gap-4 py-6 text-left md:grid-cols-12 md:items-center md:py-8">
+                <span className="font-mono text-[0.625rem] tracking-[0.12em] text-muted md:col-span-1">
+                  0{index + 1}
+                </span>
+                <span className="display-compression text-[clamp(2rem,4.5vw,4.8rem)] font-medium leading-none tracking-[-0.045em] text-foreground transition-colors duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-data-open/accordion-item:text-accent md:col-span-5">
+                  {dimension.label}
+                </span>
+                <span className="hidden text-sm leading-relaxed text-muted md:col-span-5 md:col-start-8 md:block">
+                  {dimension.question}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="md:pt-0">
+                <div className="pb-6 pl-[calc(1.25rem+1ch)] pr-8 text-sm leading-relaxed text-muted md:pb-8 md:pl-[calc(50%+1rem)]">
+                  <p className="text-foreground/80 md:hidden">{dimension.question}</p>
+                  <p className="mt-2 md:mt-0">{dimension.copy}</p>
                 </div>
-                <div
-                  id={`diagnosis-desktop-copy-${index}`}
-                  className={`hidden pb-8 pl-[calc(50%+1rem)] text-sm leading-relaxed text-muted md:block ${isActive ? "opacity-100" : "opacity-45"}`}
-                >
-                  {dimension.copy}
-                </div>
-              </article>
-            );
-          })}
-        </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );

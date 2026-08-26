@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import type { RedesignProject } from "@/data/redesigns";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type Panel = "original" | "redesign";
 type Viewport = "desktop" | "tablet" | "mobile";
@@ -36,7 +38,7 @@ function Frame({
         sandbox=""
         loading="lazy"
         referrerPolicy="no-referrer"
-        className={`block h-[620px] min-h-[620px] border-0 bg-white ${widthClass}`}
+        className={`block h-155 min-h-155 border-0 bg-white ${widthClass}`}
       />
     </div>
   );
@@ -72,7 +74,7 @@ export function RedesignCompare({ project }: { project: RedesignProject }) {
       <div className="flex flex-col gap-5 border-b border-white/10 px-4 py-5 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
           <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-accent">Khung so sánh tương tác</p>
-          <h2 id="compare-title" className="mt-3 max-w-[12ch] text-[clamp(2.4rem,5vw,5rem)] font-semibold leading-[0.88] tracking-[-0.05em]">
+          <h2 id="compare-title" className="mt-3 max-w-[12ch] text-[clamp(2.4rem,5vw,5rem)] font-semibold leading-[0.88] tracking-tighter">
             Nhìn cùng một bài toán.
           </h2>
         </div>
@@ -82,33 +84,46 @@ export function RedesignCompare({ project }: { project: RedesignProject }) {
       </div>
 
       <div className="flex flex-col gap-4 border-b border-white/10 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <div className="flex gap-2" role="tablist" aria-label="Chọn phiên bản website trên màn hình nhỏ">
-          {(["original", "redesign"] as Panel[]).map((panel) => (
-            <button
-              key={panel}
-              type="button"
-              role="tab"
-              aria-selected={activePanel === panel}
-              onClick={() => setActivePanel(panel)}
-              className={`min-h-11 border px-3 py-2 text-xs transition-colors duration-200 ${activePanel === panel ? "border-accent bg-accent text-background" : "border-white/20 text-muted hover:border-accent hover:text-foreground"}`}
-            >
-              {panelCopy[panel].label}
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2" aria-label="Chọn kích thước khung xem">
+        <Tabs
+          value={activePanel}
+          onValueChange={(value) => {
+            if (value === "original" || value === "redesign") setActivePanel(value);
+          }}
+        >
+          <TabsList aria-label="Chọn phiên bản website trên màn hình nhỏ" className="border-0 bg-transparent p-0">
+            {(["original", "redesign"] as Panel[]).map((panel) => (
+              <TabsTrigger
+                key={panel}
+                value={panel}
+                className="min-h-11 border border-white/20 px-3 py-2 text-xs data-active:border-accent data-active:bg-accent data-active:text-background"
+              >
+                {panelCopy[panel].label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+        <ToggleGroup
+          value={[viewport]}
+          onValueChange={(value) => {
+            const nextViewport = value[0];
+            if (nextViewport === "desktop" || nextViewport === "tablet" || nextViewport === "mobile") {
+              setViewport(nextViewport);
+            }
+          }}
+          spacing={0}
+          aria-label="Chọn kích thước khung xem"
+          className="flex flex-wrap"
+        >
           {viewportOptions.map((option) => (
-            <button
+            <ToggleGroupItem
               key={option.id}
-              type="button"
-              aria-pressed={viewport === option.id}
-              onClick={() => setViewport(option.id)}
-              className={`min-h-11 border px-3 py-2 text-xs transition-colors duration-200 ${viewport === option.id ? "border-foreground text-foreground" : "border-white/20 text-muted hover:border-foreground hover:text-foreground"}`}
+              value={option.id}
+              className="min-h-11 border border-white/20 px-3 py-2 text-xs data-[state=on]:border-foreground data-[state=on]:text-foreground"
             >
               {option.label}
-            </button>
+            </ToggleGroupItem>
           ))}
-        </div>
+        </ToggleGroup>
       </div>
 
       <div className="grid gap-px bg-white/10 md:grid-cols-2">
