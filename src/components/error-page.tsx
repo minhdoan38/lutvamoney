@@ -2,11 +2,18 @@
 
 import Link from "next/link";
 
+import type { Dictionary } from "@/i18n/get-dictionary";
+import { localePath, type Locale } from "@/i18n/config";
+
+type ErrorCopy = Dictionary["errors"];
+
 interface ErrorPageProps {
   status: string;
   title: string;
   description: string;
   retry?: () => void;
+  locale?: Locale;
+  copy: ErrorCopy;
 }
 
 export function ErrorPage({
@@ -14,14 +21,18 @@ export function ErrorPage({
   title,
   description,
   retry,
+  locale = "en",
+  copy,
 }: ErrorPageProps) {
+  const homeHref = localePath(locale, "/");
+
   return (
     <main className="error-page" aria-labelledby="error-title">
       <header className="error-page__bar">
-        <Link href="/" className="error-page__brand">
+        <Link href={homeHref} className="error-page__brand">
           Nét Nút <span>Studio</span>
         </Link>
-        <p className="error-page__signal">Không thể hoàn tất bản dựng hiện tại</p>
+        <p className="error-page__signal">{copy.signal}</p>
       </header>
 
       <div className="error-page__layout">
@@ -40,16 +51,16 @@ export function ErrorPage({
                 onClick={retry}
                 className="error-page__action error-page__action--primary"
               >
-                Thử dựng lại
+                {copy.retry}
               </button>
             ) : (
-              <Link href="/" className="error-page__action error-page__action--primary">
-                Về trang đầu
+              <Link href={homeHref} className="error-page__action error-page__action--primary">
+                {copy.home}
               </Link>
             )}
             {retry ? (
-              <Link href="/" className="error-page__action error-page__action--secondary">
-                Về trang đầu
+              <Link href={homeHref} className="error-page__action error-page__action--secondary">
+                {copy.home}
               </Link>
             ) : null}
           </div>
@@ -57,10 +68,10 @@ export function ErrorPage({
 
         <section
           className="error-page__stage"
-          aria-label="Minh họa bản dựng đang tự căn chỉnh"
+          aria-label={copy.stageAria}
         >
           <div className="error-page__legend">
-            <span>Hệ thống đang căn chỉnh</span>
+            <span>{copy.legend}</span>
             <span aria-hidden="true">01 / 01</span>
           </div>
           <div className="error-page__canvas" aria-hidden="true">
@@ -68,12 +79,12 @@ export function ErrorPage({
             <span className="error-page__rule error-page__rule--vertical" />
             <div className="error-page__sheet error-page__sheet--ghost">
               <div className="error-page__sheet-header">
-                <span>Vùng không ổn định</span>
-                <span>Offset</span>
+                <span>{copy.ghostHeader}</span>
+                <span>{copy.ghostMeta}</span>
               </div>
               <div className="error-page__sheet-body">
                 <span className="error-page__sheet-copy">
-                  Cấu trúc cần trở về đúng chỗ.
+                  {copy.sheetCopy}
                 </span>
                 <span className="error-page__sheet-blocks">
                   <span className="error-page__sheet-block" />
@@ -84,12 +95,12 @@ export function ErrorPage({
             </div>
             <div className="error-page__sheet error-page__sheet--paper">
               <div className="error-page__sheet-header">
-                <span>Bản dựng mới</span>
-                <span>Ready</span>
+                <span>{copy.paperHeader}</span>
+                <span>{copy.paperMeta}</span>
               </div>
               <div className="error-page__sheet-body">
                 <span className="error-page__sheet-copy">
-                  Cấu trúc cần trở về đúng chỗ.
+                  {copy.sheetCopy}
                 </span>
                 <span className="error-page__sheet-blocks">
                   <span className="error-page__sheet-block" />
@@ -104,8 +115,8 @@ export function ErrorPage({
       </div>
 
       <footer className="error-page__footer">
-        <span>Nét Nút Studio / Editorial reconstruction</span>
-        <span>Trang này không lưu dữ liệu nào</span>
+        <span>{copy.footerLeft}</span>
+        <span>{copy.footerRight}</span>
       </footer>
     </main>
   );

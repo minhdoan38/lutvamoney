@@ -66,7 +66,7 @@ export function Diagnosis() {
               Cũ ở đâu, phải nhìn cho đúng.
             </h2>
           </ScrollText>
-          <p className="max-w-sm self-end text-base leading-relaxed text-white/55 md:col-span-3 md:col-start-10">
+          <p className="max-w-sm self-end text-base leading-relaxed text-foreground/55 md:col-span-3 md:col-start-10">
             Một khung câu hỏi chung để bắt đầu nhìn lại, không phải kết quả phân tích của một URL cụ thể.
           </p>
         </div>

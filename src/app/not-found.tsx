@@ -1,11 +1,32 @@
-import { ErrorPage } from "@/components/error-page";
+import { headers } from "next/headers";
 
-export default function NotFound() {
+import { ErrorPage } from "@/components/error-page";
+import { LOCALE_HEADER, defaultLocale, getLocaleFromPathname, isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
+
+export default async function NotFound() {
+  const headerList = await headers();
+  const raw = headerList.get(LOCALE_HEADER);
+  const referer = headerList.get("x-url") ?? headerList.get("referer") ?? "";
+  let locale = raw && isLocale(raw) ? raw : defaultLocale;
+  if (!raw) {
+    try {
+      const path = referer ? new URL(referer).pathname : "/";
+      locale = getLocaleFromPathname(path);
+    } catch {
+      locale = defaultLocale;
+    }
+  }
+
+  const dict = await getDictionary(locale);
+
   return (
     <ErrorPage
-      status="Đường dẫn không tồn tại / 404"
-      title="Không tìm thấy bản dựng."
-      description="Đường dẫn này không tồn tại hoặc đã được chuyển đi. Hãy quay về trang đầu để tiếp tục."
+      status={dict.errors.notFound.status}
+      title={dict.errors.notFound.title}
+      description={dict.errors.notFound.description}
+      locale={locale}
+      copy={dict.errors}
     />
   );
 }

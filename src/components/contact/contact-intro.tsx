@@ -3,23 +3,13 @@
 import { useState } from "react";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-const startingPoints = [
-  {
-    title: "Redesign toàn bộ website",
-    copy: "Khi website hiện tại đã không còn theo kịp quy mô, dịch vụ hoặc cách doanh nghiệp đang vận hành.",
-  },
-  {
-    title: "Sắp lại cấu trúc và thông điệp",
-    copy: "Khi phần cần làm rõ nhất là đường đi, nội dung hoặc thứ bậc thông tin trên website hiện tại.",
-  },
-  {
-    title: "Chưa chắc nên bắt đầu từ đâu",
-    copy: "Không sao. Chia sẻ bối cảnh hiện tại, phần còn vướng và điều doanh nghiệp muốn website làm tốt hơn.",
-  },
-];
+type ContactIntroProps = {
+  copy: Dictionary["contact"]["intro"];
+};
 
-export function ContactIntro() {
+export function ContactIntro({ copy }: ContactIntroProps) {
   const [active, setActive] = useState("0");
 
   return (
@@ -27,9 +17,9 @@ export function ContactIntro() {
       <div className="mx-auto min-h-[calc(100dvh-7rem)] max-w-375">
         <div>
           <h1 className="display-compression max-w-[8ch] text-[clamp(4rem,11vw,10rem)] font-semibold leading-[0.86] tracking-[-0.055em]">
-            Bắt đầu
+            {copy.titleLine1}
             <br />
-            trao đổi
+            {copy.titleLine2}
           </h1>
         </div>
 
@@ -37,7 +27,7 @@ export function ContactIntro() {
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="md:col-span-3">
               <p className="max-w-[18ch] text-xs leading-relaxed text-muted md:text-sm">
-                Chia sẻ điều website đang cần giải quyết.
+                {copy.lede}
               </p>
             </div>
 
@@ -48,7 +38,7 @@ export function ContactIntro() {
                 onValueChange={(value) => setActive(String(value[0] ?? ""))}
                 className="border-t editorial-rule"
               >
-                {startingPoints.map((point, index) => (
+                {copy.points.map((point, index) => (
                   <AccordionItem key={point.title} value={String(index)} className="border-b editorial-rule">
                     <AccordionTrigger className="min-h-14 py-3 text-[clamp(1.35rem,2.8vw,2.7rem)] font-medium leading-none tracking-[-0.035em] hover:text-accent md:min-h-16 md:py-4">
                       {point.title}

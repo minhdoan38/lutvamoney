@@ -38,13 +38,13 @@ Visitors often arrive between work tasks and scan on a laptop or phone. Desktop 
 
 ## Capabilities and Constraints
 
-The product is a browser-only landing experience with public routes `/` and `/about`, and compatible anchors `#services`, `#work`, `#capabilities`, `#process`, `#insights`, and `#contact`. URL parsing is local and pure. The URL is never fetched, transmitted, persisted, scored, analyzed, or sent to a backend. There is no analytics, fake loading, fake metric, testimonial, client proof, audit claim, or URL-specific diagnosis.
+The product is a browser-only landing experience. English is the public default at unprefixed routes (`/`, `/about`, `/contact`, `/redesign/...`). Vietnamese lives under `/vi/...` (for example `/vi`, `/vi/about`). Compatible anchors include `#services`, `#work`, `#capabilities`, `#process`, and `#contact`. Locale is chosen by URL only — no Accept-Language auto-redirect and no localStorage preference. URL parsing for the contact brief is local and pure. The URL is never fetched, transmitted, persisted, scored, analyzed, or sent to a backend. There is no analytics, fake loading, fake metric, testimonial, client proof, audit claim, or URL-specific diagnosis.
 
 Synthetic interface compositions and hypothetical examples are allowed only when explicitly labeled as illustrative. The semantic HTML must stand on its own before motion enhancement; GSAP and Lenis support hierarchy and comprehension without hiding essential content. Raw scroll listeners and React state that updates every frame are out of scope.
 
 ## Brand Commitments
 
-Nét Nút Studio is the product name. Visible copy is Vietnamese-first, direct, and specialist. The active palette is `#090909`, `#EDEDED`, and `#FF3300`; only alpha variations of those colors may create tonal depth. Vermilion is reserved for intervention, active state, and conversion. Navigation and CTA geometry are squared; pills are state-only controls or compact status indicators.
+Nét Nút Studio is the product name. Public default copy is English at unprefixed URLs; Vietnamese copy under `/vi/...` stays direct and specialist. Fonts remain Vietnamese-capable. The active palette is `#090909`, `#EDEDED`, and `#FF3300`; only alpha variations of those colors may create tonal depth. Vermilion is reserved for intervention, active state, and conversion. Navigation and CTA geometry are squared; pills are state-only controls or compact status indicators.
 
 ## Product Principles
 
@@ -58,4 +58,4 @@ Nét Nút Studio is the product name. Visible copy is Vietnamese-first, direct, 
 
 ## Accessibility & Inclusion
 
-Use semantic landmarks, visible keyboard focus, descriptive labels, live validation messages, touch targets of at least 44px, logical focus order, and reduced-motion fallbacks. Native cursor behavior remains unchanged outside the reconstruction stage. The stage-only contextual cursor is an enhancement for fine pointers and is never required to understand or operate the experience.
+Use semantic landmarks, visible keyboard focus, descriptive labels, live validation messages, touch targets of at least 44px, logical focus order, and reduced-motion fallbacks. Native cursor behavior remains unchanged.

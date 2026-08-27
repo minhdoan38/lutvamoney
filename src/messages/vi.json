@@ -1,0 +1,281 @@
+{
+  "meta": {
+    "home": {
+      "title": "Nét Nút Studio | Redesign website cho doanh nghiệp",
+      "description": "Nét Nút làm rõ thông điệp, sắp lại cấu trúc và redesign website để phản ánh đúng vị thế doanh nghiệp."
+    },
+    "about": {
+      "title": "Về Nét Nút Studio | Redesign website",
+      "description": "Nét Nút giúp doanh nghiệp làm rõ giá trị đang có, gỡ phần website đang cản và dựng hướng đi phù hợp với hiện tại."
+    },
+    "contact": {
+      "title": "Bắt đầu trao đổi | Nét Nút Studio",
+      "description": "Chia sẻ bối cảnh website hiện tại để bắt đầu một cuộc trao đổi rõ ràng hơn về redesign."
+    }
+  },
+  "a11y": {
+    "skipToContent": "Chuyển đến nội dung chính",
+    "mainNav": "Điều hướng chính",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "language": "Chọn ngôn ngữ",
+    "hanoiClock": "Giờ hiện tại tại Hà Nội (Asia/Ho_Chi_Minh)."
+  },
+  "nav": {
+    "services": "Dịch vụ",
+    "work": "Cách làm",
+    "about": "Về Nét Nút",
+    "contact": "Liên hệ",
+    "ctaCaseStudy": "Xem case study",
+    "ctaStart": "Bắt đầu trao đổi",
+    "ctaAbout": "Về Nét Nút"
+  },
+  "footer": {
+    "brand": "Nét Nút Studio",
+    "location": "Ha Noi Based",
+    "follow": "Theo dõi",
+    "label": "Chân trang"
+  },
+  "home": {
+    "hero": {
+      "title": "Web cũ. Làm lại cho đáng.",
+      "body": "Website hiện tại không còn theo kịp doanh nghiệp. Nét Nút làm rõ thông điệp, sắp lại luồng thông tin và thiết kế trải nghiệm phản ánh đúng vị thế thương hiệu.",
+      "ctaPrimary": "Xem case study minh họa",
+      "ctaSecondary": "Xem cách làm"
+    },
+    "services": {
+      "title": "Chúng tôi làm gì",
+      "lede": "Xây lại đúng phần khiến website không còn theo kịp doanh nghiệp.",
+      "items": [
+        {
+          "title": "Redesign website",
+          "copy": "Giữ lại giá trị thương hiệu đã có, gỡ bỏ cấu trúc lỗi thời và dựng lại trải nghiệm để website theo kịp doanh nghiệp."
+        },
+        {
+          "title": "Website doanh nghiệp",
+          "copy": "Xây website từ kiến trúc thông tin, giao diện đến hiệu suất để nội dung dễ hiểu, dịch vụ dễ tìm và thương hiệu đáng tin hơn."
+        },
+        {
+          "title": "Landing page chiến dịch",
+          "copy": "Mỗi landing page tập trung vào một thông điệp và một hành động chính, giúp người xem đi thẳng đến bước tiếp theo."
+        },
+        {
+          "title": "Chuyển động và tương tác",
+          "copy": "Chuyển động được thiết kế để dẫn mắt, làm rõ phản hồi và giữ nhịp trải nghiệm — không dùng để trang trí đơn thuần."
+        }
+      ]
+    },
+    "work": {
+      "title": "Cách chúng tôi chẩn đoán",
+      "ariaCompare": "So sánh bản website cũ và bản redesign bằng phím mũi tên",
+      "ariaToggle": "Chọn phiên bản website",
+      "hint": "Bản minh họa cách cấu trúc và thứ bậc thay đổi trước — sau.",
+      "oldLabel": "Web cũ",
+      "newLabel": "Web mới",
+      "captionTitle": "Minh họa phương pháp",
+      "captionBody": "Chẩn đoán cấu trúc cũ, giữ phần còn giá trị rồi dựng lại đường đi rõ hơn.",
+      "visualNewEyebrow": "Tái cấu trúc thương hiệu",
+      "visualNewTitle": "Rõ hơn. Nhanh hơn.",
+      "visualNewSub": "Một website theo kịp doanh nghiệp.",
+      "visualNewBadge": "Web mới",
+      "visualOldBadge": "Web cũ"
+    },
+    "capabilities": {
+      "title": "Từ nét đến nút.",
+      "items": [
+        "Chẩn đoán đúng vấn đề",
+        "Sắp xếp thông tin dễ hiểu",
+        "Thiết kế giao diện có lý do",
+        "Giữ giá trị thương hiệu",
+        "Dẫn mắt bằng chuyển động",
+        "Tạo tương tác có mục đích",
+        "Tối ưu tốc độ và độ bền",
+        "Bàn giao sẵn sàng vận hành"
+      ]
+    },
+    "process": {
+      "blocks": [
+        {
+          "title": "Bắt đầu từ website đang có.",
+          "copy": "Nét Nút rà soát website hiện tại, xác định phần cần giữ, phần cần thay và thống nhất một hướng thiết kế cốt lõi trước khi triển khai toàn bộ."
+        },
+        {
+          "title": "Tinh gọn để đi thẳng vào việc.",
+          "copy": "Nét tạo cảm giác. Nút tạo hành động. Nét Nút là studio tại Việt Nam, tập trung vào redesign website doanh nghiệp. Làm việc trực tiếp, phạm vi rõ ràng và quyết định nhanh."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Xem một website được dựng lại thế nào.",
+      "body": "Case study Nhà Mộc trình bày phần chẩn đoán, các quyết định thiết kế và hai phiên bản trước và sau trong cùng một khung so sánh.",
+      "eyebrow": "Case study minh họa",
+      "note": "Case study không đại diện cho một dự án khách hàng. Phần đáng xem là cách chẩn đoán và lý do phía sau từng quyết định thiết kế.",
+      "cta": "Xem case study minh họa"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Về Nét Nút",
+      "body": "Doanh nghiệp thay đổi theo thời gian. Website cũng cần thay đổi để phản ánh đúng giá trị, quy mô và cách doanh nghiệp đang vận hành.",
+      "ctaPrimary": "Bắt đầu trao đổi",
+      "ctaSecondary": "Xem ví dụ minh họa"
+    },
+    "dictionary": {
+      "srTitle": "Vì sao là Nét Nút",
+      "net": "Nét",
+      "nut": "Nút",
+      "netDef": " là cách một thương hiệu được nhìn thấy và cảm nhận. Đó là bố cục, ngôn từ, hình ảnh, màu sắc, nhịp điệu và cá tính riêng tạo nên cách thương hiệu xuất hiện trước khách hàng.",
+      "nutDef": " là phần đưa người dùng từ việc nhìn thấy đến hành động. Là cách họ tìm được thông tin, hiểu sản phẩm, hình thành niềm tin và đi đến quyết định.",
+      "close": "Với chúng tôi, một website tốt không cần chọn giữa đẹp và hiệu quả. Nó cần cả hai."
+    },
+    "manifesto": {
+      "eyebrow": "Website hiện tại là điểm bắt đầu",
+      "lede": "Anh/chị chia sẻ website và bối cảnh hiện tại. Nét Nút cùng anh/chị xác định phần đáng giữ, phần đang cản và hướng cần làm rõ trước khi đi tiếp.",
+      "display": "làm\nlại.",
+      "lines": [
+        "Giữ cái đáng giữ.",
+        "Gỡ cái đang cản.",
+        "Dựng cái cần chạy."
+      ]
+    },
+    "vision": {
+      "eyebrow": "Nét Nút làm gì ở khoảng cách đó?",
+      "display": "Làm\nrõ.",
+      "lede": "Nét Nút không bắt đầu bằng một công thức mới. Nét Nút bắt đầu bằng việc đọc đúng website và doanh nghiệp đang có, rồi sắp lại đường đi để phù hợp với hiện tại.",
+      "tracks": [
+        {
+          "label": "Đọc",
+          "copy": "Nhìn vào website đang có cùng bối cảnh doanh nghiệp, để hiểu điều gì đã tích lũy và điều gì không còn phục vụ hiện tại."
+        },
+        {
+          "label": "Sắp",
+          "copy": "Làm rõ cấu trúc, thông điệp và đường đi chính, để người xem tìm được điều họ cần mà không phải đoán."
+        },
+        {
+          "label": "Dựng",
+          "copy": "Xác định hướng và phạm vi phù hợp. Thiết kế, code và chuyển động chỉ xuất hiện khi chúng giúp website làm tốt hơn."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Một studio nhỏ. Làm việc trực tiếp.",
+      "body": "Nét Nút là một studio nhỏ tại Việt Nam, làm việc trực tiếp với từng doanh nghiệp. Người tìm hiểu bài toán, đưa ra hướng giải quyết và thực hiện sản phẩm cùng ở gần nhau trong suốt quá trình. Vì vậy, thông tin ít thất lạc hơn, quyết định nhanh hơn và trách nhiệm rõ ràng hơn."
+    },
+    "outro": {
+      "srTitle": "Có website cần dựng lại?",
+      "lead": "Một website tốt không cần chọn giữa đẹp và hiệu quả. Nó cần cả hai.",
+      "display": "Có website cần dựng lại?",
+      "close": "Nếu website đã không còn phản ánh đúng doanh nghiệp, hãy bắt đầu bằng bối cảnh hiện tại. Nét Nút sẽ cùng anh/chị xác định phần cần làm rõ trước khi đề xuất bước tiếp theo.",
+      "cta": "Bắt đầu trao đổi"
+    }
+  },
+  "contact": {
+    "intro": {
+      "titleLine1": "Bắt đầu",
+      "titleLine2": "trao đổi",
+      "lede": "Chia sẻ điều website đang cần giải quyết.",
+      "points": [
+        {
+          "title": "Redesign toàn bộ website",
+          "copy": "Khi website hiện tại đã không còn theo kịp quy mô, dịch vụ hoặc cách doanh nghiệp đang vận hành."
+        },
+        {
+          "title": "Sắp lại cấu trúc và thông điệp",
+          "copy": "Khi phần cần làm rõ nhất là đường đi, nội dung hoặc thứ bậc thông tin trên website hiện tại."
+        },
+        {
+          "title": "Chưa chắc nên bắt đầu từ đâu",
+          "copy": "Không sao. Chia sẻ bối cảnh hiện tại, phần còn vướng và điều doanh nghiệp muốn website làm tốt hơn."
+        }
+      ]
+    },
+    "form": {
+      "heading": "Bắt đầu trao đổi",
+      "lede": "Chia sẻ một chút bối cảnh. Thông tin chỉ nằm trong trình duyệt này cho đến khi kết nối luồng gửi thật.",
+      "successTitle": "Thông tin đã sẵn sàng trong trình duyệt này.",
+      "successBody": "Chưa có thông tin nào được gửi hoặc lưu lại. Hãy kết nối điểm nhận dữ liệu và chính sách bảo mật trước khi dùng biểu mẫu này trong thực tế.",
+      "successReset": "Gửi thông tin khác",
+      "name": "Tên anh/chị",
+      "namePlaceholder": "Nguyễn Văn A",
+      "company": "Tên doanh nghiệp",
+      "companyPlaceholder": "Tên doanh nghiệp",
+      "phone": "Số điện thoại",
+      "phonePlaceholder": "090 123 4567",
+      "email": "Địa chỉ email",
+      "emailPlaceholder": "ten@doanhnghiep.vn",
+      "comment": "Điều anh/chị muốn trao đổi",
+      "commentOptional": "(không bắt buộc)",
+      "commentPlaceholder": "Ví dụ: Website đang cần làm rõ điều gì?",
+      "privacy": "Khi chọn nút Gửi thông tin, anh/chị xác nhận đã đọc và đồng ý với chính sách bảo mật.",
+      "submit": "Gửi thông tin",
+      "statusErrors": "Vui lòng kiểm tra lại các trường được đánh dấu.",
+      "errors": {
+        "name": "Vui lòng nhập tên của anh/chị.",
+        "company": "Vui lòng nhập tên doanh nghiệp.",
+        "phone": "Vui lòng nhập số điện thoại.",
+        "email": "Vui lòng nhập địa chỉ email.",
+        "emailInvalid": "Vui lòng nhập địa chỉ email hợp lệ.",
+        "tooLong": "Vui lòng rút ngắn nội dung trường này."
+      }
+    }
+  },
+  "redesign": {
+    "back": "← Quay lại phần minh họa",
+    "sourceLabel": "Nguồn nội dung",
+    "statusLabel": "Trạng thái",
+    "statusValue": "Case study minh họa",
+    "diagnosisEyebrow": "01 / Chẩn đoán",
+    "diagnosisTitle": "Cũ không có nghĩa là sai.",
+    "decisionsEyebrow": "02 / Quyết định",
+    "decisionsTitle": "Dựng lại đường đi.",
+    "noteEyebrow": "03 / Ghi chú",
+    "afterEyebrow": "Phía sau bản redesign",
+    "afterTitle": "Hiểu thêm về Nét Nút.",
+    "afterCta": "Về Nét Nút",
+    "compare": {
+      "eyebrow": "Khung so sánh tương tác",
+      "title": "Nhìn cùng một bài toán.",
+      "lede": "Bản redesign chạy trong một khung cô lập và không thực thi JavaScript. Trên máy tính, hai phiên bản nằm cạnh nhau; trên điện thoại, có thể chuyển qua lại bằng hai tab.",
+      "panelOriginal": "Website cũ",
+      "panelOriginalEyebrow": "Điểm xuất phát",
+      "panelRedesign": "Bản redesign",
+      "panelRedesignEyebrow": "Hướng tái cấu trúc",
+      "openOriginal": "Mở website gốc",
+      "tabsAria": "Chọn phiên bản website trên màn hình nhỏ",
+      "viewportAria": "Chọn kích thước khung xem",
+      "desktop": "Máy tính",
+      "tablet": "Máy tính bảng",
+      "mobile": "Điện thoại",
+      "footnote": "Đây là bản dựng minh họa bằng HTML giả định, không phải website của khách hàng. Hai phiên bản được cô lập trong sandbox để so sánh an toàn."
+    }
+  },
+  "errors": {
+    "signal": "Không thể hoàn tất bản dựng hiện tại",
+    "stageAria": "Minh họa bản dựng đang tự căn chỉnh",
+    "legend": "Hệ thống đang căn chỉnh",
+    "ghostHeader": "Vùng không ổn định",
+    "ghostMeta": "Offset",
+    "paperHeader": "Bản dựng mới",
+    "paperMeta": "Ready",
+    "sheetCopy": "Cấu trúc cần trở về đúng chỗ.",
+    "footerLeft": "Nét Nút Studio / Editorial reconstruction",
+    "footerRight": "Trang này không lưu dữ liệu nào",
+    "retry": "Thử dựng lại",
+    "home": "Về trang đầu",
+    "notFound": {
+      "status": "Đường dẫn không tồn tại / 404",
+      "title": "Không tìm thấy bản dựng.",
+      "description": "Đường dẫn này không tồn tại hoặc đã được chuyển đi. Hãy quay về trang đầu để tiếp tục."
+    },
+    "error": {
+      "status": "Lỗi kết nối / 500",
+      "title": "Bản dựng bị lệch.",
+      "description": "Một phần trải nghiệm không thể hiển thị đúng lúc này. Hãy thử dựng lại, hoặc quay về trang đầu để tiếp tục."
+    },
+    "global": {
+      "status": "Lỗi hệ thống / 500-503",
+      "title": "Bản dựng bị lệch.",
+      "description": "Hệ thống không thể hoàn tất trải nghiệm lúc này. Hãy thử dựng lại, hoặc quay về trang đầu để tiếp tục."
+    }
+  }
+}

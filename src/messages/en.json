@@ -1,0 +1,281 @@
+{
+  "meta": {
+    "home": {
+      "title": "Nét Nút Studio | Website redesign for growing businesses",
+      "description": "Nét Nút clarifies the message, restructures information, and redesigns websites so they reflect the business as it is today."
+    },
+    "about": {
+      "title": "About Nét Nút Studio | Website redesign",
+      "description": "Nét Nút helps businesses clarify what already works, remove website friction, and build a direction that fits the present."
+    },
+    "contact": {
+      "title": "Start a conversation | Nét Nút Studio",
+      "description": "Share the context of your current website to start a clearer redesign conversation."
+    }
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "mainNav": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "hanoiClock": "Current time in Ha Noi (Asia/Ho_Chi_Minh)."
+  },
+  "nav": {
+    "services": "Services",
+    "work": "Method",
+    "about": "About Nét Nút",
+    "contact": "Contact",
+    "ctaCaseStudy": "View case study",
+    "ctaStart": "Start a conversation",
+    "ctaAbout": "About Nét Nút"
+  },
+  "footer": {
+    "brand": "Nét Nút Studio",
+    "location": "Ha Noi Based",
+    "follow": "Follow Us",
+    "label": "Site footer"
+  },
+  "home": {
+    "hero": {
+      "title": "Old site. Rebuild it properly.",
+      "body": "Your current website no longer keeps pace with the business. Nét Nút clarifies the message, restructures the information flow, and designs an experience that reflects the brand’s real position.",
+      "ctaPrimary": "View illustrative case study",
+      "ctaSecondary": "See how we work"
+    },
+    "services": {
+      "title": "What we do",
+      "lede": "Rebuild the parts that keep a website from keeping up with the business.",
+      "items": [
+        {
+          "title": "Website redesign",
+          "copy": "Keep the brand equity that still works, remove outdated structure, and rebuild the experience so the site matches the company."
+        },
+        {
+          "title": "Business websites",
+          "copy": "Build from information architecture through interface and performance so content is clear, services are findable, and the brand feels trustworthy."
+        },
+        {
+          "title": "Campaign landing pages",
+          "copy": "Each landing page focuses on one message and one primary action, so visitors move straight to the next step."
+        },
+        {
+          "title": "Motion and interaction",
+          "copy": "Motion is designed to guide attention, clarify feedback, and keep pacing — not as decoration alone."
+        }
+      ]
+    },
+    "work": {
+      "title": "How we diagnose",
+      "ariaCompare": "Compare the old website and redesign with arrow keys",
+      "ariaToggle": "Choose website version",
+      "hint": "An illustration of how structure and hierarchy change before and after.",
+      "oldLabel": "Old site",
+      "newLabel": "New site",
+      "captionTitle": "Method illustration",
+      "captionBody": "Diagnose the inherited structure, keep what still has value, then rebuild a clearer path.",
+      "visualNewEyebrow": "Brand reconstruction",
+      "visualNewTitle": "Clearer. Faster.",
+      "visualNewSub": "A website that keeps pace with the business.",
+      "visualNewBadge": "New site",
+      "visualOldBadge": "Old site"
+    },
+    "capabilities": {
+      "title": "From mark to action.",
+      "items": [
+        "Diagnose the real problem",
+        "Organize information clearly",
+        "Design with intent",
+        "Protect brand equity",
+        "Guide the eye with motion",
+        "Build purposeful interaction",
+        "Optimize speed and durability",
+        "Hand off ready to operate"
+      ]
+    },
+    "process": {
+      "blocks": [
+        {
+          "title": "Start from the website you have.",
+          "copy": "Nét Nút reviews the current site, decides what to keep, what to change, and aligns on one core design direction before a full build."
+        },
+        {
+          "title": "Stay lean and go straight to the work.",
+          "copy": "Mark creates presence. Action creates progress. Nét Nút is a Vietnam-based studio focused on business website redesign — direct collaboration, clear scope, and fast decisions."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "See how a website gets rebuilt.",
+      "body": "The Nhà Mộc case study shows diagnosis, design decisions, and before/after versions in one comparison frame.",
+      "eyebrow": "Illustrative case study",
+      "note": "The case study does not represent a client project. What matters is the diagnosis and the reasoning behind each design decision.",
+      "cta": "View illustrative case study"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Nét Nút",
+      "body": "Businesses change over time. Websites need to change too — to reflect real value, scale, and how the company operates today.",
+      "ctaPrimary": "Start a conversation",
+      "ctaSecondary": "View illustrative example"
+    },
+    "dictionary": {
+      "srTitle": "Why Nét Nút",
+      "net": "Nét",
+      "nut": "Nút",
+      "netDef": " is how a brand is seen and felt — layout, language, imagery, color, rhythm, and the character that shapes how it appears to customers.",
+      "nutDef": " is what takes people from seeing to acting — how they find information, understand the offer, build trust, and reach a decision.",
+      "close": "For us, a good website does not choose between beauty and effectiveness. It needs both."
+    },
+    "manifesto": {
+      "eyebrow": "The current website is the starting point",
+      "lede": "Share the site and current context. Nét Nút works with you to identify what is worth keeping, what is in the way, and what needs clarity before moving on.",
+      "display": "rebuild.",
+      "lines": [
+        "Keep what deserves keeping.",
+        "Remove what gets in the way.",
+        "Build what needs to run."
+      ]
+    },
+    "vision": {
+      "eyebrow": "What Nét Nút does in that gap?",
+      "display": "Make\nit clear.",
+      "lede": "Nét Nút does not start with a new formula. It starts by reading the website and business you already have, then reordering the path so it fits today.",
+      "tracks": [
+        {
+          "label": "Read",
+          "copy": "Look at the current website with the business context — what has accumulated, and what no longer serves the present."
+        },
+        {
+          "label": "Order",
+          "copy": "Clarify structure, message, and the primary path so visitors find what they need without guessing."
+        },
+        {
+          "label": "Build",
+          "copy": "Set a direction and scope that fit. Design, code, and motion appear only when they help the site work better."
+        }
+      ]
+    },
+    "culture": {
+      "title": "A small studio. Direct work.",
+      "body": "Nét Nút is a small studio in Vietnam that works directly with each business. The people who understand the problem, propose the direction, and build the product stay close throughout. Less information is lost, decisions move faster, and ownership stays clear."
+    },
+    "outro": {
+      "srTitle": "Have a website that needs rebuilding?",
+      "lead": "A good website does not choose between beauty and effectiveness. It needs both.",
+      "display": "Have a website that needs rebuilding?",
+      "close": "If the site no longer reflects the business, start with today’s context. Nét Nút will help identify what needs clarity before proposing the next step.",
+      "cta": "Start a conversation"
+    }
+  },
+  "contact": {
+    "intro": {
+      "titleLine1": "Start a",
+      "titleLine2": "conversation",
+      "lede": "Share what the website needs to solve.",
+      "points": [
+        {
+          "title": "Full website redesign",
+          "copy": "When the current site no longer keeps pace with scale, services, or how the business operates."
+        },
+        {
+          "title": "Restructure message and architecture",
+          "copy": "When the clearest need is path, content, or information hierarchy on the current site."
+        },
+        {
+          "title": "Not sure where to start",
+          "copy": "That’s fine. Share the current context, what still feels stuck, and what you want the website to do better."
+        }
+      ]
+    },
+    "form": {
+      "heading": "Start a conversation",
+      "lede": "Share a little context. Information stays in this browser until a real submit flow is connected.",
+      "successTitle": "Information is ready in this browser.",
+      "successBody": "Nothing has been sent or stored yet. Connect a destination and privacy policy before using this form in production.",
+      "successReset": "Submit different information",
+      "name": "Your name",
+      "namePlaceholder": "Alex Nguyen",
+      "company": "Company name",
+      "companyPlaceholder": "Company name",
+      "phone": "Phone number",
+      "phonePlaceholder": "+84 90 123 4567",
+      "email": "Email address",
+      "emailPlaceholder": "name@company.com",
+      "comment": "What you’d like to discuss",
+      "commentOptional": "(optional)",
+      "commentPlaceholder": "Example: What does the website need to clarify?",
+      "privacy": "By choosing Submit, you confirm you have read and agree to the privacy policy.",
+      "submit": "Submit information",
+      "statusErrors": "Please review the highlighted fields.",
+      "errors": {
+        "name": "Please enter your name.",
+        "company": "Please enter your company name.",
+        "phone": "Please enter a phone number.",
+        "email": "Please enter an email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "tooLong": "Please shorten this field."
+      }
+    }
+  },
+  "redesign": {
+    "back": "← Back to illustrations",
+    "sourceLabel": "Content source",
+    "statusLabel": "Status",
+    "statusValue": "Illustrative case study",
+    "diagnosisEyebrow": "01 / Diagnosis",
+    "diagnosisTitle": "Old is not the same as wrong.",
+    "decisionsEyebrow": "02 / Decisions",
+    "decisionsTitle": "Rebuild the path.",
+    "noteEyebrow": "03 / Note",
+    "afterEyebrow": "Behind the redesign",
+    "afterTitle": "Learn more about Nét Nút.",
+    "afterCta": "About Nét Nút",
+    "compare": {
+      "eyebrow": "Interactive comparison frame",
+      "title": "See the same problem.",
+      "lede": "The redesign runs in an isolated frame without executing JavaScript. On desktop, both versions sit side by side; on phone, switch with the two tabs.",
+      "panelOriginal": "Old website",
+      "panelOriginalEyebrow": "Starting point",
+      "panelRedesign": "Redesign",
+      "panelRedesignEyebrow": "Reconstruction direction",
+      "openOriginal": "Open original site",
+      "tabsAria": "Choose website version on small screens",
+      "viewportAria": "Choose preview size",
+      "desktop": "Desktop",
+      "tablet": "Tablet",
+      "mobile": "Phone",
+      "footnote": "This is an illustrative HTML mock, not a client website. Both versions are sandboxed for safe comparison."
+    }
+  },
+  "errors": {
+    "signal": "Could not finish the current build",
+    "stageAria": "Illustration of a build realigning itself",
+    "legend": "System realigning",
+    "ghostHeader": "Unstable region",
+    "ghostMeta": "Offset",
+    "paperHeader": "New build",
+    "paperMeta": "Ready",
+    "sheetCopy": "Structure needs to return to place.",
+    "footerLeft": "Nét Nút Studio / Editorial reconstruction",
+    "footerRight": "This page stores no data",
+    "retry": "Try rebuilding",
+    "home": "Back to home",
+    "notFound": {
+      "status": "Path not found / 404",
+      "title": "Build not found.",
+      "description": "This path does not exist or has moved. Return home to continue."
+    },
+    "error": {
+      "status": "Connection error / 500",
+      "title": "Build out of alignment.",
+      "description": "Part of the experience could not render correctly right now. Try rebuilding, or return home to continue."
+    },
+    "global": {
+      "status": "System error / 500-503",
+      "title": "Build out of alignment.",
+      "description": "The system could not finish the experience right now. Try rebuilding, or return home to continue."
+    }
+  }
+}

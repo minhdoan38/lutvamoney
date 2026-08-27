@@ -5,21 +5,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const capabilities = [
-  "Chẩn đoán đúng vấn đề",
-  "Sắp xếp thông tin dễ hiểu",
-  "Thiết kế giao diện có lý do",
-  "Giữ giá trị thương hiệu",
-  "Dẫn mắt bằng chuyển động",
-  "Tạo tương tác có mục đích",
-  "Tối ưu tốc độ và độ bền",
-  "Bàn giao sẵn sàng vận hành",
-];
+type CapabilitiesProps = {
+  copy: Dictionary["home"]["capabilities"];
+};
 
-export function Capabilities() {
+export function Capabilities({ copy }: CapabilitiesProps) {
   const scope = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -74,11 +68,11 @@ export function Capabilities() {
         <div className="grid gap-14 md:grid-cols-12 md:gap-8">
           <ScrollText mode="words">
             <h2 className="max-w-none text-[clamp(3.2rem,7vw,6.2rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:col-span-7">
-              Từ nét đến nút.
+              {copy.title}
             </h2>
           </ScrollText>
           <div className="flex flex-wrap content-start gap-2 md:col-span-5 md:pt-8">
-            {capabilities.map((capability, index) => (
+            {copy.items.map((capability, index) => (
               <span
                 key={capability}
                 data-capability
@@ -86,8 +80,8 @@ export function Capabilities() {
                 onPointerLeave={release}
                 className={`rounded-full border px-4 py-2.5 text-sm transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] sm:px-5 sm:py-3 ${
                   index === 3 || index === 6
-                    ? "border-accent bg-accent text-[#090909]"
-                    : "border-white/22 text-white/72"
+                    ? "border-accent bg-accent text-background"
+                    : "border-foreground/22 text-foreground/72"
                 }`}
               >
                 {capability}

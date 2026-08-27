@@ -259,7 +259,7 @@ export function ReconstructionStage() {
                     <TabsTrigger
                       key={phase.id}
                       value={phase.id}
-                      className="min-h-11 flex-none border border-white/25 px-3 py-2 text-left text-xs data-active:border-accent data-active:bg-accent data-active:text-background"
+                      className="min-h-11 flex-none border border-foreground/25 px-3 py-2 text-left text-xs data-active:border-accent data-active:bg-accent data-active:text-background"
                     >
                       <span className="font-mono text-xs">0{index + 1}</span>
                       <span className="ml-2">{phase.label}</span>
@@ -324,10 +324,10 @@ Xem case study minh họa →
                   spacing={0}
                   aria-label="Chọn mức so sánh"
                 >
-                  <ToggleGroupItem value="before" className="min-h-11 border border-white/25 px-4 py-2 text-xs data-[state=on]:border-accent data-[state=on]:bg-accent data-[state=on]:text-background">
+                  <ToggleGroupItem value="before" className="min-h-11 border border-foreground/25 px-4 py-2 text-xs data-[state=on]:border-accent data-[state=on]:bg-accent data-[state=on]:text-background">
                     Before
                   </ToggleGroupItem>
-                  <ToggleGroupItem value="after" className="min-h-11 border border-white/25 px-4 py-2 text-xs data-[state=on]:border-accent data-[state=on]:bg-accent data-[state=on]:text-background">
+                  <ToggleGroupItem value="after" className="min-h-11 border border-foreground/25 px-4 py-2 text-xs data-[state=on]:border-accent data-[state=on]:bg-accent data-[state=on]:text-background">
                     After
                   </ToggleGroupItem>
                 </ToggleGroup>

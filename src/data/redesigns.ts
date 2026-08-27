@@ -1,13 +1,26 @@
-export type RedesignProject = {
-  slug: string;
+import type { Locale } from "@/i18n/config";
+
+type LocalizedCopy = {
   title: string;
   kicker: string;
   summary: string;
   originalLabel: string;
-  originalUrl: string | null;
   diagnosis: readonly string[];
   decisions: readonly string[];
   nextStep: string;
+};
+
+export type RedesignProjectSource = {
+  slug: string;
+  originalUrl: string | null;
+  originalHtml: string;
+  redesignHtml: string;
+  copy: Record<Locale, LocalizedCopy>;
+};
+
+export type RedesignProject = LocalizedCopy & {
+  slug: string;
+  originalUrl: string | null;
   originalHtml: string;
   redesignHtml: string;
 };
@@ -92,32 +105,71 @@ const redesignHtml = `<!doctype html>
 </body>
 </html>`;
 
-export const redesignProjects: readonly RedesignProject[] = [
+export const redesignProjects: readonly RedesignProjectSource[] = [
   {
     slug: "nha-moc-demo",
-    title: "Một website dịch vụ cần một điểm bắt đầu rõ ràng",
-    kicker: "Case study minh họa / website nội thất thủ công",
-    summary:
-      "Một bản dựng giả định cho thấy cách sắp lại trang chủ nhiều thông tin thành một luồng nội dung có thứ tự, có nhịp và có lý do.",
-    originalLabel: "Nội dung giả định do Nét Nút dựng",
     originalUrl: null,
-    diagnosis: [
-      "Hero giới thiệu sản phẩm trước khi nói rõ cảm giác và khác biệt của thương hiệu.",
-      "Ba nhóm sản phẩm đứng ngang nhau nên người xem không biết nên bắt đầu từ đâu.",
-      "Nút hành động xuất hiện nhiều nhưng chưa gắn với một bước tiếp theo cụ thể.",
-    ],
-    decisions: [
-      "Đưa một ý chính lên đầu trang thay cho nhiều thông điệp cạnh tranh.",
-      "Dùng màu cam như tín hiệu dẫn đường, không dùng như lớp trang trí.",
-      "Chuyển danh sách sản phẩm thành các điểm vào theo nhịp sống.",
-    ],
-    nextStep:
-      "Đây là case study minh họa, không phải dự án khách hàng. Nội dung và thương hiệu đều do Nét Nút dựng để trình bày phương pháp chẩn đoán và redesign.",
     originalHtml,
     redesignHtml,
+    copy: {
+      vi: {
+        title: "Một website dịch vụ cần một điểm bắt đầu rõ ràng",
+        kicker: "Case study minh họa / website nội thất thủ công",
+        summary:
+          "Một bản dựng giả định cho thấy cách sắp lại trang chủ nhiều thông tin thành một luồng nội dung có thứ tự, có nhịp và có lý do.",
+        originalLabel: "Nội dung giả định do Nét Nút dựng",
+        diagnosis: [
+          "Hero giới thiệu sản phẩm trước khi nói rõ cảm giác và khác biệt của thương hiệu.",
+          "Ba nhóm sản phẩm đứng ngang nhau nên người xem không biết nên bắt đầu từ đâu.",
+          "Nút hành động xuất hiện nhiều nhưng chưa gắn với một bước tiếp theo cụ thể.",
+        ],
+        decisions: [
+          "Đưa một ý chính lên đầu trang thay cho nhiều thông điệp cạnh tranh.",
+          "Dùng màu cam như tín hiệu dẫn đường, không dùng như lớp trang trí.",
+          "Chuyển danh sách sản phẩm thành các điểm vào theo nhịp sống.",
+        ],
+        nextStep:
+          "Đây là case study minh họa, không phải dự án khách hàng. Nội dung và thương hiệu đều do Nét Nút dựng để trình bày phương pháp chẩn đoán và redesign.",
+      },
+      en: {
+        title: "A service website needs a clear starting point",
+        kicker: "Illustrative case study / handmade furniture site",
+        summary:
+          "A hypothetical build shows how a crowded homepage becomes an ordered content flow with rhythm and reason.",
+        originalLabel: "Hypothetical content created by Nét Nút",
+        diagnosis: [
+          "The hero introduces products before clarifying the brand’s feeling and difference.",
+          "Three product groups sit side by side, so visitors do not know where to begin.",
+          "Action buttons appear often but are not tied to one concrete next step.",
+        ],
+        decisions: [
+          "Lead with one primary idea instead of competing messages.",
+          "Use orange as a wayfinding signal, not as decoration.",
+          "Turn the product list into entry points organized by living rhythm.",
+        ],
+        nextStep:
+          "This is an illustrative case study, not a client project. Content and brand were created by Nét Nút to present the diagnosis and redesign method.",
+      },
+    },
   },
 ];
 
 export function getRedesignProject(slug: string) {
   return redesignProjects.find((project) => project.slug === slug);
+}
+
+export function getLocalizedRedesignProject(
+  slug: string,
+  locale: Locale,
+): RedesignProject | undefined {
+  const project = getRedesignProject(slug);
+  if (!project) return undefined;
+  const copy = project.copy[locale] ?? project.copy.en;
+  return {
+    slug: project.slug,
+    originalUrl: project.originalUrl,
+    originalHtml: project.originalHtml,
+    redesignHtml: project.redesignHtml,
+    ...copy,
+  };
 }

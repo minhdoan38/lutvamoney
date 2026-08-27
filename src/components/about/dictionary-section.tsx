@@ -4,10 +4,15 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export function DictionarySection() {
+type DictionarySectionProps = {
+  copy: Dictionary["about"]["dictionary"];
+};
+
+export function DictionarySection({ copy }: DictionarySectionProps) {
   const scope = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -99,20 +104,22 @@ export function DictionarySection() {
           className="flex flex-col gap-12 md:col-span-6 md:col-start-7 md:gap-16"
         >
           <div>
-            <h2 className="sr-only">Vì sao là Nét Nút</h2>
+            <h2 className="sr-only">{copy.srTitle}</h2>
             <p className="text-[clamp(1.5rem,3.2vw,2.75rem)] font-medium leading-[1.16] tracking-[-0.03em] text-foreground">
-              <span className="text-accent">Nét</span> là cách một thương hiệu được nhìn thấy và cảm nhận. Đó là bố cục, ngôn từ, hình ảnh, màu sắc, nhịp điệu và cá tính riêng tạo nên cách thương hiệu xuất hiện trước khách hàng.
+              <span className="text-accent">{copy.net}</span>
+              {copy.netDef}
             </p>
           </div>
 
           <div className="border-t border-line pt-12 md:pt-16">
             <p className="text-[clamp(1.5rem,3.2vw,2.75rem)] font-medium leading-[1.16] tracking-[-0.03em] text-foreground">
-              <span className="text-accent">Nút</span> là phần đưa người dùng từ việc nhìn thấy đến hành động. Là cách họ tìm được thông tin, hiểu sản phẩm, hình thành niềm tin và đi đến quyết định.
+              <span className="text-accent">{copy.nut}</span>
+              {copy.nutDef}
             </p>
           </div>
 
           <p className="max-w-xl border-t border-line pt-10 text-base leading-[1.72] text-foreground/68 md:pt-12 md:text-lg">
-            Với chúng tôi, một website tốt không cần chọn giữa đẹp và hiệu quả. Nó cần cả hai.
+            {copy.close}
           </p>
         </div>
       </div>

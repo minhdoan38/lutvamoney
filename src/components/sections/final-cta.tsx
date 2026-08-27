@@ -6,10 +6,17 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
+import { localePath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export function FinalCTA() {
+type FinalCTAProps = {
+  locale: Locale;
+  copy: Dictionary["home"]["finalCta"];
+};
+
+export function FinalCTA({ locale, copy }: FinalCTAProps) {
   const scope = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -38,39 +45,33 @@ export function FinalCTA() {
           <div className="md:col-span-8">
             <ScrollText mode="words">
               <h2 className="max-w-[12ch] text-[clamp(3.2rem,8.6vw,8rem)] font-semibold leading-[0.96] tracking-[-0.04em]">
-                Xem một website được dựng lại thế nào.
+                {copy.title}
               </h2>
             </ScrollText>
             <ScrollText>
-              <p className="mt-8 max-w-2xl text-base leading-relaxed text-black/90 md:text-lg">
-                Case study Nhà Mộc trình bày phần chẩn đoán, các quyết định thiết kế và hai phiên bản trước và sau trong cùng một khung so sánh.
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-background/90 md:text-lg">
+                {copy.body}
               </p>
             </ScrollText>
           </div>
 
           <div data-cta-field className="self-end md:col-span-4">
-            <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-black/70">
-              Case study minh họa
+            <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-background/70">
+              {copy.eyebrow}
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-black/90">
-              Case study không đại diện cho một dự án khách hàng. Phần đáng xem là cách chẩn đoán và lý do phía sau từng quyết định thiết kế.
+            <p className="mt-4 text-sm leading-relaxed text-background/90">
+              {copy.note}
             </p>
             <Link
-              href="/redesign/nha-moc-demo"
-              data-cursor-link
+              href={localePath(locale, "/redesign/nha-moc-demo")}
               className="mt-6 inline-flex min-h-14 w-full items-center justify-between gap-6 bg-background px-5 font-mono text-sm font-semibold text-foreground transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98]"
             >
-              Xem case study minh họa
+              {copy.cta}
               <span aria-hidden="true">↗</span>
             </Link>
           </div>
         </div>
       </div>
-
-      <footer className="mx-auto flex max-w-375 flex-col gap-4 border-t editorial-rule py-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
-        <p>Nét Nút Studio</p>
-        <p>Redesign website doanh nghiệp tại Việt Nam</p>
-      </footer>
     </section>
   );
 }

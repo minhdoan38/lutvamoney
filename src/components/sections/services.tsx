@@ -5,29 +5,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollText } from "@/components/scroll-text";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const services = [
-  {
-    title: "Redesign website",
-    copy: "Giữ lại giá trị thương hiệu đã có, gỡ bỏ cấu trúc lỗi thời và dựng lại trải nghiệm để website theo kịp doanh nghiệp.",
-  },
-  {
-    title: "Website doanh nghiệp",
-    copy: "Xây website từ kiến trúc thông tin, giao diện đến hiệu suất để nội dung dễ hiểu, dịch vụ dễ tìm và thương hiệu đáng tin hơn.",
-  },
-  {
-    title: "Landing page chiến dịch",
-    copy: "Mỗi landing page tập trung vào một thông điệp và một hành động chính, giúp người xem đi thẳng đến bước tiếp theo.",
-  },
-  {
-    title: "Chuyển động và tương tác",
-    copy: "Chuyển động được thiết kế để dẫn mắt, làm rõ phản hồi và giữ nhịp trải nghiệm — không dùng để trang trí đơn thuần.",
-  },
-];
+type ServicesProps = {
+  copy: Dictionary["home"]["services"];
+};
 
-export function Services() {
+export function Services({ copy }: ServicesProps) {
   const scope = useRef<HTMLElement>(null);
   const [active, setActive] = useState<number | null>(0);
 
@@ -57,16 +43,16 @@ export function Services() {
         <div className="mb-16 grid gap-7 md:mb-24 md:grid-cols-12">
           <ScrollText mode="words">
             <h2 className="max-w-none text-[clamp(3rem,6.8vw,6.4rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:col-span-9">
-              Chúng tôi làm gì
+              {copy.title}
             </h2>
           </ScrollText>
-          <p className="max-w-sm self-end text-base leading-relaxed text-white/55 md:col-span-3">
-            Xây lại đúng phần khiến website không còn theo kịp doanh nghiệp.
+          <p className="max-w-sm self-end text-base leading-relaxed text-foreground/55 md:col-span-3">
+            {copy.lede}
           </p>
         </div>
 
         <div className="border-t editorial-rule">
-          {services.map((service, index) => {
+          {copy.items.map((service, index) => {
             const isActive = active === index;
             return (
               <article
@@ -102,7 +88,7 @@ export function Services() {
                   aria-hidden={!isActive}
                   className={`grid items-center overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:col-span-4 md:col-start-9 md:self-stretch ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                 >
-                  <p className="min-h-0 max-w-xl pb-6 text-sm leading-relaxed text-white/60 md:pb-0 md:text-base">
+                  <p className="min-h-0 max-w-xl pb-6 text-sm leading-relaxed text-foreground/60 md:pb-0 md:text-base">
                     {service.copy}
                   </p>
                 </div>

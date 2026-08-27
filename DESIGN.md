@@ -1,6 +1,6 @@
 ---
 name: Nét Nút Studio
-description: Vietnamese-first website redesign studio expressed as a direct editorial reconstruction instrument.
+description: Bilingual (English default, Vietnamese under /vi) website redesign studio expressed as a direct editorial reconstruction instrument.
 colors:
   background: "#090909"
   foreground: "#EDEDED"
@@ -75,14 +75,14 @@ components:
 
 Nét Nút treats an inherited website as material on a worktable: inspect what exists, identify the friction, reflow the meaning, and rebuild a clearer system. The visual language is direct and specialist rather than polished agency theater. Oversized variable display type, ruled fields, hard-edged blocks, and a single vermilion intervention make the act of thinking visible without pretending to perform an audit.
 
-The system is Vietnamese-first, high-contrast, and materially flat. Its energy comes from compression and release: dense rows and labels give way to large declarations, asymmetric twelve-column compositions, and a focused conversion plane. Motion reveals hierarchy, comparison, transformation, or state; semantic HTML, native controls, visible labels, and static content remain complete without it.
+The system is bilingual with English as the unprefixed default and Vietnamese under `/vi`, high-contrast, and materially flat. Its energy comes from compression and release: dense rows and labels give way to large declarations, asymmetric twelve-column compositions, and a focused conversion plane. Motion reveals hierarchy, comparison, transformation, or state; semantic HTML, native controls, visible labels, and static content remain complete without it.
 
 **Key Characteristics:**
 - Near-black worktable with off-white paper and one vermilion signal.
 - Roboto Flex display states paired with Geist Sans and Geist Mono.
 - Asymmetric editorial compositions rather than equal feature-card grids.
 - Hairlines, flat blocks, clipping, and tonal opacity instead of ornamental depth.
-- Vietnamese-first copy with direct, specialist language.
+- Locale-aware copy (English default, Vietnamese under `/vi`) with direct, specialist language.
 - Illustrative reconstruction visuals explicitly labeled as concepts.
 
 ## Colors
@@ -134,7 +134,7 @@ The desktop frame uses wide, asymmetric twelve-column compositions. Sections alt
 
 The first viewport is a full-height editorial field with content anchored low, large display type, and a vermilion geometric intervention. Content frames generally use horizontal padding of `16px` on small screens, `24px` at the small breakpoint, and `40px` on large screens. Section spacing grows from roughly `80px` to `112px` on the home surface and from `128px` to `192px` on the more spacious about surface.
 
-At widths below `768px`, asymmetric grids collapse into direct single-column reading order. Sticky reconstruction behavior, dense desktop spans, and contextual cursor enhancements yield to readable vertical sections and native controls. Touch targets remain at least `44px`.
+At widths below `768px`, asymmetric grids collapse into direct single-column reading order. Sticky reconstruction behavior and dense desktop spans yield to readable vertical sections and native controls. Touch targets remain at least `44px`.
 
 ### Named Rules
 **The Refused Balance Rule.** Do not center the hero or distribute equal cards; preserve visible tension through offset starts, uneven spans, and intentional empty space.

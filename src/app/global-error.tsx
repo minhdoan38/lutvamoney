@@ -2,6 +2,19 @@
 
 import "./globals.css";
 import { ErrorPage } from "@/components/error-page";
+import type { Dictionary } from "@/i18n/get-dictionary";
+import en from "@/messages/en.json";
+import vi from "@/messages/vi.json";
+
+const dictionaries: Record<"en" | "vi", Dictionary> = {
+  en,
+  vi,
+};
+
+function readDocumentLocale(): "en" | "vi" {
+  if (typeof document === "undefined") return "en";
+  return document.documentElement.lang === "vi" ? "vi" : "en";
+}
 
 export default function GlobalError({
   retry,
@@ -9,14 +22,19 @@ export default function GlobalError({
   error: Error & { digest?: string };
   retry: () => void;
 }) {
+  const locale = readDocumentLocale();
+  const dict = dictionaries[locale];
+
   return (
-    <html lang="vi">
+    <html lang={locale}>
       <body>
         <ErrorPage
-          status="Lỗi hệ thống / 500-503"
-          title="Bản dựng bị lệch."
-          description="Hệ thống không thể hoàn tất trải nghiệm lúc này. Hãy thử dựng lại, hoặc quay về trang đầu để tiếp tục."
+          status={dict.errors.global.status}
+          title={dict.errors.global.title}
+          description={dict.errors.global.description}
           retry={retry}
+          locale={locale}
+          copy={dict.errors}
         />
       </body>
     </html>

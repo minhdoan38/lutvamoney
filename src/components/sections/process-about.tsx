@@ -6,22 +6,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { ScrollText } from "@/components/scroll-text";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-const blocks = [
-  {
-    title: "Bắt đầu từ website đang có.",
-    copy: "Nét Nút rà soát website hiện tại, xác định phần cần giữ, phần cần thay và thống nhất một hướng thiết kế cốt lõi trước khi triển khai toàn bộ.",
-  },
-  {
-    title: "Tinh gọn để đi thẳng vào việc.",
-    copy: "Nét tạo cảm giác. Nút tạo hành động. Nét Nút là studio tại Việt Nam, tập trung vào redesign website doanh nghiệp. Làm việc trực tiếp, phạm vi rõ ràng và quyết định nhanh.",
-  },
-];
+type ProcessAboutProps = {
+  copy: Dictionary["home"]["process"];
+};
 
-export function ProcessAbout() {
+export function ProcessAbout({ copy }: ProcessAboutProps) {
   const scope = useRef<HTMLElement>(null);
+  const blocks = copy.blocks;
 
   useGSAP(
     () => {

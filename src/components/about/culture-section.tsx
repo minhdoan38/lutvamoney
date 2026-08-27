@@ -5,10 +5,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-export function CultureSection() {
+type CultureSectionProps = {
+  copy: Dictionary["about"]["culture"];
+};
+
+export function CultureSection({ copy }: CultureSectionProps) {
   const scope = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -35,10 +40,10 @@ export function CultureSection() {
     <section id="culture" ref={scope} className="px-4 py-24 sm:px-6 md:py-36 lg:px-10">
       <div className="mx-auto grid max-w-375 gap-12 md:grid-cols-12 md:gap-8">
         <h2 data-culture-title className="display-release max-w-[9ch] text-[clamp(2.8rem,6vw,5.5rem)] font-semibold leading-[0.92] tracking-[-0.045em] md:col-span-5">
-          Một studio nhỏ. Làm việc trực tiếp.
+          {copy.title}
         </h2>
         <p data-culture-body className="max-w-152 text-base leading-[1.72] text-foreground/68 md:col-span-5 md:col-start-8 md:self-end md:text-lg lg:col-span-4 lg:col-start-9">
-          Nét Nút là một studio nhỏ tại Việt Nam, làm việc trực tiếp với từng doanh nghiệp. Người tìm hiểu bài toán, đưa ra hướng giải quyết và thực hiện sản phẩm cùng ở gần nhau trong suốt quá trình. Vì vậy, thông tin ít thất lạc hơn, quyết định nhanh hơn và trách nhiệm rõ ràng hơn.
+          {copy.body}
         </p>
       </div>
     </section>

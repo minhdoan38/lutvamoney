@@ -5,17 +5,17 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-const lines = [
-  "Giữ cái đáng giữ.",
-  "Gỡ cái đang cản.",
-  "Dựng cái cần chạy.",
-];
+type ManifestoSectionProps = {
+  copy: Dictionary["about"]["manifesto"];
+};
 
-export function ManifestoSection() {
+export function ManifestoSection({ copy }: ManifestoSectionProps) {
   const scope = useRef<HTMLElement>(null);
+  const displayLines = copy.display.split("\n");
 
   useGSAP(
     () => {
@@ -54,20 +54,23 @@ export function ManifestoSection() {
       <div className="mx-auto grid max-w-375 gap-12 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-4">
           <h2 id="manifesto-heading" className="font-mono text-[0.625rem] font-normal tracking-[0.12em] text-muted">
-            Website hiện tại là điểm bắt đầu
+            {copy.eyebrow}
           </h2>
           <p className="mt-6 max-w-sm text-base leading-[1.65] text-foreground/68 md:text-lg">
-            Anh/chị chia sẻ website và bối cảnh hiện tại. Nét Nút cùng anh/chị xác định phần đáng giữ, phần đang cản và hướng cần làm rõ trước khi đi tiếp.
+            {copy.lede}
           </p>
           <p className="display-release mt-10 max-w-[7ch] text-[clamp(4.5rem,11vw,10rem)] font-semibold leading-[0.8] tracking-[-0.055em] text-accent">
-            làm
-            <br />
-            lại.
+            {displayLines.map((line, index) => (
+              <span key={line}>
+                {index > 0 ? <br /> : null}
+                {line}
+              </span>
+            ))}
           </p>
         </div>
 
         <div className="md:col-span-7 md:col-start-6">
-          {lines.map((line) => (
+          {copy.lines.map((line) => (
             <article key={line} data-manifesto-entry className="border-t border-line py-8 md:py-12">
               <p data-manifesto-line className="display-compression mt-5 max-w-[13ch] text-[clamp(2rem,4.7vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.045em] text-foreground">
                 {line}
