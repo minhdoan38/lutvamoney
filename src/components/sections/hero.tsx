@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -102,29 +103,29 @@ export function Hero() {
             data-hero-copy
             className="max-w-196 text-base leading-[1.45] text-white/65 md:col-span-7 md:col-start-5 md:text-xl lg:col-span-6 lg:col-start-6"
           >
-            Doanh nghiệp của bạn đã đi xa hơn chính website hiện tại. Nét Nút loại bỏ những thứ cồng kềnh, giữ lại cốt lõi, và thiết kế một trải nghiệm xứng tầm.
+Website hiện tại không còn theo kịp doanh nghiệp. Nét Nút làm rõ thông điệp, sắp lại luồng thông tin và thiết kế trải nghiệm phản ánh đúng vị thế thương hiệu.
           </p>
 
           <div data-hero-copy className="flex flex-col gap-3 sm:flex-row md:col-span-8 md:col-start-5 lg:col-span-7 lg:col-start-6">
-            <a
-              href="#contact"
+            <Link
+              href="/redesign/nha-moc-demo"
               data-cursor-link
               data-cursor="magnetic"
               data-magnetic-strength="0.12"
               className="group inline-flex min-h-12 items-center justify-between gap-7 rounded-full bg-foreground py-2 pl-5 pr-2 text-sm font-semibold text-[#090909] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 active:scale-[0.98]"
             >
-              Gửi website của bạn
+              Xem case study minh họa
               <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-accent transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5" aria-hidden="true">
                 <span className="absolute h-px w-3 bg-[#090909]" />
                 <span className="absolute h-3 w-px bg-[#090909]" />
               </span>
-            </a>
+            </Link>
             <a
               href="#work"
               data-cursor-link
               className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-medium text-foreground transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:border-accent active:scale-[0.98]"
             >
-              Xem dự án
+              Xem cách làm
             </a>
           </div>
         </div>

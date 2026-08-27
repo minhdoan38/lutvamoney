@@ -9,9 +9,9 @@ type Panel = "original" | "redesign";
 type Viewport = "desktop" | "tablet" | "mobile";
 
 const viewportOptions: { id: Viewport; label: string }[] = [
-  { id: "desktop", label: "Desktop" },
-  { id: "tablet", label: "Tablet" },
-  { id: "mobile", label: "Mobile" },
+  { id: "desktop", label: "Máy tính" },
+  { id: "tablet", label: "Máy tính bảng" },
+  { id: "mobile", label: "Điện thoại" },
 ];
 
 const panelCopy: Record<Panel, { label: string; eyebrow: string }> = {
@@ -48,7 +48,7 @@ function PanelHeader({ panel, originalUrl }: { panel: Panel; originalUrl: string
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
       <div>
-        <p className="font-mono text-[0.58rem] uppercase tracking-[0.14em] text-accent">{panelCopy[panel].eyebrow}</p>
+        <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent">{panelCopy[panel].eyebrow}</p>
         <h3 className="mt-1 text-sm font-medium text-foreground">{panelCopy[panel].label}</h3>
       </div>
       {panel === "original" && originalUrl ? (
@@ -79,7 +79,7 @@ export function RedesignCompare({ project }: { project: RedesignProject }) {
           </h2>
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">
-          Bản redesign chạy trong một khung cô lập và không thực thi JavaScript. Trên desktop, hai phiên bản nằm cạnh nhau; trên mobile, chuyển giữa hai tab.
+          Bản redesign chạy trong một khung cô lập và không thực thi JavaScript. Trên máy tính, hai phiên bản nằm cạnh nhau; trên điện thoại, có thể chuyển qua lại bằng hai tab.
         </p>
       </div>
 
@@ -138,7 +138,7 @@ export function RedesignCompare({ project }: { project: RedesignProject }) {
       </div>
 
       <p className="px-4 py-4 text-xs leading-relaxed text-muted sm:px-6 lg:px-8">
-        Demo nội bộ. Khi có HTML thật, phần preview sẽ được thay bằng bản dựng tương ứng và vẫn giữ nguyên lớp sandbox an toàn.
+        Đây là bản dựng minh họa bằng HTML giả định, không phải website của khách hàng. Hai phiên bản được cô lập trong sandbox để so sánh an toàn.
       </p>
     </section>
   );

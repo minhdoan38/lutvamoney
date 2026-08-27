@@ -42,11 +42,11 @@ export function OutroStatement() {
             Có website cần dựng lại?
           </p>
           <p data-outro-close className="max-w-135 border-t border-background/20 pt-5 text-base leading-normal text-background/70 md:col-span-4 md:col-start-1">
-            Giữ phần đáng giá. Gỡ phần đang cản. Dựng một đường đi rõ hơn cho công ty hiện tại.
+            Nếu website đã không còn phản ánh đúng doanh nghiệp, hãy bắt đầu bằng bối cảnh hiện tại. Nét Nút sẽ cùng anh/chị xác định phần cần làm rõ trước khi đề xuất bước tiếp theo.
           </p>
           <div className="md:col-span-5 md:col-start-5">
-            <Link href="/#contact" className="inline-flex min-h-12 items-center justify-center border border-background bg-background px-5 text-sm font-semibold text-foreground transition-[background-color,color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:bg-accent hover:text-background">
-              Gửi website hiện tại ↗
+            <Link href="/contact" data-cursor-link className="inline-flex min-h-12 items-center justify-center border border-background bg-background px-5 text-sm font-semibold text-foreground transition-[background-color,color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:bg-accent hover:text-background">
+              Bắt đầu trao đổi
             </Link>
           </div>
         </div>

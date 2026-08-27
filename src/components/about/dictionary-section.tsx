@@ -78,7 +78,7 @@ export function DictionarySection() {
     <section
       id="dictionary"
       ref={scope}
-      className="border-t border-[rgba(237,237,237,0.16)] px-4 py-32 sm:px-6 md:py-48 lg:px-10"
+      className="border-t border-line px-4 py-32 sm:px-6 md:py-48 lg:px-10"
     >
       <div className="mx-auto grid max-w-375 gap-12 md:grid-cols-12 md:gap-8 md:items-start">
         <div
@@ -105,13 +105,13 @@ export function DictionarySection() {
             </p>
           </div>
 
-          <div className="border-t border-[rgba(237,237,237,0.16)] pt-12 md:pt-16">
+          <div className="border-t border-line pt-12 md:pt-16">
             <p className="text-[clamp(1.5rem,3.2vw,2.75rem)] font-medium leading-[1.16] tracking-[-0.03em] text-foreground">
               <span className="text-accent">Nút</span> là phần đưa người dùng từ việc nhìn thấy đến hành động. Là cách họ tìm được thông tin, hiểu sản phẩm, hình thành niềm tin và đi đến quyết định.
             </p>
           </div>
 
-          <p className="max-w-xl border-t border-[rgba(237,237,237,0.16)] pt-10 text-base leading-[1.72] text-foreground/68 md:pt-12 md:text-lg">
+          <p className="max-w-xl border-t border-line pt-10 text-base leading-[1.72] text-foreground/68 md:pt-12 md:text-lg">
             Với chúng tôi, một website tốt không cần chọn giữa đẹp và hiệu quả. Nó cần cả hai.
           </p>
         </div>

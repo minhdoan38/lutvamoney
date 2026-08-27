@@ -1,0 +1,48 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "src/data/redesigns.ts"
+        ],
+        "createdAt": "2026-08-26T07:15:40.682Z",
+        "reason": "Agent: this file contains two intentionally independent HTML demo fixtures whose palettes illustrate before-and-after design; the site design system does not govern iframe content"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "src/data/redesigns.ts"
+        ],
+        "createdAt": "2026-08-26T07:15:40.730Z",
+        "reason": "Agent: this file contains two intentionally independent HTML demo fixtures with their own responsive type scales inside sandboxed iframes"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "src/data/redesigns.ts"
+        ],
+        "createdAt": "2026-08-26T07:15:40.782Z",
+        "reason": "Agent: the fixture intentionally uses Arial to represent a generic legacy website inside a sandboxed comparison"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-08-26T07:15:40.827Z",
+        "reason": "Agent: Arial is intentional evidence in the legacy and redesign demo fixtures, not the Nét Nút interface font"
+      }
+    ]
+  },
+  "hook": {
+    "enabled": true,
+    "limits": {
+      "maxFindings": 5,
+      "maxChars": 8000
+    }
+  }
+}

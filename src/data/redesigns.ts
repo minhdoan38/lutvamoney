@@ -96,10 +96,10 @@ export const redesignProjects: readonly RedesignProject[] = [
   {
     slug: "nha-moc-demo",
     title: "Một website dịch vụ cần một điểm bắt đầu rõ ràng",
-    kicker: "Demo / website nội thất thủ công",
+    kicker: "Case study minh họa / website nội thất thủ công",
     summary:
-      "Một bản dựng mẫu cho thấy cách chuyển một homepage nhiều thông tin thành một đường đi có thứ tự, có nhịp và có lý do.",
-    originalLabel: "Mẫu website cũ",
+      "Một bản dựng giả định cho thấy cách sắp lại trang chủ nhiều thông tin thành một luồng nội dung có thứ tự, có nhịp và có lý do.",
+    originalLabel: "Nội dung giả định do Nét Nút dựng",
     originalUrl: null,
     diagnosis: [
       "Hero giới thiệu sản phẩm trước khi nói rõ cảm giác và khác biệt của thương hiệu.",
@@ -112,7 +112,7 @@ export const redesignProjects: readonly RedesignProject[] = [
       "Chuyển danh sách sản phẩm thành các điểm vào theo nhịp sống.",
     ],
     nextStep:
-      "Khi có HTML thật, bản demo này sẽ đổi phần nội dung và giữ nguyên khung so sánh, case study và cấu trúc SEO.",
+      "Đây là case study minh họa, không phải dự án khách hàng. Nội dung và thương hiệu đều do Nét Nút dựng để trình bày phương pháp chẩn đoán và redesign.",
     originalHtml,
     redesignHtml,
   },

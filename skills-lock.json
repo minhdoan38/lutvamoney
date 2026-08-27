@@ -186,6 +186,36 @@
       "sourceType": "github",
       "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
       "computedHash": "6cb585d36a0d0418986bc8449bc0c8ff216344d692e08245d7f9e7414fee11a6"
+    },
+    "vietnamese-business-comms": {
+      "source": "trussary/vietnamese-language-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vietnamese-business-comms/SKILL.md",
+      "computedHash": "ac6c2fbe1feae8efedca68b7d9ad80cc7ed6af11f496748d317242678981d1c5"
+    },
+    "vietnamese-education-copy": {
+      "source": "trussary/vietnamese-language-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vietnamese-education-copy/SKILL.md",
+      "computedHash": "8d1f95ecd860cfafd692b388754cb8dc446ed4cabf7caec658eb13e4f3481571"
+    },
+    "vietnamese-finance-copy": {
+      "source": "trussary/vietnamese-language-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vietnamese-finance-copy/SKILL.md",
+      "computedHash": "22136f99d8f253b1e513376395df052480dda246bbbd5b1b273c2ab3c57fa488"
+    },
+    "vietnamese-landing-copy": {
+      "source": "trussary/vietnamese-language-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vietnamese-landing-copy/SKILL.md",
+      "computedHash": "d31e0410b4e3cb9666571db567c557cb560d98c2854308ee56ebf9a8a9e6d6bd"
+    },
+    "vietnamese-tech-writing": {
+      "source": "trussary/vietnamese-language-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vietnamese-tech-writing/SKILL.md",
+      "computedHash": "7238d811e310ee6f0c0e398f305e8252bee5013926a984991c6839512ac4a883"
     }
   }
 }

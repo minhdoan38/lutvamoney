@@ -50,12 +50,15 @@ export function ManifestoSection() {
   );
 
   return (
-    <section id="manifesto" ref={scope} className="border-t border-[rgba(237,237,237,0.16)] px-4 py-24 sm:px-6 md:py-36 lg:px-10" aria-labelledby="manifesto-heading">
+    <section id="manifesto" ref={scope} className="border-t border-line px-4 py-24 sm:px-6 md:py-36 lg:px-10" aria-labelledby="manifesto-heading">
       <div className="mx-auto grid max-w-375 gap-12 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-4">
           <h2 id="manifesto-heading" className="font-mono text-[0.625rem] font-normal tracking-[0.12em] text-muted">
-            Ba quan điểm làm việc
+            Website hiện tại là điểm bắt đầu
           </h2>
+          <p className="mt-6 max-w-sm text-base leading-[1.65] text-foreground/68 md:text-lg">
+            Anh/chị chia sẻ website và bối cảnh hiện tại. Nét Nút cùng anh/chị xác định phần đáng giữ, phần đang cản và hướng cần làm rõ trước khi đi tiếp.
+          </p>
           <p className="display-release mt-10 max-w-[7ch] text-[clamp(4.5rem,11vw,10rem)] font-semibold leading-[0.8] tracking-[-0.055em] text-accent">
             làm
             <br />
@@ -64,9 +67,8 @@ export function ManifestoSection() {
         </div>
 
         <div className="md:col-span-7 md:col-start-6">
-          {lines.map((line, index) => (
-            <article key={line} data-manifesto-entry className="border-t border-[rgba(237,237,237,0.16)] py-8 md:py-12">
-              <p className="font-mono text-[0.625rem] tracking-[0.12em] text-accent">0{index + 1}</p>
+          {lines.map((line) => (
+            <article key={line} data-manifesto-entry className="border-t border-line py-8 md:py-12">
               <p data-manifesto-line className="display-compression mt-5 max-w-[13ch] text-[clamp(2rem,4.7vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.045em] text-foreground">
                 {line}
               </p>

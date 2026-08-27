@@ -50,22 +50,72 @@ export function SelectedWork() {
   const frame = useRef<HTMLDivElement>(null);
   const reveal = useRef<HTMLDivElement>(null);
   const lens = useRef<HTMLDivElement>(null);
+  const comparisonHint = useRef<HTMLDivElement>(null);
   const [comparisonView, setComparisonView] = useState<"old" | "new">("old");
 
   useGSAP(
     () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      gsap.from(frame.current, {
-        clipPath: "inset(12% 14% 12% 14%)",
-        scale: 0.92,
-        duration: 1.25,
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: frame.current,
-          start: "top 72%",
-          toggleActions: "play reverse play reverse",
-        },
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!frame.current) return;
+
+      if (!reduce) {
+        gsap.from(frame.current, {
+          clipPath: "inset(12% 14% 12% 14%)",
+          duration: 1.25,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: frame.current,
+            start: "top 72%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+      }
+
+      if (!finePointer || !comparisonHint.current) return;
+
+      const hintTimeline = gsap.timeline({ paused: true });
+      if (reduce) {
+        hintTimeline
+          .fromTo(
+            comparisonHint.current,
+            { opacity: 0 },
+            { opacity: 0.35, duration: 0.1, ease: "power3.out" },
+          )
+          .to(comparisonHint.current, { opacity: 0, duration: 0.1, ease: "power2.out" });
+      } else {
+        hintTimeline
+          .fromTo(
+            comparisonHint.current,
+            { x: -24, yPercent: -50, scale: 0.9, opacity: 0 },
+            {
+              x: 24,
+              yPercent: -50,
+              scale: 1,
+              opacity: 0.85,
+              duration: 0.315,
+              ease: "expo.out",
+            },
+          )
+          .to(comparisonHint.current, {
+            x: 64,
+            opacity: 0,
+            duration: 0.385,
+            ease: "power2.out",
+          });
+      }
+
+      const hintTrigger = ScrollTrigger.create({
+        trigger: frame.current,
+        start: "top 72%",
+        once: true,
+        onEnter: () => hintTimeline.play(0),
       });
+
+      return () => {
+        hintTrigger.kill();
+        hintTimeline.kill();
+      };
     },
     { scope },
   );
@@ -111,7 +161,7 @@ export function SelectedWork() {
       <div className="mx-auto max-w-375">
         <ScrollText mode="words">
           <h2 className="mb-14 max-w-[12ch] text-[clamp(3rem,7.8vw,7.5rem)] font-semibold leading-[0.96] tracking-[-0.04em] md:mb-20">
-            Cách chúng tôi soi
+            Cách chúng tôi chẩn đoán
           </h2>
         </ScrollText>
 
@@ -122,7 +172,7 @@ export function SelectedWork() {
           onKeyDown={handleComparisonKeyDown}
           tabIndex={0}
           data-cursor-text="INSPECT"
-          aria-label="So sánh concept website cũ và website mới bằng phím mũi tên"
+          aria-label="So sánh bản website cũ và bản redesign bằng phím mũi tên"
           className="relative isolate min-h-[72vh] overflow-hidden bg-surface-work outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background md:min-h-[82vh]"
         >
           <ProjectVisual />
@@ -147,9 +197,14 @@ export function SelectedWork() {
             aria-hidden="true"
             className="pointer-events-none absolute left-0 top-0 z-10 hidden h-[clamp(110px,18vw,240px)] w-[clamp(110px,18vw,240px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 opacity-0 md:block"
           />
+          <div
+            ref={comparisonHint}
+            aria-hidden="true"
+            className="comparison-lens-hint pointer-events-none absolute left-0 top-1/2 z-10 hidden h-[clamp(110px,18vw,240px)] w-[clamp(110px,18vw,240px)] -translate-y-1/2 rounded-full border border-accent opacity-0 md:block"
+          />
 
           <p className="pointer-events-none absolute right-5 top-5 z-10 max-w-[15ch] text-right text-xs leading-relaxed text-white mix-blend-difference">
-            Khung minh họa để xem cách soi trước và sau.
+            Bản minh họa cách cấu trúc và thứ bậc thay đổi trước — sau.
           </p>
 
           <ToggleGroup
@@ -162,10 +217,10 @@ export function SelectedWork() {
             aria-label="Chọn phiên bản website"
             className="absolute bottom-5 right-5 z-10 border border-white/30 bg-background/90 p-1"
           >
-            <ToggleGroupItem value="old" className="min-h-11 px-4 py-2 text-xs data-[state=on]:bg-foreground data-[state=on]:text-background">
+<ToggleGroupItem value="old" className="h-11 min-h-11 px-4 py-2 text-xs data-[state=on]:bg-foreground data-[state=on]:text-background">
               Web cũ
             </ToggleGroupItem>
-            <ToggleGroupItem value="new" className="min-h-11 px-4 py-2 text-xs data-[state=on]:bg-accent data-[state=on]:text-background">
+<ToggleGroupItem value="new" className="h-11 min-h-11 px-4 py-2 text-xs data-[state=on]:bg-accent data-[state=on]:text-background">
               Web mới
             </ToggleGroupItem>
           </ToggleGroup>
@@ -173,11 +228,11 @@ export function SelectedWork() {
 
         <div className="mt-8 flex flex-col gap-2 border-t editorial-rule pt-5 sm:flex-row sm:items-baseline sm:justify-between">
           <ScrollText mode="words">
-            <p className="text-sm font-medium text-foreground">Phương pháp minh họa</p>
+            <p className="text-sm font-medium text-foreground">Minh họa phương pháp</p>
           </ScrollText>
           <ScrollText>
             <p className="max-w-136 text-sm leading-relaxed text-muted">
-              Soi cấu trúc cũ, giữ lại giá trị, rồi dựng lại đường đi rõ hơn.
+              Chẩn đoán cấu trúc cũ, giữ phần còn giá trị rồi dựng lại đường đi rõ hơn.
             </p>
           </ScrollText>
         </div>

@@ -199,7 +199,6 @@ button {
   font-variation-settings: "wdth" 102, "opsz" 48, "GRAD" -12;
 }
 
-.about-hero-line,
 .culture-title-line,
 .culture-body-line,
 .outro-display-line,
@@ -207,80 +206,8 @@ button {
   overflow: visible;
 }
 
-.outro-lens {
-  --outro-lens-x: 50%;
-  --outro-lens-y: 50%;
-  isolation: isolate;
-}
-
-.outro-lens__reveal {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: var(--accent);
-  clip-path: circle(0 at var(--outro-lens-x) var(--outro-lens-y));
-  content: "";
-  pointer-events: none;
-  transition: clip-path 450ms var(--ease-out);
-}
-
-.outro-lens[data-lens-active] .outro-lens__reveal {
-  clip-path: circle(min(34vw, 360px) at var(--outro-lens-x) var(--outro-lens-y));
-}
-
-.outro-lens__meta,
-.outro-lens__copy,
-.outro-lens__hint {
-  transition: color 450ms var(--ease-out);
-}
-
-@media (max-width: 767px) {
-  .outro-lens__reveal,
-  .outro-lens__meta span:first-child,
-  .outro-lens__hint {
-    display: none;
-  }
-
-  .outro-lens__copy {
-    min-height: auto;
-    padding-top: 7rem;
-    padding-bottom: 6rem;
-  }
-}
-
 .manifesto-split-line {
   line-height: inherit;
-}
-
-.manifesto-entry [data-manifesto-rule],
-.vision-row [data-vision-rule] {
-  opacity: 0.28;
-  transform: scaleX(0.08);
-  transform-origin: left center;
-  transition: opacity var(--motion-fast) var(--ease-out), transform 500ms var(--ease-out);
-}
-
-.manifesto-entry.is-active [data-manifesto-line],
-.vision-row.is-active [data-vision-line] {
-  color: var(--foreground);
-}
-
-.manifesto-entry.is-active [data-manifesto-rule],
-.vision-row.is-active [data-vision-rule] {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.manifesto-marker,
-.vision-marker {
-  transform-origin: left center;
-  transition: background-color var(--motion-fast) var(--ease-out), transform 350ms var(--ease-out);
-}
-
-.manifesto-marker.is-active,
-.vision-marker.is-active {
-  background: var(--accent);
-  transform: scaleX(1.35);
 }
 
 .masked-media {
@@ -293,9 +220,36 @@ button {
 }
 
 .nav-rotation {
+  position: relative;
   display: inline-flex;
   min-width: max-content;
   vertical-align: middle;
+}
+
+.nav-rotation__static {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nav-rotation__animated {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-rotation__animated.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-rotation__static[aria-hidden="true"] {
+  opacity: 0;
 }
 
 .nav-rotation__viewport {

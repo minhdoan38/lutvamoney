@@ -261,7 +261,7 @@ export function ReconstructionStage() {
                       value={phase.id}
                       className="min-h-11 flex-none border border-white/25 px-3 py-2 text-left text-xs data-active:border-accent data-active:bg-accent data-active:text-background"
                     >
-                      <span className="font-mono text-[0.55rem]">0{index + 1}</span>
+                      <span className="font-mono text-xs">0{index + 1}</span>
                       <span className="ml-2">{phase.label}</span>
                     </TabsTrigger>
                   ))}
@@ -312,7 +312,7 @@ export function ReconstructionStage() {
                 href="/redesign/nha-moc-demo"
                 className="inline-flex min-h-11 items-center border-b border-accent pb-2 text-sm text-foreground transition-colors duration-200 hover:text-accent"
               >
-                Xem case study demo →
+Xem case study minh họa →
               </Link>
               <div className="flex flex-wrap items-center gap-2">
                 <ToggleGroup

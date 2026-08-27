@@ -8,9 +8,9 @@ import { VisionSection } from "@/components/about/vision-section";
 import { SiteNav } from "@/components/site-nav";
 
 export const metadata: Metadata = {
-  title: "About Nét Nút | Nét Nút Studio",
+  title: "Về Nét Nút Studio | Redesign website",
   description:
-    "Nét Nút Studio thu hẹp khoảng cách giữa doanh nghiệp đã phát triển và website còn dừng lại ở một phiên bản cũ.",
+    "Nét Nút giúp doanh nghiệp làm rõ giá trị đang có, gỡ phần website đang cản và dựng hướng đi phù hợp với hiện tại.",
 };
 
 export default function AboutPage() {
@@ -20,13 +20,14 @@ export default function AboutPage() {
         href="#about-content"
         className="fixed left-4 top-4 z-30 -translate-y-20 bg-accent px-4 py-3 text-sm font-semibold text-background opacity-0 transition-[transform,opacity] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] focus:translate-y-0 focus:opacity-100"
       >
-        Bỏ qua đến nội dung
+        Chuyển đến nội dung chính
       </a>
       <main
         id="about-content"
-        className="w-full max-w-full overflow-x-hidden bg-background text-foreground"
+        tabIndex={-1}
+        className="w-full max-w-full overflow-x-hidden bg-background text-foreground focus-visible:outline-none"
       >
-        <SiteNav brandHref="/" ctaHref="/#contact" ctaLabel="Gửi website" />
+        <SiteNav brandHref="/" ctaHref="/contact" ctaLabel="Bắt đầu trao đổi" />
         <HeroAbout />
         <DictionarySection />
         <ManifestoSection />

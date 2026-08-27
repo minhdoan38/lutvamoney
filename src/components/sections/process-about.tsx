@@ -12,11 +12,11 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 const blocks = [
   {
     title: "Bắt đầu từ website đang có.",
-    copy: "Gửi Nét Nút website hiện tại. Chúng tôi sẽ soi xét, tìm cơ hội và đề xuất định hướng. Với bài toán phù hợp, Nét Nút sẽ demo một concept cốt lõi trước khi bắt tay vào toàn bộ dự án.",
+    copy: "Nét Nút rà soát website hiện tại, xác định phần cần giữ, phần cần thay và thống nhất một hướng thiết kế cốt lõi trước khi triển khai toàn bộ.",
   },
   {
     title: "Tinh gọn để đi thẳng vào việc.",
-    copy: "Nét tạo cảm giác. Nút tạo hành động. Nét Nút là một studio tinh gọn tại Việt Nam, tập trung chuyên sâu vào redesign website doanh nghiệp. Không cồng kềnh. Làm trực tiếp. Ra quyết định nhanh.",
+    copy: "Nét tạo cảm giác. Nút tạo hành động. Nét Nút là studio tại Việt Nam, tập trung vào redesign website doanh nghiệp. Làm việc trực tiếp, phạm vi rõ ràng và quyết định nhanh.",
   },
 ];
 

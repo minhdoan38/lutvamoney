@@ -23,7 +23,7 @@ const display = Roboto_Flex({
 export const metadata: Metadata = {
   title: "Nét Nút Studio | Redesign website cho doanh nghiệp",
   description:
-    "Nét Nút loại bỏ những thứ cồng kềnh, giữ lại cốt lõi, và thiết kế một trải nghiệm xứng tầm.",
+    "Nét Nút làm rõ thông điệp, sắp lại cấu trúc và redesign website để phản ánh đúng vị thế doanh nghiệp.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div
           hidden
           aria-hidden="true"
-          data-design-contract="THESIS: Website cũ được bóc tách thành chuyển động rõ ràng, từ chối hero agency cân đối. OWN WORLD: Nền đen, chữ off white, vermilion, tile phẳng, hairline, typography khổng lồ. STORY: Khách nhận ra website đã tụt lại, hiểu cách Nét Nút làm, rồi gửi URL. FIRST VIEWPORT: Headline chiếm gần toàn khung, khối vermilion cắt lệch bên phải, CTA nằm dưới phần giải thích. FORM: Editorial fields fused with reconstruction, labeled synthetic visuals, and truthful browser-only conversion."
+          data-design-contract="THESIS: Website cũ được bóc tách thành chuyển động rõ ràng, từ chối hero agency cân đối. OWN WORLD: Nền đen, chữ off white, vermilion, tile phẳng, hairline, typography khổng lồ. STORY: Người xem nhận ra website đã tụt lại, hiểu cách Nét Nút làm, rồi mở case study minh họa. FIRST VIEWPORT: Headline chiếm gần toàn khung, khối vermilion cắt lệch bên phải, CTA nằm dưới phần giải thích. FORM: Editorial fields fused with reconstruction, labeled synthetic visuals, and a truthful path to the demo."
         />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

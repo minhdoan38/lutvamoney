@@ -10,20 +10,20 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const services = [
   {
-    title: "Thiết kế lại website",
-    copy: "Website cũ không có nghĩa là doanh nghiệp cũ. Chúng tôi giữ lại giá trị thương hiệu bạn đã xây, loại bỏ giao diện lỗi thời, và dựng lại một trải nghiệm sắc bén hơn.",
+    title: "Redesign website",
+    copy: "Giữ lại giá trị thương hiệu đã có, gỡ bỏ cấu trúc lỗi thời và dựng lại trải nghiệm để website theo kịp doanh nghiệp.",
   },
   {
     title: "Website doanh nghiệp",
-    copy: "Rõ ràng. Đáng tin. Dễ hiểu. Chúng tôi xây dựng website doanh nghiệp chuẩn chỉnh từ kiến trúc thông tin, giao diện người dùng đến tối ưu hiệu suất.",
+    copy: "Xây website từ kiến trúc thông tin, giao diện đến hiệu suất để nội dung dễ hiểu, dịch vụ dễ tìm và thương hiệu đáng tin hơn.",
   },
   {
-    title: "Trang đích và chiến dịch",
-    copy: "Một sản phẩm. Một chiến dịch. Một mục tiêu. Landing page được thiết kế với sự tập trung tuyệt đối vào thông điệp và tỷ lệ chuyển đổi.",
+    title: "Landing page chiến dịch",
+    copy: "Mỗi landing page tập trung vào một thông điệp và một hành động chính, giúp người xem đi thẳng đến bước tiếp theo.",
   },
   {
     title: "Chuyển động và tương tác",
-    copy: "Website không cần đứng yên. Chuyển động và tương tác được tính toán bằng vật lý để dẫn dắt hành vi người dùng, không phải để trang trí.",
+    copy: "Chuyển động được thiết kế để dẫn mắt, làm rõ phản hồi và giữ nhịp trải nghiệm — không dùng để trang trí đơn thuần.",
   },
 ];
 
@@ -61,7 +61,7 @@ export function Services() {
             </h2>
           </ScrollText>
           <p className="max-w-sm self-end text-base leading-relaxed text-white/55 md:col-span-3">
-            Xây lại đúng phần đang giữ doanh nghiệp của bạn ở phía sau.
+            Xây lại đúng phần khiến website không còn theo kịp doanh nghiệp.
           </p>
         </div>
 

@@ -9,14 +9,14 @@ import { ScrollText } from "@/components/scroll-text";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const capabilities = [
-  "Soi đúng vấn đề",
+  "Chẩn đoán đúng vấn đề",
   "Sắp xếp thông tin dễ hiểu",
   "Thiết kế giao diện có lý do",
-  "Giữ thương hiệu, đổi cảm giác",
+  "Giữ giá trị thương hiệu",
   "Dẫn mắt bằng chuyển động",
   "Tạo tương tác có mục đích",
-  "Xây nền tảng nhanh và bền",
-  "Đưa website lên đường",
+  "Tối ưu tốc độ và độ bền",
+  "Bàn giao sẵn sàng vận hành",
 ];
 
 export function Capabilities() {

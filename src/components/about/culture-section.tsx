@@ -38,7 +38,7 @@ export function CultureSection() {
           Một studio nhỏ. Làm việc trực tiếp.
         </h2>
         <p data-culture-body className="max-w-152 text-base leading-[1.72] text-foreground/68 md:col-span-5 md:col-start-8 md:self-end md:text-lg lg:col-span-4 lg:col-start-9">
-          Nét Nút hiện được vận hành bởi một team local. Người tìm hiểu bài toán, người đưa ra hướng giải quyết và người trực tiếp thực hiện sản phẩm làm việc gần nhau trong suốt quá trình. Ít thông tin bị thất lạc hơn, quyết định nhanh hơn và trách nhiệm cũng rõ ràng hơn.
+          Nét Nút là một studio nhỏ tại Việt Nam, làm việc trực tiếp với từng doanh nghiệp. Người tìm hiểu bài toán, đưa ra hướng giải quyết và thực hiện sản phẩm cùng ở gần nhau trong suốt quá trình. Vì vậy, thông tin ít thất lạc hơn, quyết định nhanh hơn và trách nhiệm rõ ràng hơn.
         </p>
       </div>
     </section>
